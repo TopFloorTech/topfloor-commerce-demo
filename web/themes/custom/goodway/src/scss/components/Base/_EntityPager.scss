@@ -1,0 +1,40 @@
+$mediumGray: #555 !default;
+$lightGray: #eee !default;
+
+.entity-pager {
+  border-bottom: 2px solid $mediumGray;
+  margin-bottom: $spacing-base;
+
+  .entity-pager-list {
+    display: flex;
+    margin-top: 0;
+  }
+
+  .entity-pager-item {
+    flex-grow: 1;
+
+    .inactive {
+      color: $lightGray;
+    }
+  }
+
+  .entity-pager-item-prev {
+    text-align: left;
+
+    a, span {
+      &:before {
+        @include ButtonIcon($position: 'before', $icon: '\f053');
+      }
+    }
+  }
+
+  .entity-pager-item-next {
+    text-align: right;
+
+    a, span {
+      &:after {
+        @include ButtonIcon();
+      }
+    }
+  }
+}

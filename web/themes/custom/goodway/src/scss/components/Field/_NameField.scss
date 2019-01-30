@@ -1,0 +1,47 @@
+.FormItem--name {
+  &.FormItem--type-item {
+    .FormItem-children {
+      margin-bottom: 0.5rem;
+      font-size: 0.9em;
+
+      .Footer .Block--getaquickanswer & {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.FormItem--type-name {
+  margin-bottom: 0;
+
+  > .FormElement-label {
+    display: none;
+  }
+
+  > .FormItem-children {
+    > div {
+      display: flex;
+
+      > div {
+        flex-grow: 1;
+        width:100%;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .description {
+    display: none;
+  }
+
+
+}

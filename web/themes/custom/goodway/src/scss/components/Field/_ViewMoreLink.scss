@@ -1,0 +1,54 @@
+.ViewMoreLink,
+.Field--name-field-header-link {
+
+}
+
+.Field--name-field-header-link {
+  margin: 0.8em 1rem;
+  text-align: center;
+
+  @include media($screen-largeUp) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+  }
+
+  .Field-item a,
+  .ViewMoreLink-link {
+    &:after {
+      @include ButtonIcon();
+    }
+  }
+}
+
+.ViewMoreLink--relatedBlock {
+  margin: 0.8em 1rem;
+
+  &.ViewMoreLink--top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    display: none;
+
+    @include media($screen-largeUp) {
+      display: block;
+    }
+  }
+
+  &.ViewMoreLink--bottom {
+    text-align: center;
+
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+
+  .Field-item a,
+  .ViewMoreLink-link {
+    &:after {
+      @include ButtonIcon();
+    }
+  }
+}

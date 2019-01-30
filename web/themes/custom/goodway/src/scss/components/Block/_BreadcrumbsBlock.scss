@@ -1,0 +1,7 @@
+.Block--goodway-breadcrumbs {
+  display: none;
+
+  @include media($screen-mediumUp) {
+    display: block;
+  }
+}

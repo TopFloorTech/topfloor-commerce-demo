@@ -1,0 +1,11 @@
+.Field.Field--name-field-body-sections {
+  font-size: 1rem;
+
+  > .Field-items > .Field-item {
+    @include clearfix;
+  }
+
+  .Field--name-field-body {
+    font-size: $fontSize-base;
+  }
+}

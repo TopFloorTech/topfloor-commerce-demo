@@ -1,0 +1,82 @@
+$yellow: yellow !default;
+$blue: blue !default;
+$darkGray: #555 !default;
+$mediumGray: #555 !default;
+$LanguageSwitcher-fontSize: 0.8em !default;
+$LanguageSwitcher-toggleColor: white !default;
+$LanguageSwitcher-toggleColor--active: $mediumGray !default;
+$LanguageSwitcher-toggleBackground: transparent !default;
+$LanguageSwitcher-toggleBackground--active: $yellow !default;
+
+#block-languageswitchercontent .Block-content {
+    & > * > *:first-child {
+        display:flex;
+        align-items:center;
+    }
+    & * {
+        height:auto;
+    }
+}
+
+.LanguageSwitcher {
+  font-size: $LanguageSwitcher-fontSize;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+
+  .LanguageSwitcher-toggle {
+    color: $LanguageSwitcher-toggleColor;
+    background: $LanguageSwitcher-toggleBackground;
+    cursor: pointer;
+    padding: 0 ($spacing-fixed / 2);
+    display: flex;
+    align-items: center;
+    height: auto;
+
+    &:hover,
+    &:active,
+    &.LanguageSwitcher-toggle--active {
+      color: $LanguageSwitcher-toggleColor--active;
+      background: $LanguageSwitcher-toggleBackground--active;
+    }
+
+    .fa {
+      margin-left: 5px;
+      pointer-events: none;
+    }
+  }
+
+  .LanguageSwitcher-links {
+    position: absolute;
+    right: -5px;
+    top: 100%;
+    display: none;
+    border: 5px solid $blue;
+    border-top: none;
+    background-color: white;
+    text-align: center;
+    min-width: 100%;
+    width: auto;
+    box-sizing: content-box;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .Links-list {
+    .Links-item {
+      a {
+        color: $darkGray;
+        display: block;
+        padding: .5em 1em;
+
+        &:hover,
+        &.is-active {
+          background-color: $yellow;
+        }
+      }
+    }
+  }
+}

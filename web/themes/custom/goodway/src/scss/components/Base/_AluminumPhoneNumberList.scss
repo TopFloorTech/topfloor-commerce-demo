@@ -1,0 +1,14 @@
+// Overrides default styling
+
+.AluminumPhoneNumberList {
+  margin-left: 11rem;
+  @include clearfix;
+
+  @include media($screen-mediumUp) {
+    margin-left: 8rem;
+  }
+
+  @include media($screen-largeUp) {
+    margin-left: 15rem;
+  }
+}

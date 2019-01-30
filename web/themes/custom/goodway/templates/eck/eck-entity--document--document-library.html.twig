@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display an ECK entity.
+ *
+ * Available variables:
+ * - eck_entity: The full ECK entity with limited access to object properties
+ *   and methods. Only "getter" methods (method names starting with "get",
+ *   "has", or "is") and a few common methods such as "id" and "label" are
+ *   available. Calling other methods (such as node.delete) will result in an
+ *   exception.
+ * - content: All ECK entity items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *
+ * @see template_preprocess_eck_entity()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+set classes = [
+  'eck-entity',
+  'DocumentLibraryItem',
+  has_access ? 'is-accessible' : 'is-tooltip',
+  has_access ? 'DocumentLibraryItem--accessible' : 'DocumentLibraryItem--tooltip'
+]
+%}
+<div {{ attributes.addClass(classes) }}>
+  <div class="DocumentLibraryItem-fileIcon">
+    <i class="fa fa-file-pdf-o"></i>
+  </div>
+
+  <div class="DocumentLibraryItem-file">
+    <a href="{{ has_access ? file_url : "#login" }}" target="{{ has_access ? "_blank" : "_self" }}">{{ document_title }}</a>
+  </div>
+
+  <div class="DocumentLibraryItem-downloadIcon">
+    <i class="fa fa-{{ has_access ? "download" : "ban" }}"></i>
+  </div>
+
+  {% if not has_access %}
+  <div class="TooltipContainer">
+    <aside class="Tooltip">
+      <div class="Tooltip-title">{{ 'You must log in to view this document.'|t }}</div>
+      <div class="Tooltip-body">
+        <p>{{ 'Log in to your account to view this document.'|t }}</p>
+        <p>
+          {{ 'Don\'t have an account?'|t }}
+          {{ register_link }}
+        </p>
+      </div>
+      <div class="Tooltip-link">
+        {{ login_link }}
+      </div>
+    </aside>
+  </div>
+  {% endif %}
+</div>

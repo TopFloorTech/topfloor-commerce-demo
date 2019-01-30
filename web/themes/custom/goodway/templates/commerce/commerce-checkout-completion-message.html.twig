@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the completion message.
+ *
+ * Available variables:
+ * - order_entity: The order entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<p>
+  {{ 'Your @order_label number is @number.'|t({
+    '@number': order_entity.getOrderNumber,
+    '@order_label': order_label|lower
+  }) }} <br>
+  {{ 'You can view your @order_label on your account page when logged in.'|t({
+    '@order_label': order_label|lower
+  }) }}
+</p>

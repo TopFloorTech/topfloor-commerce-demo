@@ -1,0 +1,98 @@
+$blue: blue !default;
+$yellow: yellow !default;
+$lightGray: #eee !default;
+$darkGray: #555 !default;
+
+.Node--type-industry.Node--display-teaser {
+  height: 100%;
+  background: $lightGray;
+}
+
+.IndustryTeaser {
+  @include clearfix;
+  position: relative;
+
+  &:hover {
+    .IndustryTeaser-titleContainer {
+      background: $yellow;
+
+      * {
+        color: $darkGray;
+      }
+    }
+  }
+
+  .IndustryTeaser-header {
+    position: relative;
+  }
+
+  .IndustryTeaser-titleContainer {
+    background: $blue;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 0.6em 1rem;
+    display: flex;
+    align-items: center;
+    opacity: .9;
+    pointer-events: none;
+
+    * {
+      text-transform: uppercase;
+      color: white;
+    }
+  }
+
+  .IndustryTeaser-icon {
+    float: left;
+    color: white;
+    margin-right: 10px;
+  }
+
+  .IndustryTeaser-image {
+    .Field-item {
+      overflow: hidden;
+      position: relative;
+      height: 175px;
+
+      img {
+        display: block;
+        height: 175px;
+        max-height: 100%;
+        width: auto;
+        max-width: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+      }
+    }
+  }
+
+  .IndustryTeaser-content {
+    background: $lightGray;
+    padding: 1rem;
+    font-size: 0.9em;
+  }
+
+  .IndustryTeaser-title a:after {
+    @include ButtonIcon();
+    font-size: 0.8em;
+  }
+
+  .Field--name-field-teaser-description {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .IndustryTeaser-wrapperLink {
+    display: block;
+    @include clearfix;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

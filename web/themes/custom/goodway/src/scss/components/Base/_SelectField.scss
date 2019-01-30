@@ -1,0 +1,11 @@
+.FormItem--type-select {
+  .FormElement-label {
+    .contact-message-form & {
+      display: none;
+    }
+  }
+}
+
+select {
+  font-size: 16px;
+}

@@ -1,0 +1,61 @@
+$lightGray: #eee !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+$borderRadius-button: 5px !default;
+$blue: blue !default;
+$fontWeight-bold: 600 !default;
+
+.SalesRep {
+  border: 2px solid $lightGray;
+  padding-bottom: 4em;
+  position: relative;
+  height: 100%;
+
+  .SalesRep-header {
+    background: $lightGray;
+    padding: 1em ($spacing-fixed / 2);
+    font-size: 0.8em;
+
+    .Field--name-field-industries-served {
+      > .Field-label {
+        font-weight: $fontWeight-bold;
+
+        &:after {
+          content: ":";
+        }
+      }
+
+      > .Field-items > .Field-item {
+        display: inline-block;
+        margin-right: 2em;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .SalesRep-content {
+    padding: 1em ($spacing-fixed / 2) 0 ($spacing-fixed / 2);
+    font-size: 0.8em;
+
+    .Field {
+      margin: 0.5em 0;
+    }
+
+    .Field-label {
+      margin-right: 0.25em;
+    }
+
+    .Field.Field--name-field-form {
+      position: absolute;
+      bottom: 0;
+      margin: 0 0 1rem 0;
+
+      a {
+        @include PrimaryActionButton($prependIcon: true, $icon: "\f0e0")
+      }
+    }
+  }
+}

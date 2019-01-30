@@ -1,0 +1,63 @@
+// Base variables
+$darkGray: #555 !default;
+$lightGray: #eee !default;
+$yellow: yellow !default;
+$borderRadius-base: 0 !default;
+$borderWidth-base: 1px !default;
+$borderStyle-base: solid !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+$borderRadius-button: $borderRadius-base !default;
+
+// Component variables
+$TestimonialSliderTeaser-border: $borderWidth-base $borderStyle-base $color-border !default;
+$TestimonialSliderTeaser-shadow: $boxShadow-base !default;
+$TestimonialSliderTeaser-contentPadding: 1rem 2rem 4.25rem !default;
+
+.TestimonialSliderTeaser {
+  box-shadow: $TestimonialSliderTeaser-shadow;
+  border: $TestimonialSliderTeaser-border;
+  height: 100%;
+  position: relative;
+
+  .TestimonialSliderTeaser-content {
+    padding: $TestimonialSliderTeaser-contentPadding;
+  }
+
+  .Field--name-field-teaser-title {
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  .Field--name-field-customer {
+    font-size: 0.9em;
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+    margin-top: 1em;
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      @include FontAwsesomeIcon("\f10d");
+      position: absolute;
+      margin-left: -0.5rem;
+      margin-top: -1.5rem;
+      color: $lightGray;
+      font-size: 3em;
+      z-index: -1;
+    }
+  }
+
+  .TestimonialSliderTeaser-viewLink {
+    @include PrimaryActionButton(
+      $padding: 0.75em 3em,
+      $appendIcon: true
+    );
+
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1.25em;
+  }
+}

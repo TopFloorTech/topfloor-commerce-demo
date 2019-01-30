@@ -1,0 +1,11 @@
+// Base variables
+$fontWeight-bold: 600 !default;
+
+// Component variables
+$SubheadField-fontSize: 1em !default;
+$SubheadField-fontWeight: $fontWeight-bold !default;
+
+.Field--name-field-subhead {
+  font-size: $SubheadField-fontSize;
+  font-weight: $SubheadField-fontWeight;
+}

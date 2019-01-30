@@ -1,0 +1,90 @@
+.Fieldset {
+  &.Fieldset--inline {
+    .fieldset-wrapper {
+      .form-composite {
+        margin-bottom: 0;
+      }
+
+      .FormWrapper--checkboxes {
+        @include clearfix;
+      }
+
+      .field--widget-options-buttons,
+      .field--widget-select-or-other-list,
+      .field--widget-options-select,
+      .field--widget-options-buttons {
+        @include clearfix;
+        @include span-columns(12);
+
+        .FormItem-children {
+          vertical-align: middle;
+        }
+
+        label {
+          margin-bottom: 0;
+        }
+      }
+
+      .field--name-field-field-product-interests,
+      .field--name-field-field-referral {
+        @include span-columns(12 of 12);
+
+        .FormItem--type-checkbox,
+        .FormItem--type-radio {
+          @include span-columns(12 of 12);
+          margin-bottom: 0;
+
+          @include media($screen-mediumUp) {
+            @include span-columns(4 of 12);
+            @include omega(3n);
+          }
+        }
+      }
+
+      .field--name-field-contact-me-by {
+        @include span-columns(12 of 12);
+
+        @include media($screen-largeUp) {
+          @include span-columns(4 of 12);
+        }
+
+        .FormItem--type-checkbox {
+          @include span-columns(12 of 12);
+
+          @include media($screen-mediumUp) {
+            @include span-columns(4 of 12);
+            @include omega(3n);
+          }
+        }
+      }
+
+      .field--name-field-send-catalog {
+        @include span-columns(12 of 12);
+
+        @include media($screen-largeUp) {
+          @include span-columns(4 of 12);
+        }
+      }
+
+      .field--name-field-prepare-customized-quote {
+        @include span-columns(12 of 12);
+
+        @include media($screen-largeUp) {
+          @include span-columns(4 of 12);
+          @include omega(n);
+        }
+      }
+
+      .field--name-field-product-interests {
+        .FormItem--type-checkbox {
+          @include span-columns(12 of 12);
+
+          @include media($screen-mediumUp) {
+            @include span-columns(4 of 12);
+            @include omega(3n);
+          }
+        }
+      }
+    }
+  }
+}

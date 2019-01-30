@@ -1,0 +1,7 @@
+$lightGray: #eee !default;
+
+.RelatedView--documents {
+  .views-row:nth-of-type(odd) {
+    background: $lightGray;
+  }
+}

@@ -1,0 +1,50 @@
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+$fontWeight-thin: 300 !default;
+
+.Site--frontPage {
+  .Block--goodway-local-tasks {
+    @include outer-container;
+  }
+
+  .Node--display-full {
+    background: $lightGray;
+
+    .Node-content {
+      @include outer-container();
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    .Field--name-field-body {
+      @include span-columns(12);
+
+      @include media($screen-largeUp) {
+        @include span-columns(8 of 12);
+      }
+      font-size: 0.9em;
+      font-weight: $fontWeight-thin;
+
+      &.is-closed .ReadMoreContainer-bottom {
+        background: linear-gradient(0deg, $lightGray, $lightGray 40%, rgba(255,255,255,0))
+      }
+    }
+
+    .BuyingGuideSidebar {
+      background: $mediumGray;
+
+      .Block-title,
+      .Block-title a {
+        color: white;
+      }
+
+      .view-header {
+        color: white;
+      }
+    }
+  }
+
+  .StatusMessages {
+    @include outer-container;
+  }
+}

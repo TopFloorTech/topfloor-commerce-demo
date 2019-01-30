@@ -1,0 +1,23 @@
+// Component variables
+$ProductTabs-columns: 8 of 8 !default;
+
+.AccordionTabs--product {
+  @include span-columns($ProductTabs-columns);
+  margin-bottom: $spacing-base;
+
+  @include media($screen-mediumUp) {
+    padding: 0 $spacing-fixed/2;
+  }
+
+  @include media($screen-largeUp) {
+    padding: 0 0 0 $spacing-fixed / 2;
+  }
+
+  @include media($screen-xLargeUp) {
+    padding: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

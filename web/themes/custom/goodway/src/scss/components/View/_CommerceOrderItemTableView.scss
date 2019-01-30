@@ -1,0 +1,22 @@
+.view-commerce-order-item-table {
+  .views-table {
+    @include ResponsiveTable();
+
+    caption {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    td {
+      border-top-color: $lightGray;
+    }
+
+    tr:first-child td {
+      border-top-color: $mediumGray;
+    }
+  }
+
+  .Field--name-created {
+    display: none;
+  }
+}

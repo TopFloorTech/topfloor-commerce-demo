@@ -1,0 +1,74 @@
+/*
+ Specific styles to override the defaults for the Great Outdoors Sweepstakes landing page. Once we build a way to set
+ these styles on the paragraphs in the CMS, we probably won't need this component stylesheet anymore.
+ */
+.Node--id-341 {
+  .BoundingBox {
+    .Field--name-field-body {
+      font-weight: 300;
+      margin-bottom: 1.5em;
+    }
+
+    .Field--name-field-content-first {
+      .paragraph.paragraph--type--split-content {
+        margin-bottom: 1.5em;
+        overflow: hidden;
+
+        .Field--name-field-content-first {
+          @include media($screen-mediumUp) {
+            @include span-columns(12 of 12);
+          }
+          @include media($screen-xLargeUp) {
+            @include span-columns(6 of 12);
+          }
+        }
+
+        .Field--name-field-content-second {
+          border-left-width: 0;
+          border-top-width: 1px;
+
+          @include media($screen-mediumUp) {
+            @include span-columns(12 of 12);
+          }
+
+          @include media($screen-xLargeUp) {
+            @include span-columns(6 of 12);
+            @include omega();
+            border-left-width: 1px;
+            border-top-width: 0;
+          }
+        }
+      }
+    }
+
+    > .Field > .Field-items > .Field-item > .paragraph.paragraph--type--split-content {
+      > .Field--name-field-content-first {
+        @include media($screen-mediumUp) {
+          @include span-columns(12 of 12);
+        }
+
+        @include media($screen-largeUp) {
+          @include span-columns(6 of 12);
+        }
+      }
+
+      > .Field--name-field-content-second {
+        @include media($screen-mediumUp) {
+          @include span-columns(12 of 12);
+        }
+
+        @include media($screen-largeUp) {
+          @include span-columns(6 of 12);
+          @include omega();
+        }
+      }
+    }
+
+    .FormItem--field-i-agree-value .description a {
+      color: #F6D816;
+    }
+    .FormItem--field-email-offers-value {
+      color: #ffffff;
+    }
+  }
+}

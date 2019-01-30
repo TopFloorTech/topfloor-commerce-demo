@@ -1,0 +1,16 @@
+.MobileBack {
+  padding: .5em;
+  display: flex;
+  align-items: center;
+
+  .MobileBack-icon {
+    display: inline-block;
+    padding-right: .5em;
+    color: black;
+    font-size: 12px;
+  }
+
+  @media (min-width: 1187px) {
+    display: none;
+  }
+}

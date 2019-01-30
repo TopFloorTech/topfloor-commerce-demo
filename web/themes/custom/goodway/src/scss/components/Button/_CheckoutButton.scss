@@ -1,0 +1,4 @@
+.CheckoutButton {
+  @include IconInputButton($icon: "\f05d", $last: true);
+  float: right;
+}

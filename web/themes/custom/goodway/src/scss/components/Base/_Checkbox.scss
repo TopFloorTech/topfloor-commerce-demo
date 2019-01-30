@@ -1,0 +1,31 @@
+input[type=checkbox] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.75em;
+  margin-right: 1em;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+  content: "\f00c";
+  font-family: FontAwesome;
+  display: inline-block;
+  padding: 0.1em;
+  margin-right: 0.25em;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #fff;
+  background-color: #fff;
+  border: 1px solid darken($lightGray, 5%);
+  text-align: center;
+  line-height: 1em;
+}
+
+input[type=checkbox]:checked + label:before {
+  color: $blue;
+}

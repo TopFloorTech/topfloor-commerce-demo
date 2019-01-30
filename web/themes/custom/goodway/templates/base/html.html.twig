@@ -1,0 +1,226 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display the basic html structure of a single
+ * Drupal page.
+ *
+ * Variables:
+ * - css: An array of CSS files for the current page.
+ * - language: (object) The language the site is being displayed in.
+ *   language.language contains its textual representation.
+ *   language.dir contains the language direction. It will either be 'ltr' or 'rtl'.
+ * - grddl_profile: A GRDDL profile allowing agents to extract the RDF data.
+ * - head_title: A modified version of the page title, for use in the TITLE
+ *   tag.
+ * - head_title_array: (array) An associative array containing the string parts
+ *   that were used to generate the head_title variable, already prepared to be
+ *   output as TITLE tag. The key/value pairs may contain one or more of the
+ *   following, depending on conditions:
+ *   - title: The title of the current page, if any.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site, if any, and if there is no title.
+ * - head: Markup for the HEAD section (including meta tags, keyword tags, and
+ *   so on).
+ * - styles: Style tags necessary to import all CSS files for the page.
+ * - scripts: Script tags necessary to load the JavaScript files and settings
+ *   for the page.
+ * - page_top: Initial markup from any modules that have altered the
+ *   page. This variable should always be output first, before all other dynamic
+ *   content.
+ * - page: The rendered page content.
+ * - page_bottom: Final closing markup from any modules that have altered the
+ *   page. This variable should always be output last, after all other dynamic
+ *   content.
+ * - classes String of classes that can be used to style contextually through
+ *   CSS.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_html()
+ * @see template_process()
+ */
+#}
+{% set body_classes = [
+  not root_path ? 'Site--frontPage' : 'Site--path-' ~ root_path|clean_class,
+  'Site'
+] %}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+      <js-placeholder token="{{ placeholder_token|raw }}">
+
+        <!-- Begin Inspectlet JS Code -->
+        <script type="text/javascript" id="inspectletjs">
+          (function() {
+            var insp_ab_loader = true; // set this boolean to false to disable the A/B testing loader
+            window.__insp = window.__insp || [];
+            __insp.push(['wid', 1074587270]);
+            var ldinsp = function(){
+              if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1074587270&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x);if(typeof insp_ab_loader != "undefined" && insp_ab_loader){ var adlt = function(){ var e = document.getElementById('insp_abl'); if(e){ e.parentNode.removeChild(e); __insp.push(['ab_timeout']); }}; var adlc = "body{ visibility: hidden !important; }"; var adln = typeof insp_ab_loader_t != "undefined" ? insp_ab_loader_t : 1200; insp.onerror = adlt; var abti = setTimeout(adlt, adln); window.__insp_abt = abti; var abl = document.createElement('style'); abl.id = "insp_abl"; abl.type = "text/css"; if(abl.styleSheet) abl.styleSheet.cssText = adlc; else abl.appendChild(document.createTextNode(adlc)); document.head.appendChild(abl); } };
+            setTimeout(ldinsp, 0);
+          })();
+        </script>
+        <!-- End Inspectlet JS Code -->
+
+        <script>
+          var _ss = _ss || [];
+          _ss.push(['_setDomain', 'https://koi-3QNDH0OJ06.marketingautomation.services/net']);
+          _ss.push(['_setAccount', 'KOI-3ZLP7JGAIW']);
+          _ss.push(['_trackPageView']);
+          (function () {
+            var ss = document.createElement('script');
+            ss.type = 'text/javascript';
+            ss.async = true;
+
+            ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QNDH0OJ06.marketingautomation.services/client/ss.js?ver=1.1.1';
+            var scr = document.getElementsByTagName('script')[0];
+            scr.parentNode.insertBefore(ss, scr);
+          })();
+        </script>
+        </head>
+<body{{ attributes.addClass(body_classes) }}>
+
+{% if page_top %}
+  {{ page_top }}
+{% endif %}
+
+{% if page %}
+  {{ page }}
+{% endif %}
+
+{% if page_bottom %}
+  {{ page_bottom }}
+{% endif %}
+
+<js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+  {# embed for www.addthis.com #}
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-589a217fc79ce240"></script>
+  {# <!-- Go to www.addthis.com/dashboard to customize your tools --> #}
+
+  <script>
+    adroll_adv_id = "D3N3QE22KBABLPUPCIEYBB";
+    adroll_pix_id = "YSU47SL72NBRRK55NFD3DD";
+    (function () {
+      var oldonload = window.onload;
+      window.onload = function () {
+        __adroll_loaded = true;
+        var scr = document.createElement("script");
+        var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+        scr.setAttribute('async', 'true');
+        scr.type = "text/javascript";
+        scr.src = host + "/j/roundtrip.js";
+        ((document.getElementsByTagName('head') || [null])[0] ||
+          document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        if (oldonload) {
+          oldonload()
+        }
+      };
+    }());
+  </script>
+
+  <!-- Embedded : Insert this script in the BODY part of the page you wish to track -->
+  <!-- <script src='https://oncontactprod.goodway.com/API/marketing/PersistenceScript?profile=oncontact' async></script> -->
+  <!-- End Embedded -->
+
+  <!-- Below is Twitter conversion script -->
+  <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+  <script>twttr.conversion.trackPid('l5efp');</script>
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt=""
+         src="https://analytics.twitter.com/i/adsct?txn_id=l5efp&p_id=Twitter"/>
+    <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l5efp&p_id=Twitter"/>
+  </noscript>
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '143809322652662');
+    fbq('track', "PageView");
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=143809322652662&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+
+  <!-- BING CODE -->
+  <script>(function (w, d, t, r, u) {
+      var f, n, i;
+      w[u] = w[u] || [], f = function () {
+        var o = {ti: "5319382"};
+        o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
+      }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () {
+        var s = this.readyState;
+        s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
+      }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
+    })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
+  <noscript><img src="//bat.bing.com/action/0?ti=5319382&Ver=2" height="0" width="0"
+                 style="display:none; visibility: hidden;"/></noscript>
+  <!-- END BING CODE -->
+
+  <!-- Start of Async Drift Code
+  <script>
+  !function() {
+    var t;
+    if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+    t.methods = [ "identify", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+    t.factory = function(e) {
+      return function() {
+        var n;
+        return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+      };
+    }, t.methods.forEach(function(e) {
+      t[e] = t.factory(e);
+    }), t.load = function(t) {
+      var e, n, o, r;
+      e = 3e5, r = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+      o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + r + "/" + t + ".js",
+      n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+    });
+  }();
+  drift.SNIPPET_VERSION = '0.2.0'
+  drift.load('a55udhpv2x7r')
+  </script>
+  End of Async Drift Code -->
+
+  <script>
+    (function (a, e, c, f, g, h, b, d) {
+      var k = {ak: "1063786848", cl: "s9pZCJ3C9WsQ4LKg-wM", autoreplace: "800.333.7467"};
+      a[c] = a[c] || function () {
+        (a[c].q = a[c].q || []).push(arguments)
+      };
+      a[g] || (a[g] = k.ak);
+      b = e.createElement(h);
+      b.async = 1;
+      b.src = "//www.gstatic.com/wcm/loader.js";
+      d = e.getElementsByTagName(h)[0];
+      d.parentNode.insertBefore(b, d);
+      a[f] = function (b, d, e) {
+        a[c](2, b, k, d, null, new Date, e)
+      };
+      a[f]()
+    })(window, document, "_googWcmImpl", "_googWcmGet", "_googWcmAk", "script");
+  </script>
+</body>
+</html>

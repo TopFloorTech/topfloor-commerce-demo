@@ -1,0 +1,10 @@
+.Block.Block--goodway-content {
+  @include OuterPadding($amount: 0);
+
+  .Block-content {
+    > a,
+    > .views-element-container {
+      @include OuterPadding($sidebar: true);
+    }
+  }
+}

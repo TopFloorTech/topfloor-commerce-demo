@@ -1,0 +1,34 @@
+$fontWeight-base: 500 !default;
+$lightGray: #eee !default;
+
+.Field--name-field-header-form .eck-entity {
+  padding: 1rem;
+  background: $lightGray;
+
+  .HeaderFormTitle {
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    font-weight: $fontWeight-base;
+  }
+
+  .Field--name-field-description {
+    margin-bottom: 0.5rem;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .Field--name-field-image {
+    @include span-columns(4 of 12);
+    @include omega(1n);
+    float: right;
+    margin-left: $spacing-base/3;
+    margin-bottom: $spacing-base/3;
+  }
+
+  .form-actions {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}

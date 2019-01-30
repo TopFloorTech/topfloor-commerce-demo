@@ -1,0 +1,15 @@
+// Default variables
+$lightGray: #ccc !default;
+$darkGray: #323232 !default;
+
+// Component variables
+$BreadcrumbSection-background: $lightGray !default;
+$BreadcrumbSection-border: 1px solid $darkGray !default;
+
+.PageSection--breadcrumb {
+  background: $BreadcrumbSection-background;
+  border: $BreadcrumbSection-border;
+  border-right-style: none;
+  border-left-style: none;
+  padding: 0 $spacing-base / 2;
+}

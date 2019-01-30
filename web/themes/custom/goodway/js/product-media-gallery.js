@@ -1,0 +1,2 @@
+!function(i){"use strict";function a(a){i(a).find(".ProductMediaGallery-thumbnails").slick({slidesToShow:4,slidesToScroll:4})}function e(e){var l=i(".ProductMediaGallery",e);l.find(".ProductMediaGallery-largeImage, .ProductMediaGallery-thumbnail").find("a").addClass("js-swipebox"),l.find(".ProductMediaGallery-thumbnails").height()?a(l):setTimeout(function(){a(l)},500),i(".js-swipebox",e).swipebox()}Drupal.behaviors.goodwayProductMediaGallery={attach:function(i,a){e(i)}}}(jQuery);
+//# sourceMappingURL=maps/product-media-gallery.js.map

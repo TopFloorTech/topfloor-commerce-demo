@@ -1,0 +1,24 @@
+.search-api-autocomplete-search {
+  padding-top: 1.5rem;
+
+  &:before {
+    content: "Search suggestions";
+    display: block;
+    font-size: $fontSize-h5;
+    font-weight: bold;
+    color: $mediumGray;
+    margin-bottom: 0.8em;
+  }
+
+  &.ui-widget.ui-widget-content {
+    border: none;
+  }
+}
+
+.search-api-autocomplete-suggestion {
+  font-size: 0.9em;
+
+  .autocomplete-suggestion-results {
+    display: none;
+  }
+}

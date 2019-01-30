@@ -1,0 +1,17 @@
+$blue: blue !default;
+$lightGray: #eee !default;
+
+$ArticleIcon-color: $blue !default;
+$ArticleIcon-backgroundColor: $lightGray !default;
+
+.ArticleIcon {
+  color: $ArticleIcon-color;
+
+  .fa-stack {
+    font-size: 1.3em;
+  }
+
+  .fa-stack-2x {
+    color: $ArticleIcon-backgroundColor;
+  }
+}

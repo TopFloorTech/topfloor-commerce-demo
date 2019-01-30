@@ -1,0 +1,9 @@
+.Field--name-field-search-filters {
+  background: $lightGray;
+  padding: $spacing-base/3 $spacing-base/2;
+  text-align: right;
+
+  .Field-item {
+    display: inline-block;
+  }
+}

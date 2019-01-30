@@ -1,0 +1,56 @@
+$mediumGray: #555 !default;
+$lightGray: #eee !default;
+$blue: blue !default;
+
+.Question {
+  font-size: 0.9em;
+  border-top:3px solid $blue;
+
+  .Question-title {
+    background: $mediumGray;
+    color: white;
+    padding: 0.61em 1rem;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .Field--name-field-question {
+    padding-right: 2em;
+  }
+
+  .Question-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+
+    font-size:.75em;
+    background-color: $yellow;
+    padding:1em;
+    & * {
+        padding:3px 3px 2px 3px;
+        color:$yellow;
+        background-color: $mediumGray;
+        border-radius:50%;
+    }
+  }
+
+  .Question-content {
+    border: 1px solid $lightGray;
+    border-top: none;
+    padding: 1em;
+    margin-bottom: 1rem;
+  }
+
+  .Field-item p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.is-open {
+    .Question-title {
+      background: $blue;
+    }
+  }
+}

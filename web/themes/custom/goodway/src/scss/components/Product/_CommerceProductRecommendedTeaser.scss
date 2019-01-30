@@ -1,0 +1,61 @@
+// Base variables
+$lightGray: #eee !default;
+$blue: #477dca !default;
+$fontWeight-bold: 600 !default;
+$fontWeight-thin: 300 !default;
+
+.CommerceProduct--display-recommended-teaser {
+  @include clearfix;
+  position: relative;
+
+  .CommerceProduct-image {
+    text-align: center;
+  }
+
+  .CommerceProduct-content {
+  }
+
+  .Field--name-field-image {
+    @include ProductImage($boxShadow: 0 0 3px darken($color-border, 10%));
+
+    img {
+      max-height: 150px;
+      width: auto;
+    }
+  }
+
+  .Field--name-field-teaser-title {
+    font-weight: $fontWeight-bold;
+    font-size: 1.2em;
+
+    a {
+      color: $blue;
+    }
+  }
+
+  .Field--name-field-base-sku {
+    font-size: 1em;
+    font-weight: $fontWeight-thin;
+    margin-bottom: 0.5em;
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+    font-weight: $fontWeight-thin;
+  }
+
+  .ProductSku {
+    font-size: 0.9em;
+  }
+
+  .CommerceProduct-viewLink {
+    @include PrimaryActionButton(
+      $prependIcon: true,
+      $icon: "\f0ca"
+    );
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+  }
+}

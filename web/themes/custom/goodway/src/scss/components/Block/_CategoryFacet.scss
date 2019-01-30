@@ -1,0 +1,14 @@
+.Block--facets.Block--facet-blockproduct-category,
+.Block--facets.Block--facet-blockaccessory-category {
+  .facet-item__status {
+    display: none;
+  }
+
+  .facet-item a.is-active {
+    font-weight: $fontWeight-bold;
+  }
+
+  .item-list__links ul {
+    margin-left: $spacing-base/2;
+  }
+}

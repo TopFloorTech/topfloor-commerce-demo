@@ -1,0 +1,24 @@
+{%
+set classes = [
+  'paragraph',
+  'BannerLinkParagraph',
+  'BannerLinkParagraph--id-' ~ paragraph_id
+]
+%}
+
+<style>
+  .BannerLinkParagraph.BannerLinkParagraph--id-{{ paragraph_id }} {
+    width: 100%;
+    text-align: center;
+  }
+</style>
+
+<div {{ attributes.addClass(classes) }}>
+  {% if link %}
+  <a href="{{ link }}" target="_blank">
+  {% endif %}
+    {{ content }}
+  {% if link %}
+  </a>
+  {% endif %}
+</div>

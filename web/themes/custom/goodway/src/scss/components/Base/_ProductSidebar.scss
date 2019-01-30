@@ -1,0 +1,22 @@
+$lightGray: #eee !default;
+
+$ProductSidebar-columns: 4 !default;
+
+.ProductSidebar {
+  display: none;
+
+  @include media($screen-largeUp) {
+    @include span-columns(3 of 8);
+    padding-right: $spacing-fixed/2;
+  }
+
+  @include media($screen-xLargeUp) {
+    padding-right: 0;
+  }
+
+  .Block {
+    background-color: $lightGray;
+    padding: 1rem;
+    margin-bottom: $gutter;
+  }
+}

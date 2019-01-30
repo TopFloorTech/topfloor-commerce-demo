@@ -1,0 +1,117 @@
+$fontWeight-base: 500 !default;
+$fontWeight-bold: 600 !default;
+$fontWeight-thin: 300 !default;
+$blue: blue !default;
+$lightGray: #eee !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+.ProductVariation--cart,
+.ProductVariation--searchResult,
+.ProductVariation--searchSuggestion {
+  @include clearfix;
+
+  .ProductVariation-image {
+    @include ProductImage($padding: 0.25em);
+    @include span-columns(12 of 12);
+
+    .Field-item {
+      margin-right: 0.5em;
+    }
+  }
+
+  .ProductVariation-content {
+    @include span-columns(12 of 12);
+
+    .ProductSku {
+      font-size: 0.9em;
+    }
+
+    .ProductVariation-attributes {
+      font-size: 0.8em;
+      display: none;
+
+      @include media($screen-mediumUp) {
+        display: block;
+
+        .view-commerce-checkout-order-summary & {
+          display: none;
+        }
+      }
+
+      .Field-label {
+        font-weight: $fontWeight-base;
+      }
+    }
+  }
+
+  &.ProductVariation--noImage {
+    .ProductVariation-content {
+      @include span-columns(12);
+    }
+  }
+}
+
+.ProductVariation--searchResult {
+  .ProductVariation-image {
+    @include media($screen-mediumUp) {
+      @include span-columns(3 of 12);
+    }
+  }
+
+  .ProductVariation-content {
+    @include media($screen-mediumUp) {
+      @include span-columns(9 of 12);
+    }
+  }
+}
+
+.ProductVariation--cart,
+.ProductVariation--searchSuggestion {
+  .ProductVariation-image {
+    @include ProductImage($boxShadow: none, $padding: 0.25em);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(4 of 12);
+    }
+  }
+
+  .ProductVariation-content {
+    font-weight: $fontWeight-thin;
+
+    @include media($screen-mediumUp) {
+      @include span-columns(8 of 12);
+      @include omega();
+    }
+  }
+
+  .Field--name-product-id {
+    font-weight: $fontWeight-bold;
+
+    .Field-item {
+      a {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.ProductVariation--searchSuggestion {
+  position: relative;
+  display: flex;
+  margin-bottom: 0;
+  padding-top: 1em;
+  font-size: 0.8em;
+
+  &:hover {
+    background-color: $lightGray;
+  }
+
+  .ProductVariation-coverLink {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

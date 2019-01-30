@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Default order template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - order: The rendered order fields.
+ *   Use 'order' to print them all, or print a subset such as
+ *   'order.order_number'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ order|without('order_number') }}
+ *   @endcode
+ * - order_entity: The order entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('CommerceOrder CommerceOrder--historyTeaser') }}>
+  <div class="CommerceOrder-orderNumber">
+    <div class="Field Field--order-number Field--label-inline">
+      <div class="Field-label">{{ order_label }} #</div>
+      <div class="Field-item"><a href="{{ order_url }}">{{ order_entity.id() }}</a></div>
+    </div>
+  </div>
+
+  <div class="CommerceOrder-content">
+    {{ order|without('billing_information') }}
+  </div>
+</div>

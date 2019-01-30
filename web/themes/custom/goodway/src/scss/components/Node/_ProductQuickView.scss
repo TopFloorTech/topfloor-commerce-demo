@@ -1,0 +1,25 @@
+.CommerceProduct.CommerceProduct--display-quick-view {
+  .Block--cart {
+    display: none;
+  }
+
+  .Field--name-field-features {
+    font-size: 0.9em;
+  }
+
+  .Field--name-field-teaser-description .Field-item {
+    margin: 0;
+  }
+
+  .ProductHeading {
+    margin-bottom: $spacing-base/2;
+  }
+
+  .Headline {
+    margin-bottom: 0;
+  }
+
+  .Block--cart-2 {
+    display: none;
+  }
+}

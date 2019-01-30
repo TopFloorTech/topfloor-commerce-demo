@@ -1,0 +1,57 @@
+$blue: blue !default;
+
+.HomepageSlideshow {
+  position: relative;
+
+  .slick-arrow {
+    z-index: 3;
+
+    &:before {
+      color: white;
+    }
+
+    &.slick-prev {
+      left: $spacing-fixed / 2;
+    }
+
+    &.slick-next {
+      right: $spacing-fixed / 2;
+    }
+
+    @include media($screen-largeUp) {
+      display: none !important;
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
+    bottom: 0;
+
+    @include media($screen-largeDown) {
+      display: none !important;
+    }
+
+    @include media($screen-xLargeUp) {
+      bottom: 1em;
+    }
+
+    li {
+      button {
+        font-size: 1em;
+
+        &:before {
+          font-size: 1em;
+          color: white;
+          opacity: 1;
+        }
+      }
+
+      &.slick-active {
+        button:before {
+          opacity: 1;
+          color: $blue;
+        }
+      }
+    }
+  }
+}

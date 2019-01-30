@@ -1,0 +1,182 @@
+@import "assets";
+@import "../settings/variables";
+@import "bourbon";
+@import "../settings/grid-settings";
+@import "spacelift/grid";
+@import "../mixins/OuterPadding";
+@import "../mixins/ListingView";
+@import "../mixins/ButtonIcon";
+@import "../mixins/FontAwesomeIcon";
+
+.HeadingBlock {
+  width: 100%;
+
+  @include media($screen-largeUp) {
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  .HeadingBlock-headline {
+    margin: 0;
+    padding: 0;
+
+    @include media($screen-mediumUp) {
+      padding: 0 1em;
+    }
+
+    .Heading.Heading--slab {
+      background-color: transparent;
+      color: #555;
+      margin: 0.285em 0 0.75em;
+      padding: 0;
+    }
+  }
+}
+
+.paragraph--type--view-reference {
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 1px solid $lightGray;
+}
+
+.field__item-label-inline {
+  position: relative;
+}
+
+.field__item__label {
+  position: relative;
+
+  @include media($screen-mediumUp) {
+    padding-left: 0.75rem;
+  }
+
+  @include media($screen-largeUp) {
+    position: absolute;
+    top: 1em;
+  }
+}
+
+.ListingView.ListingView--videos {
+  @include ListingView($grid: true);
+
+  @include media($screen-mediumDown) {
+    padding: 0;
+  }
+
+  .pager:first-of-type {
+    display: none;
+  }
+
+  .views-exposed-form .form--inline {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    @include media($screen-mediumUp) {
+      flex-flow: row nowrap;
+    }
+
+    @include media($screen-largeUp) {
+      justify-content: flex-end;
+    }
+
+    .FormItem {
+      flex-basis: 100%;
+      margin: 0.25em 0;
+
+      @include media($screen-mediumUp) {
+        flex-basis: 50%;
+        flex-grow: 0;
+        margin-left: 1em;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      @include media($screen-largeUp) {
+        flex-basis: 30%;
+      }
+    }
+  }
+
+  .form-actions {
+    display: none;
+  }
+
+  .ListingView-video {
+    margin-bottom: 1em;
+
+    @include media($screen-mediumDown) {
+      margin: 0;
+      border: 1px solid $darkGray;
+      border-left: none;
+      border-right: none;
+    }
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      @include omega(3n);
+    }
+  }
+
+  .FormItem--type-select label {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    word-wrap: normal;
+  }
+
+  .Field--name-field-video {
+    a {
+      display: block;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &:after {
+        @include ButtonIcon($icon: '\f16a');
+        bottom: 0;
+        color: white;
+        font-size: 4em;
+        height: 1em;
+        left: 0;
+        line-height: 1em;
+        margin: auto;
+        opacity: 1;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1em;
+      }
+    }
+  }
+
+  .Field--name-field-related-products {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 0.9em;
+    margin-top:0.25em;
+
+    .Field-label {
+      flex-shrink: 0;
+      margin-right: 3px;
+    }
+
+    .Field-items {
+      flex-grow: 1;
+    }
+  }
+}

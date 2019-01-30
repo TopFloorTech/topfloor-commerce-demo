@@ -1,0 +1,7 @@
+$ProductContentContainer-columns: 12 !default;
+
+.ProductContentContainer {
+  @include span-columns($ProductContentContainer-columns);
+  @include clearfix;
+  @include OuterPadding($sidebar: true);
+}

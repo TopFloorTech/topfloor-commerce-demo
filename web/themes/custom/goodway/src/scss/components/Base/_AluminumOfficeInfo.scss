@@ -1,0 +1,38 @@
+.AluminumOfficeInfo {
+  @include clearfix;
+
+  .AluminumOfficeInfo-icon {
+    @include span-columns(1 of 12);
+    margin-top: 0;
+    clear: left;
+    text-align: right;
+    height: 1em;
+  }
+
+  .AluminumOfficeInfo-address,
+  .AluminumOfficeInfo-phoneList,
+  .AluminumOfficeInfo-officeHours {
+    @include span-columns(11 of 12);
+    @include omega(2n);
+    font-size: 0.9em;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .AluminumPhoneNumberList {
+    margin-left: 1rem;
+    @include clearfix;
+    color: inherit;
+    line-height: 1.9em;
+
+    a {
+      color: $blue;
+
+      @include media($screen-mediumUp) {
+        color: inherit;
+      }
+    }
+  }
+}

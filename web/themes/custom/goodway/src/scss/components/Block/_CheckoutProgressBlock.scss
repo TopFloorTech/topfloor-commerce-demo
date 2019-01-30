@@ -1,0 +1,11 @@
+.Block.Block--commerce-checkout-progress {
+    width:100%;
+    margin-bottom: $spacing-base;
+
+    // mimics media query setup in commerce
+    /*@media screen and (min-width: 780px), (orientation: landscape) and (min-device-height: 780px) {
+        width:64.7%;
+        padding-right:2em;
+        box-sizing:border-box;
+    }*/
+}

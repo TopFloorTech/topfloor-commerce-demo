@@ -1,0 +1,43 @@
+$boxShadow-base: 0 0 3px $color-border !default;
+
+.CalloutBlock {
+  outline: 1px solid $color-border;
+  padding: 25px 30px 20px;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: $boxShadow-base;
+
+  @include media($screen-mediumUp) {
+    padding-left: 75px;
+  }
+
+  .CalloutBlock-icon {
+    width: 38px;
+    height: 38px;
+    left: 20px;
+    top: 20px;
+    text-align: center;
+    background-color: $lightGray;
+    border-radius: 100%;
+    margin-bottom: $spacing-base/2;
+
+    @include media($screen-mediumUp) {
+      position: absolute;
+    }
+  }
+
+  .CalloutBlock-icon > * {
+    width: 100%;
+    font-size: 24px;
+    color: $blue;
+    // vertically align
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .CalloutBlock-body {
+    position: relative;
+    clear: both;
+  }
+}

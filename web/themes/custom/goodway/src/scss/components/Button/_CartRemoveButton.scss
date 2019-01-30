@@ -1,0 +1,47 @@
+.CartRemoveButton {
+  @include ActionButton(
+    $padding: 0,
+    $borderRadius: 0,
+    $mainColor: transparent,
+    $textColor: $blue,
+    $mainColor--hover: transparent,
+    $textColor--hover: $blue
+  );
+  position: relative;
+  float: right;
+  text-align: left;
+  margin-left: $spacing-fixed/3;
+  margin-right: $spacing-fixed/3;
+
+  @include media($screen-xLargeUp) {
+    margin-left: 0;
+  }
+
+  &:before {
+    font-family: 'FontAwesome';
+    content: "\f057";
+    margin-right: .25em;
+    line-height: 2em;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0.4em;
+    left: .5em;
+    pointer-events: none;
+  }
+
+  input.CartRemoveButton-input {
+    background-color: transparent;
+    transition: none;
+    color: inherit;
+    border-radius: 0;
+    padding-left: 2em;
+    padding-right: 0.5em;
+    font-weight: $fontWeight-base;
+    padding-top: 0.3em;
+
+    &:hover {
+      font-weight: $fontWeight-bold;
+    }
+  }
+}

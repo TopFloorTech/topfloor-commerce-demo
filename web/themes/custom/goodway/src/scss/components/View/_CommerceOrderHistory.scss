@@ -1,0 +1,22 @@
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+
+.view-commerce-user-orders {
+  @include OuterPadding();
+
+  .views-table {
+    @include ResponsiveTable();
+
+    tbody td {
+      border-top-color: $lightGray;
+    }
+
+    tbody tr:first-child td {
+      border-top-color: $mediumGray;
+    }
+  }
+
+  .sidebar-second & {
+    @include OuterPadding($sidebar: true);
+  }
+}

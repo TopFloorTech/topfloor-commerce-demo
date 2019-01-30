@@ -1,0 +1,74 @@
+// Base variables
+$darkGray: #555 !default;
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+$yellow: yellow !default;
+$blue: #477dca !default;
+$borderRadius-base: 0 !default;
+$borderWidth-base: 1px !default;
+$borderStyle-base: solid !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+$borderRadius-button: $borderRadius-base !default;
+
+// Component variables
+$ArticleSliderTeaser-columns: 12 !default;
+$ArticleSliderTeaser-columns--icon: 2 !default;
+$ArticleSliderTeaser-columns--content: $ArticleSliderTeaser-columns - $ArticleSliderTeaser-columns--icon !default;
+$ArticleSliderTeaser-border: $borderWidth-base $borderStyle-base $color-border !default;
+$ArticleSliderTeaser-shadow: $boxShadow-base !default;
+$ArticleSliderTeaser-iconPadding: 1em 0 1em 1.25em !default;
+$ArticleSliderTeaser-contentPadding: 1em 1em 4.25em 0 !default;
+
+.ArticleSliderTeaser {
+  @include span-columns($ArticleSliderTeaser-columns);
+  box-shadow: $ArticleSliderTeaser-shadow;
+  border: $ArticleSliderTeaser-border;
+  height: 100%;
+  position: relative;
+
+  .PageSection--contentBottomSecond & {
+    background-color: white;
+    border-color: darken($lightGray, 13%);
+    box-shadow: 0 0 3px darken($lightGray, 10%);
+  }
+
+  .ArticleIcon {
+    @include span-columns(12 of 12);
+    padding: 1em 1.25em 0;
+
+    @include media($screen-mediumUp) {
+      @include span-columns($ArticleSliderTeaser-columns--icon of $ArticleSliderTeaser-columns);
+      padding: $ArticleSliderTeaser-iconPadding;
+    }
+  }
+
+  .ArticleSliderTeaser-content {
+    @include span-columns(12 of 12);
+    padding: 1em 1.25em;
+
+    @include media($screen-mediumUp) {
+      @include span-columns($ArticleSliderTeaser-columns--content of $ArticleSliderTeaser-columns);
+      padding: $ArticleSliderTeaser-contentPadding;
+    }
+  }
+
+  .Field--name-field-teaser-title {
+    margin-bottom: 0.75em;
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+  }
+
+  .ArticleSliderTeaser-viewLink {
+    @include PrimaryActionButton(
+      $padding: 0.75em 3em
+    );
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1.25em;
+  }
+}

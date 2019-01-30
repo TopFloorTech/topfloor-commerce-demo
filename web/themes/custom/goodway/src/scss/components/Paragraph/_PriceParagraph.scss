@@ -1,0 +1,26 @@
+.paragraph.PriceParagraph {
+  font-size: 1rem;
+  text-align: center;
+  margin: 1em 0;
+
+  .Field--name-field-heading .Field-item {
+    font-size: 2em;
+    font-weight: 300;
+  }
+
+  .Field--name-field-price .Field-item {
+    font-size: 5em;
+    font-weight: 900;
+    line-height: 1.3;
+
+    .prefix {
+      font-size: 0.75em;
+      vertical-align: text-top;
+    }
+  }
+
+  .Field--name-field-second-heading .Field-item {
+    font-size: 1em;
+    font-weight: 300;
+  }
+}

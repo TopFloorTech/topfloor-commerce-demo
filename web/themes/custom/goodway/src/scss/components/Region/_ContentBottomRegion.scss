@@ -1,0 +1,14 @@
+$lightGray: #eee !default;
+
+.Region.Region--content_bottom {
+  @include clearfix;
+  @include OuterPadding();
+
+  > .Block {
+    margin-top: 2rem;
+
+    &:last-child {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@mixin OuterPadding(
+  $amount: $spacing-fixed / 2,
+  $breakpoint: $screen-xLargeUp,
+  $reset: false,
+  $side: 'both',
+  $sidebar: false
+) {
+  @if $reset and $side == 'both' {
+    padding: 0 $amount;
+  } @else {
+    @if $side == 'both' {
+      padding-left: $amount;
+      padding-right: $amount;
+    } @else {
+      padding-#{$side}: $amount;
+    }
+  }
+
+  @if $sidebar {
+    @include media($screen-largeUp) {
+      padding-right: 0;
+    }
+  }
+
+  @if $breakpoint {
+    @include media($breakpoint) {
+      @if $side == 'both' {
+        padding-left: 0;
+        padding-right: 0;
+      } @else {
+        padding-#{$side}: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+$fontWeight-base: 400 !default;
+
+.Headline {
+  display: block;
+  font-size: 1.25em;
+
+  @include media($screen-largeUp) {
+    font-size: $fontSize-h1;
+  }
+}
+
+.Headline--type-commerce_product {
+  display: inline-block;
+  font-size: 1em;
+}
+
+.Headline--formPage {
+  float: left;
+  margin: 0.3em 0 0.75em 0.25em;
+}
+
+.Headline--slide {
+  color: white;
+  font-weight: $fontWeight-base;
+  margin-bottom: $spacing-fixed / 3;
+  font-size: 2em;
+
+  @include media($screen-mediumUp) {
+    font-size: 2.5em;
+  }
+
+  @include media($screen-largeUp) {
+    font-size: 3em;
+  }
+
+  @include media($screen-xLargeUp) {
+    font-size: 3.5em;
+    margin-bottom: $spacing-fixed / 2;
+  }
+}

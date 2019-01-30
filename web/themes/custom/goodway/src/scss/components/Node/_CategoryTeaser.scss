@@ -1,0 +1,144 @@
+$lightGray: #eee !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+$blue: blue !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+$CategoryTeaser-border: 1px solid $lightGray !default;
+$CategoryTeaser-padding: $spacing-fixed / 2 !default;
+$CategoryTeaser-contentBackground: $lightGray !default;
+$CategoryTeaser-shadow: $boxShadow-base !default;
+
+.Node--display-category-teaser {
+  font-size: 0.9em;
+  box-shadow: $CategoryTeaser-shadow;
+  height: 100%;
+  background: $CategoryTeaser-contentBackground;
+
+  .Node-header {
+    border: $CategoryTeaser-border;
+    position: relative;
+    min-height: 5em;
+  }
+
+  .Node-mobileLink {
+    display: none;
+  }
+
+  .Node-content {
+    position: relative;
+
+    .Node-wrapperLink {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @include media($screen-mediumDown) {
+    box-shadow: none;
+
+    .Node-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border: 0;
+
+      .Node-mobileLink {
+        font-size: 2em;
+        color: white;
+        background-color: $blue;
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 .5em 0 .67em;
+
+        &:hover, &:active {
+          background-color: $yellow;
+          color: $darkGray;
+        }
+      }
+    }
+  }
+
+  .Field--name-field-teaser-image {
+    text-align: center;
+    padding: $CategoryTeaser-padding;
+    background: #fff;
+    .Field-item {
+      img {
+        margin-bottom: 0.5em;
+        border: none;
+        box-shadow: none;
+      }
+
+      a {
+        display: block;
+      }
+    }
+
+    @include media($screen-mediumDown) {
+      border: 1px solid #bbbbbb;
+      margin: 1em;
+      flex: 0 0 $column*2;
+      .Field-item a {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  @include media($screen-mediumDown) {
+    .Field--name-field-teaser-title {
+      flex-grow: 1;
+      padding-right: 1em;
+      font-size: $fontSize-h1;
+      line-height: 1.2;
+      a {
+        color: $darkGray;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @include media($screen-mediumUp) {
+    .Field--name-field-teaser-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0.9;
+      .Field-item {
+        vertical-align: middle;
+        a {
+          @include ActionButton(
+            $padding: $CategoryTeaser-padding,
+            $appendIcon: true,
+            $borderRadius: 0
+          );
+
+          display: block;
+          vertical-align: middle;
+        }
+      }
+    }
+    &.is-active {
+      .Field--name-field-teaser-title .Field-item a {
+        background: $yellow;
+        color: $darkGray;
+      }
+    }
+  }
+
+  .Field--name-field-teaser-description {
+    padding: $CategoryTeaser-padding;
+    @include media($screen-mediumDown) {
+      display: none;
+    }
+  }
+}

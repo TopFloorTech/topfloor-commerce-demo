@@ -1,0 +1,144 @@
+// Base variables
+$blue: #477dca !default;
+$mediumGray: #555 !default;
+$lighterGray: #bbb !default;
+
+// Component variables
+$MainMenu-fontSize: 1.1em !default;
+$MainMenu-color: $mediumGray !default;
+$MainMenu-color--active: $blue !default$MainMenu-textAlign: right !default;
+$MainMenu-itemMargin: 0 0.5em !default;
+$MainMenu-linkBorderBottom: 0.2em solid transparent !default;
+$MainMenu-linkBorderBottom--active: 0.2em solid $blue !default;
+
+#block-main-navigation .Menu.Menu--main {
+  font-size: $MainMenu-fontSize;
+  float: right;
+
+  > .Menu-list {
+    margin-bottom: 0;
+
+    .Menu-list {
+      display: none;
+    }
+  }
+
+  .Menu-item {
+  }
+
+  .Menu-link {
+    color: $MainMenu-color;
+
+    &:hover,
+    &:active,
+    &.Menu-link--activeTrail {
+      color: $MainMenu-color--active;
+    }
+  }
+}
+
+//                        //
+// supefish based styling //
+//                        //
+#block-main-navigation .Menu--main > ul {
+  // setup column layout for superfish
+  // each iteration is per columns
+  > .Menu-item {
+    > .Menu-list {
+      > .Menu-item {
+        position: static;
+        > .Menu-list {
+          top: 0;
+          > .Menu-item {
+            position: static;
+            > ul {
+              top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  // ... end column layout style
+
+  // goodway style
+  > .Menu-item {
+    > .Menu-link {
+      border: 3px solid transparent;
+      padding: 1em 0.6em 0.8em;
+      font-size: 0.9em;
+
+      @include media($screen-xLargeUp) {
+        font-size: 1em;
+        padding: 0.8em;
+      }
+
+      &.Menu-link--activeTrail {
+        color: $blue;
+
+        &:after {
+          content: "";
+          display: block;
+          background-color: $blue;
+          height: 3px;
+          width: 100%;
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+    &.sfHover {
+      color: $blue;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 3px;
+        bottom: 0;
+        background-color: white;
+        width: calc(100% - 6px);
+        height: 4px;
+        border: 0;
+        z-index: 100;
+      }
+      > a {
+        border: 3px solid $lighterGray;
+      }
+    }
+  }
+  .Menu-item {
+    background-color: transparent;
+
+    .Menu-link {
+      background-color: transparent;
+    }
+    .Menu-list {
+      box-shadow: none;
+      background-color: white;
+      border: 3px solid $lighterGray;
+      margin: -3px 1px 0 0;
+      width: 225px; // width of columns
+      padding-top: 6px;
+      padding-bottom: 7px;
+      .Menu-item {
+        margin: 0 8px;
+        + .Menu-item {
+          border-top: 1px solid $lighterGray;
+        }
+        .Menu-link {
+          font-size: 14px;
+          padding: 5px 0 5px;
+          white-space: normal;
+        }
+        .Menu-list {
+        }
+      }
+    }
+  }
+
+  // highlight current path
+  > .Menu-item > .Menu-list .Menu-item--expanded.sfHover > a {
+    color: $blue;
+  }
+}

@@ -1,0 +1,39 @@
+#block-goodway-branding {
+  @include span-columns(10 of 12);
+  height: 100%;
+  padding-left: $spacing-fixed/2;
+
+  // resolves SVG in <img> tags not scaling in IE9, IE10, IE11
+  // see https://gist.github.com/larrybotha/7881691
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    img[src*=".svg"] {
+      width: 100%;
+    }
+  }
+
+  @include media($screen-largeUp) {
+    @include span-columns(2 of 12);
+  }
+
+  @include media($screen-xLargeUp) {
+    @include span-columns(3 of 12);
+    padding-left: 0;
+  }
+
+  .Block-content {
+    height: 100%;
+    display: inline-block;
+
+    a {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  img {
+    max-height: 30px;
+    display: block;
+  }
+}

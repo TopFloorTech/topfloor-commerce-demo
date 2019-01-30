@@ -1,0 +1,281 @@
+$darkGray: #555 !default;
+$fontWeight-thin: 300 !default;
+$fontWeight-bold: 600 !default;
+$blue: blue !default;
+$yellow: yellow !default;
+$borderRadius-button: 5px !default;
+
+$Slide-textColor: white !default;
+
+.Slide {
+  position: relative;
+
+  .Slide-image {
+    background-color: $darkGray;
+
+    img {
+      width: auto;
+      height: 100%;
+      max-height: 250px;
+      display: block;
+      max-width: 100%;
+
+      @include media($screen-mediumUp) {
+        max-height: 350px;
+      }
+
+      @include media($screen-largeUp) {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        max-width: 100%;
+      }
+
+      @include media($screen-xLargeUp) {
+        max-height: 690px;
+      }
+    }
+
+  }
+
+  .Slide-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: $Slide-textColor;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include media($screen-largeUp) {
+
+    }
+  }
+
+  .Slide-innerContainer {
+    @include outer-container();
+  }
+
+  .Slide-contentWrapper {
+    position: relative;
+    display: inline-block;
+    padding: 1em 0 1.5em;
+    width: 100%;
+
+    @include media($screen-largeUp) {
+      width: auto;
+    }
+
+    @include media($screen-xLargeUp) {
+      padding: 1em 1.5em 1.5em;
+    }
+
+    &__left {
+      padding-bottom: 0;
+
+      @include media($screen-largeUp) {
+        float: left;
+        width: 40%;
+      }
+    }
+
+    &__right {
+      padding-bottom: 0;
+
+      @include media($screen-largeUp) {
+        float: right;
+        text-align: right;
+        width: 40%;
+      }
+    }
+  }
+
+  .Headline--slide,
+  .Field--name-field-subhead,
+  .Field--name-field-subhead-2,
+  .Field--name-field-description,
+  .Field--name-field-description-2 {
+    @include OuterPadding($amount: 3rem);
+  }
+
+  .Slide-contentBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $darkGray;
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  .Field--name-field-subhead,
+  .Field--name-field-subhead-2 {
+    font-size: 1.2em;
+    font-weight: $fontWeight-thin;
+    margin-bottom: $spacing-fixed / 3;
+
+    @include media($screen-mediumUp) {
+      font-size: 1.5em;
+    }
+
+    @include media($screen-largeUp) {
+      font-size: 1.85em;
+      margin-bottom: $spacing-fixed / 2;
+    }
+  }
+
+  .Field--name-field-description,
+  .Field--name-field-description-2 {
+    font-weight: $fontWeight-thin;
+    line-height: 1.75;
+    font-size: 1.1em;
+    display: none;
+    margin-bottom: $spacing-fixed / 3;
+
+    @include media($screen-mediumUp) {
+      display: block;
+    }
+
+    @include media($screen-largeUp) {
+      margin-bottom: $spacing-fixed / 2;
+      font-size: 1.2em;
+    }
+  }
+
+  .Slide-content .Field--name-field-link,
+  .Slide-content .Field--name-field-link-2 {
+    font-size: 1.2em;
+    width: auto;
+    margin-top: 2rem;
+    display: none;
+    @include OuterPadding($amount: 3rem);
+
+    @include media($screen-largeUp) {
+      display: block;
+    }
+
+    .Field-item a {
+      @include PrimaryActionButton(
+        $padding: 0.75em 1.25em,
+        $appendIcon: true
+      );
+
+      width: auto;
+    }
+  }
+
+  .Slide-responsiveLink {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    @include clearfix;
+
+    @include media($screen-largeUp) {
+      display: none;
+    }
+
+    .Field--name-field-link,
+    .Field--name-field-link-2 {
+      width: 100%;
+      font-size: 1em;
+
+      .Field-item a {
+        @include PrimaryActionButton(
+          $padding: 0.75em ($spacing-fixed / 2),
+          $appendIcon: true
+        );
+
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  &.Slide-split {
+    .Slide-image {
+      display: none;
+
+      @include media($screen-largeUp) {
+        display: block;
+      }
+
+      &__left,
+      &__right {
+        display: block;
+
+        @include media($screen-largeUp) {
+          display: none;
+        }
+
+        img {
+          height: auto;
+        }
+      }
+    }
+
+    .Slide-content {
+      position: relative;
+      top: 0;
+      transform: none;
+
+      @include media($screen-largeUp) {
+        background-color: transparent;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    .Slide-overlay {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include media($screen-largeUp) {
+        position: relative;
+        top: 0;
+        transform: none;
+      }
+    }
+
+    .Headline--slide {
+      text-transform: uppercase;
+      @include OuterPadding($amount: 1rem);
+
+      @include media($screen-mediumUp) {
+        @include OuterPadding($amount: 3rem);
+      }
+    }
+    
+    .Field--name-field-description,
+    .Field--name-field-description-2 {
+      display: block;
+      @include OuterPadding($amount: 1rem);
+
+      @include media($screen-mediumUp) {
+        @include OuterPadding($amount: 3rem);
+      }
+    }
+
+    .Slide-content {
+      //font-size: 0.7em;
+
+      .Field--name-field-link,
+      .Field--name-field-link-2 {
+        display: block;
+        margin-top: 0;
+        @include OuterPadding($amount: 1rem);
+
+        @include media($screen-mediumUp) {
+          @include OuterPadding($amount: 3rem);
+          margin-top: inherit;
+        }
+      }
+    }
+  }
+}

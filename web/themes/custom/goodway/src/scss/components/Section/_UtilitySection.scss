@@ -1,0 +1,43 @@
+// Base variables
+$base-fontSize: 1em !default;
+$blue: #477dca !default;
+$yellow: yellow !default;
+$mediumGray: #aaa !default;
+
+// Component variables
+$Utility-color: white !default;
+$Utility-backgroundColor: $blue !default;
+$Utility-borderColor: $yellow !default;
+$Utility-linkColor: white !default;
+$Utility-linkColor--active: $mediumGray !default;
+$Utility-linkBackgroundColor: transparent !default;
+$Utility-linkBackgroundColor--active: $yellow !default;
+
+.PageSection--utility {
+  background-color: $Utility-backgroundColor;
+  color: $Utility-color;
+  min-height: 1em;
+  border-bottom: 0.25em solid $Utility-borderColor;
+  z-index: 501;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  padding: 0 0 0 ($spacing-fixed / 2);
+
+  @include media($screen-largeUp) {
+    margin-bottom: 60px;
+  }
+
+  .toolbar-horizontal & {
+    top: 39px;
+  }
+
+  .toolbar-fixed & {
+    top: auto;
+  }
+}
+
+.adminimal-admin-toolbar.toolbar-fixed.toolbar-vertical {
+  padding-top: 39px !important;
+}

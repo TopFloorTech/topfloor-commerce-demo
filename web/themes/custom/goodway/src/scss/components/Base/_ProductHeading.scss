@@ -1,0 +1,21 @@
+// Base variables
+$mediumGray: #555 !default;
+$fontSize-h1: 1.6em !default;
+
+// Component variables
+$ProductHeading-fontSize: $fontSize-h1 !default;
+$ProductHeading-fontColor: $mediumGray !default;
+$ProductHeading-columns: 12 !default;
+
+.ProductHeading {
+  //@include span-columns($ProductHeading-columns);
+  font-size: $ProductHeading-fontSize;
+  color: $ProductHeading-fontColor;
+  @include OuterPadding();
+
+  div {
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
+}

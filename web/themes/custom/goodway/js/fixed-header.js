@@ -1,0 +1,2 @@
+!function(i){"use strict";function o(){var o=i(".js-fixedHeader"),t=0,e=i("#toolbar-item-administration-tray.is-active");i("body").hasClass("toolbar-horizontal")&&e.length>0&&(t+=e.height()),o.css({"margin-top":t})}Drupal.behaviors.fixedHeader={attach:function(t,e){t===document&&(i(window).resize(function(){o()}),i(window).scroll(function(){i(".js-fixedHeader").toggleClass("is-fixed",i(window).scrollTop()>60),o()}),setTimeout(function(){o()},100))}}}(jQuery);
+//# sourceMappingURL=maps/fixed-header.js.map

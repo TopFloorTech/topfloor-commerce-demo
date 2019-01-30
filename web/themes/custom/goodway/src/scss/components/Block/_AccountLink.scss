@@ -1,0 +1,9 @@
+.Block--accountlink {
+  &.aluminum-account-link--account {
+    @include MobileHeaderLinkBlock($icon: '\f015');
+  }
+
+  &.aluminum-account-link--login {
+    @include MobileHeaderLinkBlock($icon: '\f023');
+  }
+}

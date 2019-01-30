@@ -1,0 +1,75 @@
+.view.view-product-finder-unfiltered {
+  .view-filters {
+    display: none;
+  }
+
+  .views-row {
+    padding: $spacing-base $spacing-base/2;
+    display: flex;
+    position: relative;
+
+    &.is-deactivated:after {
+      content: "";
+      position: absolute;
+      background-color: #fff;
+      opacity: 0.6;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 9999;
+    }
+  }
+
+  .CommerceProduct {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $lightGray;
+    box-shadow: $boxShadow-base;
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+  .views-row.is-deactivated .CommerceProduct {
+    border: 1px solid #fff;
+    box-shadow: none;
+  }
+
+  .CommerceProduct-content {
+    padding: $spacing-base / 2;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Field--name-field-base-sku {
+    flex-grow: 1;
+  }
+
+  .Field.Field--name-field-image {
+    .Field-item {
+      box-shadow: none;
+      border: none;
+    }
+
+    img {
+      max-height: 200px;
+    }
+  }
+
+  .CommerceProduct-viewLink {
+    margin-left: auto;
+    margin-right: auto;
+    padding: .75em 2em;
+
+    .one-sidebar &,
+    .two-sidebars & {
+      @include media($screen-largeOnly) {
+        font-size: 0.9em;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+    }
+  }
+}

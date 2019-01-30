@@ -1,0 +1,523 @@
+{#
+/**
+ * @file
+ * The default template file for e-mails.
+ *
+ * Available variables:
+ * - subject: The subject.
+ * - body: The message content.
+ * - message: The $message array created and used in the mail building
+ *   procedure. Its content varies between cases, but typically contains at
+ *   least the following elements:
+ *   - id: The message identifier.
+ *   - module: The module that handles the building of the message.
+ *   - key: The key of the message.
+ *   - to: The recipient email address.
+ *   - from: The email address of the sender.
+ *   - langcode: The langcode to use to compose the e-mail.
+ *   - params: The message parameters.
+ *
+ * This template may be overriden by module and/or mail key, using any of the
+ * following template names:
+ * - swiftmailer.html.twig: global, used by default.
+ * - swiftmailer--mymodule.html.twig: only emails sent by the module "mymodule".
+ * - swiftmailer--mymodule--test.html.twig: only emails by the module
+ *   "mymodule" with key "test".
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_swiftmailer()
+ *
+ * @ingroup themeable
+ */
+#}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ subject }}</title>
+
+  <style type="text/css">
+    /* prevent iOS font upsizing */
+    * {
+      -webkit-text-size-adjust: none;
+    }
+
+    /* force Outlook.com to honor line-height */
+    .ExternalClass * {
+      line-height: 100%;
+    }
+
+    /* force Outlook to honor line-height */
+    td {
+      mso-line-height-rule: exactly;
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    /* prevent Outlook table spacing */
+    table {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    /* prevent iOS auto-linking */
+    .appleFix a {
+      color: #ceced2 !important;
+      text-decoration: none !important
+    }
+
+    /* prevent iOS auto-linking */
+    .appleFixBlue a {
+      color: #004692 !important;
+      text-decoration: none !important
+    }
+
+    /* prevent iOS auto-linking of header date */
+    .date a {
+      color: #5a91cd !important;
+      text-decoration: none !important;
+    }
+
+
+    .form-item, .field--label-inline, .field--label-above {
+      margin-top: 10px;
+    }
+
+    .label, label {
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+    }
+
+    .field--label-inline .label {
+      float: left; /*LTR*/
+      margin-right: 0.5em; /*LTR*/
+    }
+
+    .field--label-inline .label::after {
+      content: ':';
+    }
+
+    .clearfix {
+      clear: both;
+    }
+
+    @media only screen and (max-width: 480px) {
+      /**********************
+      set media query to
+      max-width: 480px
+      for testing in browser
+
+      SET MEDIA QUERY TO
+      max-device-width: 480px
+      FOR PRODUCTION
+      **********************/
+      body {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      /* force iOS5 to fill entire screen */
+      body[yahoo] .marginfix {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      /* to eliminate padding in iOS7 */
+      /* structure */
+      body[yahoo] .shrink-to-88px {
+        width: 88px !important;
+        min-width: 88px !important;
+      }
+
+      body[yahoo] .shrink-to-96px {
+        width: 96px !important;
+        min-width: 96px !important;
+      }
+
+      body[yahoo] .shrink-to-120px {
+        width: 120px !important;
+        min-width: 120px !important;
+      }
+
+      body[yahoo] .shrink-to-160px {
+        width: 160px !important;
+        min-width: 160px !important;
+      }
+
+      body[yahoo] .shrink-to-240px {
+        width: 240px !important;
+        min-width: 240px !important;
+      }
+
+      body[yahoo] .shrink-to-276px {
+        width: 276px !important;
+        min-width: 276px !important;
+      }
+
+      body[yahoo] .shrink-to-280px {
+        width: 280px !important;
+        min-width: 280px !important;
+      }
+
+      body[yahoo] .shrink-to-320px {
+        width: 320px !important;
+        min-width: 320px !important;
+      }
+
+      body[yahoo] .stack {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      body[yahoo] .width-1pct {
+        width: 1% !important;
+      }
+
+      body[yahoo] .width-32pct {
+        width: 20% !important;
+        font-size: 20px !important;
+      }
+
+      body[yahoo] .width-33pct {
+        width: 33% !important;
+      }
+
+      /* alignment */
+      body[yahoo] .align-center {
+        text-align: center !important;
+      }
+
+      body[yahoo] .align-left {
+        text-align: left !important;
+      }
+
+      body[yahoo] .table-center {
+        margin: 0 auto !important;
+      }
+
+      /* hide */
+      body[yahoo] .hide {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        line-height: 0 !important;
+        max-height: 0 !important;
+      }
+
+      /* image resize */
+      body[yahoo] .image-resize-88px {
+        width: 88px !important;
+        height: auto !important;
+      }
+
+      body[yahoo] .image-resize-320px {
+        width: 320px !important;
+        height: auto !important;
+      }
+
+      /* padding styles */
+      body[yahoo] .padding-none {
+        padding: 0 !important;
+      }
+
+      body[yahoo] .padding-all-18px {
+        padding: 18px !important;
+      }
+
+      body[yahoo] .padding-all-20px {
+        padding: 20px !important;
+      }
+
+      body[yahoo] .padding-bottom-10px {
+        padding-bottom: 10px !important;
+      }
+
+      body[yahoo] .padding-bottom-15px {
+        padding-bottom: 15px !important;
+      }
+
+      body[yahoo] .padding-bottom-20px {
+        padding-bottom: 20px !important;
+      }
+
+      body[yahoo] .padding-bottom-30px {
+        padding-bottom: 30px !important;
+      }
+
+      body[yahoo] .padding-left-8px {
+        padding-left: 8px !important;
+      }
+
+      body[yahoo] .padding-left-20px {
+        padding-left: 20px !important;
+      }
+
+      body[yahoo] .padding-right-20px {
+        padding-right: 20px !important;
+      }
+
+      body[yahoo] .padding-top-10px {
+        padding-top: 10px !important;
+      }
+
+      body[yahoo] .padding-top-20px {
+        padding-top: 20px !important;
+      }
+
+      body[yahoo] .padding-top-30px {
+        padding-top: 30px !important;
+      }
+
+      body[yahoo] .padding-top-195px {
+        padding-top: 195px !important;
+      }
+
+      body[yahoo] .padding-top-250px {
+        padding-top: 250px !important;
+      }
+
+      /* position */
+      body[yahoo] .align-top-left {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+      }
+
+      body[yahoo] .align-top-340px-left {
+        position: absolute !important;
+        left: 0 !important;
+        top: 340px !important;
+      }
+
+      /* font-sizes */
+      body[yahoo] .font-size-13px {
+        font-size: 13px !important;
+      }
+
+      body[yahoo] .font-size-14px {
+        font-size: 14px !important;
+      }
+
+      body[yahoo] .font-size-16px {
+        font-size: 16px !important;
+      }
+
+      /* border styles */
+      body[yahoo] .border-bottom-1px-gray {
+        border-bottom: 1px solid #f0f0f0 !important;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0; padding:0; background-color: #FFFFFF" bgcolor="#FFFFFF" yahoo="fix">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="marginfix" bgcolor="#FFFFFF">
+  <tr>
+    <td align="center">
+      <table cellpadding="0" cellspacing="0" border="0" width="768" class="shrink-to-320px">
+        <tr>
+          <td align="left" valign="top">
+
+            <!-- white full-width 4px spacer -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="shrink-to-320px">
+              <tr>
+                <td height="4" bgcolor="#ffffff" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+            <!-- end of white full-width 4px spacer -->
+
+            <!-- UPPER NAV BAR -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0053bb" class="shrink-to-320px">
+              <tr>
+                <td style="padding: 0 30px 10px 30px;" class="padding-all-20px">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="color: #2a2b30; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;"
+                          width="225" align="left" valign="top" class="stack padding-bottom-15px"><a
+                          href="{{ base_url }}" target="_blank"><img
+                            src="{{ base_url ~ base_path ~ directory }}/images/email/logo.jpg" alt="Goodway" width="225"
+                            height="55" style="display: block;" border="0"/></a>
+                      </td>
+                      <td align="right" valign="middle"
+                          style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.4;"
+                          class="stack align-center"><a href="tel:18003337467"
+                                                        style="color: #fee42b; text-decoration: none;"><strong>800.333.7467</strong></a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <!-- end of UPPER NAV BAR -->
+
+            <!-- yellow full-width 3px spacer -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="shrink-to-320px">
+              <tr>
+                <td height="3" bgcolor="#fee42b" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+            <!-- end of yellow full-width 3px spacer -->
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" class="shrink-to-320px">
+              <tr>
+                <td style="padding: 20px;" class="padding-all-20px">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.4; color: #555555"
+                          align="left" valign="top">
+                        {{ body }}
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- FOOTER -->
+
+            <!-- FOOTER NAV -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#38383a" class="shrink-to-320px">
+              <tr>
+                <td style="padding: 30px;" class="padding-all-20px">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position: relative;">
+                    <tr>
+                      <td align="left" valign="top">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td align="left" valign="middle" width="60"><img
+                                src="{{ base_url ~ base_path ~ directory }}/images/email/logo_g.jpg"
+                                alt="Goodway Technologies, Corp." width="60" height="48"/></td>
+                            <td width="20" style="font-size: 1px; line-height: 0;">&nbsp;</td>
+                            <td align="left" valign="middle"
+                                style="font-family: Verdana, Arial, Helvetica, sans-serif; color: #ffffff; font-size: 24px;">
+                              <strong>Goodway Technologies, Corp.</strong></td>
+                          </tr>
+                        </table>
+
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td align="left" valign="top" style="padding: 30px;" class="padding-all-20px">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="left" valign="top"
+                          style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2;"
+                          class="padding-bottom-20px stack">
+                        <a href="#" target="_blank"
+                           style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>Register
+                            Your Product</strong></a><br>
+                        <a href="#" target="_blank"
+                           style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>Support</strong></a><br>
+                        <a href="#" target="_blank"
+                           style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>Resources</strong></a><br>
+                        <a href="#" target="_blank"
+                           style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>Account
+                            Login</strong></a><br>
+                        <a href="#" target="_blank"
+                           style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>Contact
+                            Us</strong></a>
+                      </td>
+                      <td width="20" class="hide">&nbsp;</td>
+                      <td align="left" valign="top"
+                          style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2;"
+                          class="stack">
+                        TF &bull; <a href="tel:18003337467"
+                                     style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>800.333.7467</strong></a><br>
+                        PH &bull; <a href="tel:12033594708"
+                                     style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>203.359.4708</strong></a><br>
+                        F &bull; <a href="tel:12033599601"
+                                    style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; color: #FFFFFF; line-height: 2; text-decoration: none;"><strong>203.359.9601</strong></a><br><br>
+
+                        <table width="235" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td align="left" valign="top"><a href="#" target="_blank"><img
+                                  src="{{ base_url ~ base_path ~ directory }}/images/email/social_facebook.jpg"
+                                  alt="Facebook"/></a></td>
+                            <td width="15" style="font-size: 1px; line-height: 0;">&nbsp;</td>
+                            <td><a href="#" target="_blank"><img
+                                  src="{{ base_url ~ base_path ~ directory }}/images/email/social_twitter.jpg"
+                                  alt="Twitter"/></a></td>
+                            <td width="15" style="font-size: 1px; line-height: 0;">&nbsp;</td>
+                            <td><a href="#" target="_blank"><img
+                                  src="{{ base_url ~ base_path ~ directory }}/images/email/social_linkedin.jpg"
+                                  alt="LinkedIn"/></a></td>
+                            <td width="15" style="font-size: 1px; line-height: 0;">&nbsp;</td>
+                            <td><a href="#" target="_blank"><img
+                                  src="{{ base_url ~ base_path ~ directory }}/images/email/social_youtube.jpg"
+                                  alt="Youtube"/></a></td>
+                            <td width="15" style="font-size: 1px; line-height: 0;">&nbsp;</td>
+                            <td><a href="#" target="_blank"><img
+                                  src="{{ base_url ~ base_path ~ directory }}/images/email/social_google.jpg"
+                                  alt="Google+"/></a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <!-- end of FOOTER NAV -->
+
+            <!-- yellow full-width 3px spacer -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="shrink-to-320px">
+              <tr>
+                <td height="3" bgcolor="#fee42b" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+            <!-- end of yellow full-width 3px spacer -->
+
+            <!-- start of copyright -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#0053bb" class="shrink-to-320px">
+              <tr>
+                <td style="padding: 10px 30px 10px 30px;" class="padding-all-20px">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; color: #ffffff"
+                          align="left" valign="top" class="stack padding-bottom-15px">&copy; {{ 'now'|date('Y') }} Goodway Technologies
+                        Corporation. All rights reserved.
+                      </td>
+                      <td align="right" valign="middle"
+                          style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4; color: #ffffff;"
+                          class="stack align-center"><a href="#" style="color: #ffffff; text-decoration: none;"
+                                                        target="_blank"><strong>Privacy Policy</strong></a> | <a
+                          href="#" style="color: #ffffff; text-decoration: none;" target="_blank"><strong>Terms of
+                            Use</strong></a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <!-- end of copyright -->
+
+            <!-- end FOOTER -->
+            <!-- white full-width 4px spacer -->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="shrink-to-320px">
+              <tr>
+                <td height="4" bgcolor="#ffffff" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
+              </tr>
+            </table>
+            <!-- end of white full-width 4px spacer -->
+
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

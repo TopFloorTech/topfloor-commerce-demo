@@ -1,0 +1,15 @@
+.Block--product-variations,
+.Block--product-variations-mobile {
+  @include span-columns(12 of 12);
+
+  .Field--name-price {
+    font-size: 2em;
+    text-align: right;
+  }
+}
+
+.Block--product-variations-mobile {
+  background: $lightGray;
+  margin-bottom: $spacing-base;
+  padding: $spacing-base/2 $spacing-fixed/2;
+}

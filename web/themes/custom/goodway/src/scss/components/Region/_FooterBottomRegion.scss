@@ -1,0 +1,6 @@
+.Region.Region--footer_bottom {
+  @include clearfix;
+  @include OuterPadding();
+  margin-top: $spacing-fixed / 4;
+  margin-bottom: $spacing-fixed / 4;
+}

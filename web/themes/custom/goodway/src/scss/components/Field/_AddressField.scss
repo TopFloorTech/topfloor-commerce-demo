@@ -1,0 +1,25 @@
+.field--type-address {
+  .contact-message-form &,
+  .profile-customer-add-form &,
+  .profile-customer-form &,
+  .profile-customer-edit-form & {
+    details {
+      border: 0;
+      margin: 0;
+    }
+
+    summary[role=button] {
+      display: none;
+    }
+
+    .details-wrapper {
+      padding: 0;
+    }
+  }
+
+  .FormItem--type-select {
+    label {
+      display: none;
+    }
+  }
+}

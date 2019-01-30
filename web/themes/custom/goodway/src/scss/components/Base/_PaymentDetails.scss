@@ -1,0 +1,11 @@
+.PaymentDetailsHeading {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  background: $lightGray;
+}
+
+[data-drupal-selector="edit-payment-information-add-payment-method-payment-details"] {
+  border: 1px solid $lightGray;
+  padding: $spacing-fixed/3;
+}

@@ -1,0 +1,5 @@
+.Block.Block--product-listing-block {
+  @include clearfix;
+  margin-bottom: 1rem;
+  @include OuterPadding();
+}

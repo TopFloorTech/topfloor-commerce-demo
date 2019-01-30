@@ -1,0 +1,21 @@
+$lightGray: #eee !default;
+
+.ListingView--documentLibrary {
+  .views-row:nth-of-type(odd) {
+    background: $lightGray;
+  }
+
+  .view-content {
+    margin-bottom: 1em;
+  }
+
+  .views-exposed-form {
+    @include OuterPadding();
+  }
+
+  form[data-drupal-selector="views-exposed-form-document-library-default"] {
+      input[data-drupal-selector="edit-submit-document-library"] {
+              height:33px;
+      }
+  }
+}

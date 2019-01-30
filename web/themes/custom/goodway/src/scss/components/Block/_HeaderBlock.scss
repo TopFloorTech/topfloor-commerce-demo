@@ -1,0 +1,95 @@
+$lightGray: #eee !default;
+
+.Node.Node--display-header-block {
+  @include clearfix;
+  position: relative;
+  overflow: hidden;
+
+  @include media($screen-mediumUp) {
+    min-height: 350px;
+  }
+
+  .Node-content {
+    @include outer-container();
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .Field--name-field-header-form {
+    @include span-columns(12 of 12);
+    margin-right: 0;
+    float: right;
+    opacity: 0.9;
+    font-size: 0.9em;
+    padding-left: $spacing-fixed / 2;
+    padding-right: $spacing-fixed / 2;
+
+    @include media($screen-mediumUp) {
+      @include span-columns(8 of 12);
+      padding-left: 0;
+      float: right;
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(5 of 12);
+      float: right;
+    }
+
+    @include media($screen-xLargeUp) {
+      @include span-columns(4 of 12);
+      float: right;
+      padding-right: 0;
+    }
+  }
+
+  .Node-headerImage {
+    .Field--name-field-header-image {
+      text-align: center;
+      vertical-align: middle;
+      width: 100%;
+
+      img {
+        display: none;
+
+        @include media($screen-mediumUp) {
+          display: inline;
+        }
+      }
+    }
+
+    &.Node-headerImage--fluid {
+      .Field--name-field-header-image {
+        position: absolute;
+
+        img {
+          width: auto;
+          height: 100%;
+          max-width: none;
+          margin-left: -9999%;
+          margin-right: -9999%;
+        }
+      }
+    }
+
+    &.Node-headerImage--fixed {
+      .Field--name-field-header-image {
+        img {
+          width: auto;
+          height: 100%;
+          max-width: none;
+          margin-left: -9999%;
+          margin-right: -9999%;
+        }
+      }
+    }
+
+    &.Node-headerImage--scaled {
+      .Field--name-field-header-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

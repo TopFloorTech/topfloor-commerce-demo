@@ -1,0 +1,14 @@
+.Field--label-inline{
+  .Field-label {
+    display: inline-block;
+    vertical-align: top;
+
+    &:after {
+      content: ":"
+    }
+  }
+
+  .Field-item {
+    display: inline-block;
+  }
+}

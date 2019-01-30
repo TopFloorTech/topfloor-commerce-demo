@@ -1,0 +1,20 @@
+.view.view-cart-related-block {
+  .views-row {
+    border-bottom: 1px solid darken($lightGray, 10%);
+    padding: $spacing-fixed/3 0;
+    margin: $spacing-fixed/3 $spacing-fixed/3;
+
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .CommerceProduct {
+      font-size: 0.85em;
+
+      .Field.Field--name-field-teaser-description {
+        font-size: 1em;
+      }
+    }
+  }
+}

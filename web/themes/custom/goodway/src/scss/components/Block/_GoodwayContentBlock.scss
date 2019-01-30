@@ -1,0 +1,5 @@
+.Block--goodway-content {
+  //clear: both;
+  clear: left;
+  @include clearfix;
+}

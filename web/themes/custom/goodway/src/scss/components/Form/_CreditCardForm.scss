@@ -1,0 +1,71 @@
+$blue: blue !default;
+$mediumGray: #555 !default;
+
+.credit-card-form {
+  @include clearfix;
+
+  .credit-card-form__icons {
+    margin-top: 0.15em;
+    margin-bottom: 0.15em;
+    margin-right: 0.5em;
+    font-size: 2em;
+    line-height: 1em;
+
+    @include media($screen-largeUp) {
+      float: left;
+    }
+  }
+
+  .credit-card-form__icon {
+    color: $mediumGray;
+    padding: 0 $spacing-fixed/4;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &.is-active {
+      color: $blue;
+    }
+  }
+
+  .credit-card-form__expiration {
+    clear: left;
+    display: flex;
+    align-items: center;
+
+    > .FormItem {
+      flex-grow: 1;
+
+      &.FormItem--payment-information-add-payment-method-payment-details-expiration-divider,
+      &.FormItem--payment-method-payment-details-expiration-divider {
+        flex-grow: 0;
+        .credit-card-form__divider {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  .FormItem--payment-information-add-payment-method-payment-details-number,
+  .FormItem--payment-method-payment-details-number {
+    @include span-columns(9 of 12);
+  }
+
+  .FormItem--payment-information-add-payment-method-payment-details-security-code,
+  .FormItem--payment-method-payment-details-security-code {
+    @include span-columns(3 of 12);
+    @include omega();
+    margin-top: 2.52em;
+
+    @include media($screen-largeUp) {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+$blue: blue !default;
+
+.IndustryIconAndLabel {
+
+
+  .IndustryIconAndLabel-icon {
+    margin-right: 0.25em;
+    color: $blue;
+  }
+
+  .IndustryIconAndLabel-title {
+    display: inline;
+
+    .Field--name-field-teaser-title,
+    .Field-item {
+      display: inline;
+    }
+  }
+
+  .IndustryIcon {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,32 @@
+.Field.Field--name-field-image {
+  .Node.Node--type-page & {
+    @include PageImage($boxShadow: none);
+  }
+
+  .Node.Node--type-page .Node-content > & {
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+
+  .Node.Node--type-listing_page > .Node-content > &,
+  .Node.Node--type-listing_page > .Node-content > .Node-floatContainer > & {
+    @include PageImage($boxShadow: none);
+  }
+
+  .Node.Node--type-listing_page > .Node-content > & {
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+
+  .Node.Node--type-form_page & {
+    @include PageImage($boxShadow: none);
+  }
+
+  .Node.Node--type-form_page .Node-floatContainer > & {
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+}

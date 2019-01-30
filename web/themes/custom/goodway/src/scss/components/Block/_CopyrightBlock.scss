@@ -1,0 +1,21 @@
+// Base variables
+$fontSize-base: 1em !default;
+
+// Component variables
+$CopyrightBlock-fontSize: $fontSize-base !default;
+
+.Block.Block--aluminum-copyright {
+  @include span-columns(12 of 12);
+
+  @include media($screen-largeUp) {
+    @include span-columns(6 of 12);
+  }
+
+  .Block-content {
+    font-size: $CopyrightBlock-fontSize;
+
+    p {
+      margin: 0;
+    }
+  }
+}

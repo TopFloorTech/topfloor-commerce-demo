@@ -1,0 +1,147 @@
+.ListingView {
+  @include ListingView(12 of 12);
+}
+
+.ListingView--categoryTeaser {
+  @include ListingView($grid: true);
+
+  @include media($screen-mediumDown) {
+    padding: 0;
+  }
+
+  .ListingView-row {
+    @include media($screen-mediumDown) {
+      margin: 0;
+      border: 1px solid $darkGray;
+      border-left: none;
+      border-right: none;
+    }
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(3 of 12);
+      @include omega(4n);
+    }
+  }
+}
+
+.ListingView--products {
+  @include ListingView($grid: true);
+  @include OuterPadding($amount: 0);
+
+  .ListingView-row {
+    @include media($screen-mediumDown) {
+      border-bottom: 1px solid $lightGray;
+      padding: $spacing-base 0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(4 of 8);
+      @include omega(2n);
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      @include omega(3n);
+    }
+  }
+}
+
+.ListingView--industries {
+  @include ListingView($grid: true);
+
+  .ListingView-row {
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+    }
+
+    @include media($screen-largeOnly) {
+      @include span-columns(4 of 12);
+      @include omega(3n);
+    }
+
+    @include media($screen-xLargeUp) {
+      @include span-columns(2.4 of 12);
+      @include omega(5n);
+    }
+
+    .Node--type-industry.Node--display-teaser {
+      height: 100%;
+    }
+  }
+}
+
+.ListingView--faq {
+  margin-bottom: 1rem;
+
+  .ListingView-row {
+    margin-bottom: 0.5em;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .view-content {
+    h3 {
+      font-size: 1.2em;
+      margin-top: 1em;
+    }
+  }
+}
+
+.ListingView--careers {
+  .ListingView-row {
+    .TeaserTitle,
+    .Field--name-field-teaser-description {
+      padding-left: 1rem;
+    }
+
+    .CareerTeaser-viewLink {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.ListingView.ListingView--testimonials {
+  .ListingView-row {
+    border-bottom: none;
+    padding-top: 0;
+  }
+}
+
+.ListingView--documentLibrary {
+  .ListingView-row {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  .ListingView-row:nth-of-type(odd) {
+    background: $lightGray;
+  }
+
+  .view-content {
+    margin-bottom: 1em;
+  }
+
+  .views-exposed-form {
+    @include OuterPadding();
+  }
+}
+
+.YellowLink {
+  @include PrimaryActionButton(
+    $appendIcon: true,
+    $icon: "\f054",
+    $mainColor--hover: $darkGray,
+    $textColor--hover: white
+  );
+}

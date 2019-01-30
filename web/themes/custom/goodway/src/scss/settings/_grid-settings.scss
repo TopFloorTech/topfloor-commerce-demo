@@ -1,0 +1,42 @@
+@import "neat/neat-helpers"; // in order to use new-breakpoint
+
+// Neat settings
+//$disable-warnings: false;
+//$column: 4.2358em;
+//$gutter: 1.618em;
+//$grid-columns: 12;
+//$max-width: 1200px;
+//$border-box-sizing: true;
+//$default-feature: min-width;
+//$default-layout-direction: LTR;
+//$visual-grid: false;
+//$visual-grid-color: #eee;
+//$visual-grid-index: back;
+//$visual-grid-opacity: 0.4;
+
+// Neat breakpoints
+$screen-medium: 600px;
+$screen-large: 900px;
+$screen-xLarge: 1200px;
+
+$screen-mediumUp: new-breakpoint(min-width $screen-medium 4);
+$screen-largeUp: new-breakpoint(min-width $screen-large 8);
+$screen-mediumDown: new-breakpoint(max-width $screen-medium 4);
+$screen-largeDown: new-breakpoint(max-width $screen-large 8);
+$screen-largeOnly: new-breakpoint(min-width $screen-large max-width $screen-xLarge 8);
+$screen-mediumOnly: new-breakpoint(min-width $screen-medium max-width $screen-large 4);
+$screen-xLargeUp: new-breakpoint(min-width $screen-xLarge 12);
+$screen-commerceLargeDown: new-breakpoint(max-width 780px 8);
+$screen-commerceLargeUp: new-breakpoint(min-width 780px 8);
+
+// Screen modes
+$mode-tab: $screen-medium;
+$mode-horizontalBar: $screen-large;
+
+// Columns
+$columns-sidebar: 3;
+$columns-sidebar--twoSidebars: 3;
+$columns-sidebar--products: 4;
+$columns-content: 12;
+$columns-content--oneSidebar: 9;
+$columns-content--twoSidebars: 6;

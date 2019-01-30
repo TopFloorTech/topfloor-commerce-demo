@@ -1,0 +1,7 @@
+[data-drupal-selector="edit-payment-information-add-payment-method-billing-information"] {
+  margin-bottom: $spacing-base;
+}
+
+.Form.profile-form {
+  @include OuterPadding();
+}

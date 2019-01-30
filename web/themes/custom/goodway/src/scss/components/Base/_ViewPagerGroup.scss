@@ -1,0 +1,13 @@
+.ViewPagerGroup {
+  position: relative;
+  margin-bottom: $spacing-base;
+  border: 1px solid $mediumGray;
+  border-left: none;
+  border-right: none;
+  display: flex;
+
+  .view-header,
+  .view-footer {
+    flex-grow: 1;
+  }
+}

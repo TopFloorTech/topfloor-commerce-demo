@@ -1,0 +1,13 @@
+$lightGray: #eee !default;
+
+.SidebarView {
+  .SidebarView-row {
+    border-bottom: 1px solid darken($lightGray, 15%);
+    padding-bottom: 1em;
+    margin-top: 1em;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

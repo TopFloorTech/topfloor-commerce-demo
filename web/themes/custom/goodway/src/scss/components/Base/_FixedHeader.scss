@@ -1,0 +1,31 @@
+// Base variables
+$spacing-fixed: 1rem !default;
+
+.FixedHeader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 43px;
+  height: 105px;
+  background: #fff;
+  z-index: 500;
+
+  @include media($screen-largeUp) {
+    height: 60px;
+  }
+
+  .toolbar-vertical &,
+  .toolbar-fixed & {
+    top: 82px;
+  }
+
+  &.is-fixed {
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid $mediumGray;
+
+    .toolbar-fixed & {
+      top: 39px;
+    }
+  }
+}

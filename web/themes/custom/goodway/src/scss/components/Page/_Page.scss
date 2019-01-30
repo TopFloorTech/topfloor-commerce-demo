@@ -1,0 +1,8 @@
+.Page {
+  padding-top: 148px;
+  position: relative;
+
+  @include media($screen-largeUp) {
+    padding-top: 103px;
+  }
+}

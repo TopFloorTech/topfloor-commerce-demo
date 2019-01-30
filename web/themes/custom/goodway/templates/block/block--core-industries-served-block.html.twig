@@ -1,0 +1,13 @@
+{% extends "themes/spacelift/templates/block/block.html.twig" %}
+
+{% block beforeContent %}
+  <div class="ViewMoreLink ViewMoreLink--relatedBlock ViewMoreLink--top">
+    <a class="ViewMoreLink-link" href="{{ path('entity.node.canonical', {'node': 24}) }}">View All Goodway Industries</a>
+  </div>
+{% endblock %}
+
+{% block afterContent %}
+  <div class="ViewMoreLink ViewMoreLink--relatedBlock ViewMoreLink--bottom">
+    <a class="ViewMoreLink-link" href="{{ path('entity.node.canonical', {'node': 24}) }}">View All Goodway Industries</a>
+  </div>
+{% endblock %}

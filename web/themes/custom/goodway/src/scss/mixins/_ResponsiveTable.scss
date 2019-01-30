@@ -1,0 +1,49 @@
+@mixin ResponsiveTable(
+  $spacing: $spacing-fixed,
+  $bottomSpacing: $spacing-base,
+  $borderColor: $lightGray,
+  $hoverBackground: lighten($lightGray, 7%),
+  $boxShadow: $boxShadow-base,
+  $breakpoint: $screen-mediumDown
+) {
+  &.tablesaw {
+    @include media($breakpoint) {
+      td, th {
+        border: none;
+        padding: $spacing/2 $spacing;
+
+        &:first-child {
+          padding-top: $spacing;
+        }
+
+        &:last-child {
+          padding-bottom: $spacing;
+        }
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        border: 1px solid $borderColor;
+        box-shadow: $boxShadow;
+        margin-bottom: $bottomSpacing;
+        display: block;
+        @include clearfix;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      td.is-active {
+        background-color: inherit;
+      }
+
+      tr:hover > td {
+        background-color: $hoverBackground;
+      }
+    }
+  }
+}

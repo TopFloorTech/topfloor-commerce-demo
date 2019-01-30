@@ -1,0 +1,12 @@
+.FormItem--mail {
+  &.FormItem--type-item {
+    .FormItem-children {
+      margin-bottom: 0.5rem;
+      font-size: 0.9em;
+
+      .Footer .Block--getaquickanswer & {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

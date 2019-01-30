@@ -1,0 +1,19 @@
+// Base variables
+$lightGray: #eee !default;
+
+// Component variables
+$SidebarSection-background: $lightGray !default;
+$SidebarSection-padding: 1.5em 1em !default;
+
+.Region--sidebar_first,
+.Region--sidebar_second {
+  @include clearfix;
+  padding: $SidebarSection-padding;
+  background-color: $SidebarSection-background;
+
+  .Site--path-cart & {
+    padding: 0;
+    // Don't think we should do this, but uncomment if it's an issue
+    // margin-top: 3em;
+  }
+}

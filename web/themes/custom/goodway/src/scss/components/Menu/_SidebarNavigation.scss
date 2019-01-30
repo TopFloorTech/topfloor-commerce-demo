@@ -1,0 +1,45 @@
+$darkGray: #555 !default;
+$blue: blue !default;
+
+#block-contact-us-sidebar-menu,
+#block-resources-sidebar-menu,
+#block-support-sidebar-menu,
+#block-about-us-sidebar-menu,
+#block-my-account-sidebar-menu,
+#block-careers-sidebar-menu {
+  .Block-title {
+    a {
+      color: $darkGray;
+
+      &.is-active,
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+
+  .Menu {
+    font-size: 0.9em;
+    line-height: 1.7em;
+  }
+
+  .Menu-list {
+    margin-left: 1.5em;
+  }
+
+  .Menu-item {
+    text-transform: capitalize;
+
+    > a {
+      color: $darkGray;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &.Menu-item--activeTrail > a {
+      color: $blue;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+$lightGray: #eee !default;
+$blue: blue !default;
+$fontSize-h3: 1.3em !default;
+$fontWeight-base: 500 !default;
+
+.Node--type-case_study {
+  .CaseStudy-icon {
+    background-color: $lightGray;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    color: $blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    margin-right: 5px;
+  }
+
+  .CaseStudy-relatedIndustry {
+    font-size: $fontSize-h3;
+    font-weight: $fontWeight-base;
+    display: inline-block;
+  }
+
+  .Field--name-field-image {
+    @include PageImage();
+
+    @include media($screen-largeUp) {
+      @include span-columns(3 of 9);
+      @include omega();
+      float: right;
+      margin-left: $gutter;
+      margin-bottom: $gutter;
+      clear: both;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.IndustryIcon {
+  //font-size: 18px;
+}
+
+.IndustryIcon--hvac {
+    color:inherit;
+    font-family:"goodwayIcons";
+    &:before {
+        font-family:"goodwayIcons";
+        content:"A";
+        font-weight:normal;
+        font-style:normal;
+        color:inherit;
+    }
+  display: block;
+}

@@ -1,0 +1,45 @@
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+$fontWeight-thin: 300 !default;
+
+.Block.Block--content-2 {
+    @include OuterPadding($sidebar: true);
+
+    // fix for anchor link to display heading below fixed header
+    // values represent fixed header height and heading margin
+    padding-top:calc(60px + .75em);
+    margin-top:calc(-60px - .75em);
+
+  .Block-title {
+    background-color: $mediumGray;
+    padding: 0.25em ($spacing-fixed/2);
+    color: white;
+    margin: 0;
+  }
+
+  .Node-careerPosition {
+    font-size: 0.9em;
+    margin: ($spacing-fixed / 2) 0;
+    padding: 0.5em ($spacing-fixed / 2);
+    background-color: $lightGray;
+  }
+
+  .Node-careerPositionLabel {
+    font-weight: $fontWeight-thin;
+  }
+
+  .form-managed-file {
+    input[type=file], input[type=submit] {
+      display: inline-block;
+      width: auto;
+    }
+
+    .form-submit {
+      margin: 0;
+    }
+  }
+
+  .tabledrag-toggle-weight-wrapper {
+    display: none;
+  }
+}

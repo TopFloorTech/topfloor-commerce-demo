@@ -1,0 +1,52 @@
+// Base variables
+$lightGray: #eee !default;
+$borderWidth-base: 1px !default;
+$borderStyle-base: solid !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+// Component variables
+$IndustryRelatedTeaser-imageShadow: $boxShadow-base !default;
+$IndustryRelatedTeaser-imageBorder: $borderWidth-base $borderStyle-base $color-border !default;
+
+.IndustryRelatedTeaser {
+  position: relative;
+
+  .IndustryRelatedTeaser-image {
+    @include span-columns(6 of 6);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(3 of 6);
+    }
+  }
+
+  .Field--name-field-teaser-image {
+    text-align: center;
+
+    img {
+      display: inline-block;
+      box-shadow: $IndustryRelatedTeaser-imageShadow;
+      border: $IndustryRelatedTeaser-imageBorder;
+      width: auto;
+      max-height: 250px;
+    }
+  }
+
+  .IndustryRelatedTeaser-content {
+    @include span-columns(6 of 6);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(3 of 6);
+    }
+  }
+
+  .Field--name-field-teaser-title {
+    margin-bottom: $spacing-base/3;
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+  }
+}

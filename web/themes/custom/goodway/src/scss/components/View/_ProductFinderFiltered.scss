@@ -1,0 +1,6 @@
+.product-finder-filtered-view {
+  @include span-columns(12 of 12);
+  //display: none;
+  height: 0;
+  overflow: hidden;
+}

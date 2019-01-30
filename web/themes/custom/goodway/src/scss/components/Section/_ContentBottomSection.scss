@@ -1,0 +1,7 @@
+$lightGray: #eee !default;
+
+.PageSection--contentBottom {
+  .content-type--landing-page & {
+    background: $lightGray;
+  }
+}

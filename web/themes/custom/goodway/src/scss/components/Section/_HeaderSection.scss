@@ -1,0 +1,16 @@
+// Base variables
+$spacing-fixed: 1rem !default;
+
+.PageSection--header {
+  height: 60px;
+  border-bottom: 1px solid $mediumGray;
+
+
+  @include media($screen-largeUp) {
+    border-bottom: none;
+  }
+
+  .PageSection-container {
+    height: 100%;
+  }
+}

@@ -1,0 +1,39 @@
+.ProfilesView {
+  .view-title {
+    display: none;
+  }
+
+  .view-content {
+    margin-top: $spacing-base;
+  }
+
+  .ProfilesView-row {
+    @include span-columns(12 of 12);
+    padding: $spacing-base/2;
+    border: 1px solid $lightGray;
+    box-shadow: $boxShadow-base;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacing-base;
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+      display: flex;
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      @include omega(3n);
+      display: flex;
+    }
+
+    .views-field-rendered-entity {
+      flex-grow: 1;
+    }
+
+    .views-field-operations {
+      margin-top: $spacing-base/2;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.Node.Node--type-article .Field.Field--name-field-image {
+  @include span-columns(12 of 12);
+  margin-bottom: $gutter;
+  clear: both;
+
+  @include media($screen-mediumUp) {
+    @include span-columns(5 of 12);
+    @include omega();
+    float: right;
+    margin-left: $gutter;
+  }
+
+  img {
+    height: auto;
+  }
+}

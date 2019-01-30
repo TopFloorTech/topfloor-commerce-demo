@@ -1,0 +1,7 @@
+@mixin EditButton() {
+  text-transform: uppercase;
+
+  &:before {
+    @include ButtonIcon($icon: '\f14b', $position: 'before');
+  }
+}

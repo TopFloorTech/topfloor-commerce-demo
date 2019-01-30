@@ -1,0 +1,130 @@
+$offsideWidth: 250px;
+
+.Region--header {
+  position: relative;
+}
+
+.MobileMenu {
+  display: none;
+
+  &.offside {
+    display: block;
+  }
+}
+
+.MobileMenu--right {
+  background-color: $lightGray;
+  padding: 0 $spacing-fixed / 2;
+  width: $offsideWidth;
+  right: -$offsideWidth;
+}
+
+.MobileMenu--account {
+  width: $offsideWidth;
+  right: -$offsideWidth;
+}
+
+.MobileMenu--left {
+  width: $offsideWidth;
+  left: -$offsideWidth;
+}
+
+&.offside--right.is-open,
+.offside-js--is-right .offside-sliding-element {
+  -webkit-transform: translate3d(-$offsideWidth, 0, 0);
+  -moz-transform: translate3d(-$offsideWidth, 0, 0);
+  -ms-transform: translate3d(-$offsideWidth, 0, 0);
+  -o-transform: translate3d(-$offsideWidth, 0, 0);
+  transform: translate3d(-$offsideWidth, 0, 0);
+}
+
+&.offside--left.is-open,
+.offside-js--is-left .offside-sliding-element {
+  -webkit-transform: translate3d($offsideWidth, 0, 0);
+  -moz-transform: translate3d($offsideWidth, 0, 0);
+  -ms-transform: translate3d($offsideWidth, 0, 0);
+  -o-transform: translate3d($offsideWidth, 0, 0);
+  transform: translate3d($offsideWidth, 0, 0);
+}
+
+.MobileMenu--left,
+.MobileMenu--account {
+  background-color: black;
+
+  .slicknav_menu > a {
+    display: none; // hide main expander link
+  }
+
+  .slicknav_menu {
+    padding: 0;
+    margin: 0;
+
+    .Menu-item {
+      border-top:1px solid $color-border--medium;
+    }
+    // setup spacing
+    > ul {
+      li, a {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      > li {
+        background-color: black;
+
+        > a {
+          padding: .5em;
+        }
+
+        > ul {
+          > .Menu-item {
+            background-color: $darkGray;
+
+            > a {
+              padding: .5em;
+            }
+
+            > ul {
+              > .Menu-item {
+                background-color: #909090;
+
+                > a {
+                  padding: .5em;
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+    ul {
+      margin-left: 0;
+    }
+
+    a {
+      &:hover {
+        border-radius: 0;
+        background-color: $lightGray;
+        color: $darkGray;
+
+        a {
+          color: $darkGray;
+        }
+
+        .slicknav_arrow {
+          color: $darkGray;
+        }
+      }
+    }
+
+    .slicknav_arrow {
+      float: right;
+      clear: right;
+      color: white;
+      font-family: 'FontAwesome';
+    }
+  }
+}

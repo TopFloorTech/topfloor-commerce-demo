@@ -1,0 +1,11 @@
+.FormItem {
+  margin-bottom: $spacing-base / 3;
+
+  &.FormItem--type-checkbox {
+    margin-bottom: 0;
+  }
+}
+
+.FormWrapper--checkboxes {
+  margin-bottom: $spacing-base / 3;
+}

@@ -1,0 +1,41 @@
+$lightGray: #eee !default;
+$fontWeight-thin: 300 !default;
+
+.Node-metaContainer {
+  clear: right;
+  display: flex;
+  flex-direction: column;
+  background-color: $lightGray;
+  padding: 0.5em 1rem;
+  margin: -0.5em 0 1em 0;
+
+  @include media($screen-mediumUp) {
+    flex-direction: row;
+  }
+
+  > .Field {
+    flex-grow: 1;
+    text-align: left;
+
+    @include media($screen-mediumUp) {
+      text-align: center;
+    }
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: left;
+
+      @include media($screen-mediumUp) {
+        text-align: right;
+      }
+    }
+
+    .Field-label {
+      margin-right: 0.25em;
+      font-weight: $fontWeight-thin;
+    }
+  }
+}

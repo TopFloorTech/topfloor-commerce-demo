@@ -1,0 +1,45 @@
+
+
+@mixin SearchForm($flex: true) {
+  display: flex;
+  width: 100%;
+  label {
+    display: none;
+  }
+
+  .FormItem {
+    @if $flex {
+      flex: 1;
+    }
+
+    margin: 0;
+    & > * {
+      width: 100%;
+    }
+
+    &.FormItem--type-search,
+    &.FormItem--keys {
+      width: calc(100% - 36px) !important;
+
+      @include media($screen-largeUp) {
+        width: 14em;
+      }
+
+      .FormItem-input {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .Form-wrapper {
+    //float: left;
+    //width: 2.5em;
+    //width:100%;
+    margin: 0;
+  }
+
+  @include SearchIconButton(
+    $submitColor: $SearchBlock-submitColor,
+    $submitBackground: $SearchBlock-submitBackground
+  );
+}

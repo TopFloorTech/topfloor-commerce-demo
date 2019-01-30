@@ -1,0 +1,141 @@
+<!-- Off-canvas element  -->
+<nav class="MobileMenu MobileMenu--left" id="js-mobileMenuLeft">
+</nav>
+<!-- Off-canvas element  -->
+<nav class="MobileMenu MobileMenu--right" id="js-mobileMenuRight">
+</nav>
+<nav class="MobileMenu MobileMenu--account" id="js-mobileMenuAccount">
+  {{ page.responsive_account_navigation }}
+</nav>
+
+<div class="SiteOverlay"></div>
+
+{% if page.header or page.responsive_header %}
+  <div class="FixedHeader js-fixedHeader">
+    {% if page.header %}
+      <header class="PageSection PageSection--header">
+        <div class="PageSection-container">
+          {{ page.header }}
+        </div>
+      </header>
+    {% endif %}
+
+    {% if page.responsive_header %}
+      <section class="PageSection PageSection--responsiveHeader">
+        <div class="PageSection-container">
+          {{ page.responsive_header }}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if page.utility %}
+  <section class="PageSection PageSection--utility">
+    <div class="PageSection-container">
+      {{ page.utility }}
+    </div>
+  </section>
+{% endif %}
+
+<div class="viewport">
+  <div role="document" class="Page">
+    {% if (page.breadcrumb or breadcrumb) and not is_front %}
+    <section class="PageSection PageSection--breadcrumb">
+      <div class="PageSection-container">
+        {% if page.breadcrumb %}
+        {{ page.breadcrumb }}
+        {% elseif breadcrumb %}
+        {{ breadcrumb }}
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.featured %}
+    <section class="PageSection PageSection--featured">
+      {{ page.featured }}
+    </section>
+    {% endif %}
+
+    {% if messages %}
+    <section class="PageSection PageSection--messages">
+      <div class="PageSection-container">
+        {{ messages }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if background_image_uri %}
+      {% set background = ' style="background-image: url(' ~ file_url(background_image_uri) ~ ')"' %}
+    {% endif %}
+
+    <main role="main" class="PageSection PageSection--main{{ background_image_uri ? ' background-image' }}" {{ background|raw }}>
+      {% if not is_front %}<div class="PageSection-container">{% endif %}
+        {% if page.sidebar_first %}
+        <section class="PageSection PageSection--sidebar PageSection--sidebarFirst" role="complementary">
+          {{ page.sidebar_first }}
+        </section>
+        {% endif %}
+
+        <section class="PageSection PageSection--content">
+            {{ page.content }}
+
+          {% if page.after_content %}
+            <section class="PageSection PageSection--afterContent">
+              {{ page.after_content }}
+            </section>
+          {% endif %}
+        </section>
+
+        {% if page.sidebar_second %}
+        <section class="PageSection PageSection--sidebar PageSection--sidebarSecond" role="complementary">
+          <div class="PageSection-container">
+            {{ page.sidebar_second }}
+          </div>
+        </section>
+        {% endif %}
+      {% if not is_front %}</div>{% endif %}
+    </main>
+
+    {% if page.content_bottom %}
+      <section class="PageSection PageSection--contentBottom">
+        <div class="PageSection-container">
+          {{ page.content_bottom }}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if page.content_bottom_second %}
+      <section class="PageSection PageSection--contentBottomSecond">
+        <div class="PageSection-container">
+          {{ page.content_bottom_second }}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if page.footer_top or page.footer_bottom %}
+    <footer class="Footer" role="contentinfo">
+      {% if page.footer_top %}
+      <section class="PageSection PageSection--footer PageSection--footerTop">
+        <div class="PageSection-container">
+          {{ page.footer_top }}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if page.footer_bottom %}
+      <section class="PageSection PageSection--footer PageSection--footerBottom">
+        <div class="PageSection-container">
+          {{ page.footer_bottom }}
+        </div>
+      </section>
+      {% endif %}
+    </footer>
+    {% endif %}
+  </div>
+
+</div>
+{% if page.footer_scripts %}
+    {{ page.footer_scripts }}
+{% endif %}

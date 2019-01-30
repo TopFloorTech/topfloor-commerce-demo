@@ -1,0 +1,13 @@
+@mixin ButtonIcon(
+  $position: 'after',
+  $padding: 0.5em,
+  $icon: "\f054"
+) {
+  @include FontAwsesomeIcon($icon: $icon);
+
+  @if $position == 'after' {
+    padding-left: $padding;
+  } @else {
+    padding-right: $padding;
+  }
+}

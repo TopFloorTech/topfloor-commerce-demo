@@ -1,0 +1,49 @@
+$blue: blue !default;
+
+@mixin SearchIconButton(
+  $submitColor: white,
+  $submitBackground: $blue,
+  $submitBorder: none
+) {
+  .Form-wrapper {
+    width: 2.5em;
+  }
+
+  .FormItem-input.form-submit {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-indent: -9999px;
+    padding: .7em 1em;
+    border-radius: 0;
+    background-color: $submitBackground;
+    border: $submitBorder;
+    color: transparent;
+    font-size: 16px;
+
+    &:hover {
+      background-color: $yellow;
+    }
+  }
+
+  .form-actions {
+    position: relative;
+
+    &:after {
+      color: white;
+      font-family: "FontAwesome";
+      content: "\f002";
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    &:hover:after {
+      color: $mediumGray;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// Base variables
+$color-footerText: white !default;
+$fontSize-base: 1em !default;
+$fontWeight-bold: 600 !default;
+
+// Component variables
+$FooterMenu-textColor: $color-footerText !default;
+$FooterMenu-fontSize: $fontSize-base !default;
+$FooterMenu-fontWeight: bold !default;
+$FooterMenu-textAlign: right !default;
+$FooterMenu-itemPadding: 1em !default;
+
+@include InlineMenu(
+  $fontSize: $FooterMenu-fontSize,
+  $fontColor: $FooterMenu-textColor,
+  $fontWeight: $FooterMenu-fontWeight,
+  $textAlign: $FooterMenu-textAlign,
+  $itemPadding: $FooterMenu-itemPadding,
+  $componentName: "Menu",
+  $modifier: "footer"
+);
+
+.Menu.Menu--footer  {
+  .Menu-list--level0 {
+    > .Menu-item {
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .Menu-list{
+    text-align: left;
+
+    @include media($screen-largeUp) {
+      text-align: right;
+    }
+
+    .Menu-link {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

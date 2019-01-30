@@ -1,0 +1,105 @@
+// Base variables
+$yellow: yellow !default;
+$mediumGray: #555 !default;
+$darkGray: #333 !default;
+$fontColor-utility: $darkGray !default;
+
+// Component variables
+$UtilityMenu-fontColor: $fontColor-utility !default;
+$UtilityMenu-fontColor--active: $mediumGray !default;
+$UtilityMenu-itemBackground--active: $yellow !default;
+$UtilityMenu-itemPadding: 0 0 0 .25em !default;
+$UtilityMenu-linkPadding: 0.25em 0.5em !default;
+$UtilityMenu-separatorColor: white !default;
+$UtilityMenu-separatorWidth: 1px !default;
+$UtilityMenu-textAlign: right !default;
+$UtilityMenu-margin: 0.15em 0 0 !default;
+
+#block-utilitynavigation {
+  @include InlineMenu(
+    $fontColor: $UtilityMenu-fontColor,
+    $itemPadding: $UtilityMenu-itemPadding,
+    $fontColor--active: $UtilityMenu-fontColor--active,
+    $textAlign: $UtilityMenu-textAlign,
+    $textTransform: capitalize,
+    $background--active: $UtilityMenu-itemBackground--active,
+    $componentName: "Menu",
+    $modifier: "utility"
+  );
+
+  .Block-content {
+    height: 100%;
+  }
+
+  .Menu.Menu--utility {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+
+    .Menu-list {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+
+      .Menu-item {
+        display: flex;
+        align-items: stretch;
+        margin: 0;
+        padding: 0;
+
+        body &.Menu-item--activeTrail,
+        body &:hover {
+          &:before,
+          & + .Menu-item:before {
+            background-color: $blue;
+          }
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          padding: 0 18px;
+
+          &[data-drupal-link-system-path="user/logout"] {
+            display: none;
+          }
+
+          &[data-drupal-link-system-path="node/276"] {
+            color: #f7dd16;
+            text-decoration: underline;
+          }
+
+          &[data-drupal-link-system-path="node/276"]:hover {
+            color: #555555;
+          }
+
+        }
+
+        &:before {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          content: " ";
+          color: black;
+          display: flex;
+          width: 1px;
+          height: 14px;
+          background-color: white;
+          opacity: .5;
+        }
+
+        &:first-child:before {
+          display: none;
+        }
+      }
+    }
+
+    .Menu-item.Menu-item--activeTrail {
+      a[data-drupal-link-system-path="node/276"] {
+        color: #555;
+        text-decoration: none;
+      }
+    }
+  }
+}

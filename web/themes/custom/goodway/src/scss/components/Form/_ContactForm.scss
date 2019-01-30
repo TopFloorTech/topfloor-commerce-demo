@@ -1,0 +1,161 @@
+// Base variables
+$blue: blue !default;
+$mediumGray: gray !default;
+$fontColor-footer: white !default;
+$color-background--medium: $mediumGray !default;
+
+// Component variables
+$ContactForm-margin: 0 0 0.5em !default;
+
+// Component variables
+$FooterFormInput-background: $color-background--medium !default;
+$FooterFormInput-textColor: $fontColor-footer !default;
+$FooterFormInput-borderColor: $fontColor-footer !default;
+$FooterFormInput-borderWidth: 2px;
+$FooterFormInput-topBorder: $FooterFormInput-borderWidth solid $FooterFormInput-borderColor !default;
+
+
+.Form.contact-message-form {
+  // Customize text-only form items without an input field
+  .FormItem--type-item {
+    &.FormItem--name,
+    &.FormItem--mail {
+      position: relative;
+      display: flex;
+      font-size: 1em;
+
+      label {
+        font-size: inherit;
+        font-weight: 400;
+        pointer-events: none;
+        position: absolute;
+        transform-origin: left top;
+        padding-top: 0.2em;
+        color: $darkGray;
+        opacity: 0.7;
+        transform: scale(0.7);
+        padding-left: 0.8em;
+      }
+
+      .FormItem-children {
+        background-color: #fff;
+        border: 1px solid $lightGray;
+        border-radius: 0;
+        box-shadow: none;
+        box-sizing: border-box;
+        font-family: "Montserrat",sans-serif;
+        margin-bottom: 0;
+        transition: border-color 150ms ease;
+        width: 100%;
+        color: $darkGray;
+        align-self: flex-end;
+        font-size: inherit;
+        padding: 1em 0.5em 0;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .field--name-field-referral {
+    margin-top: $spacing-base;
+  }
+
+  .form-actions {
+    display: inline-block;
+    position: relative;
+
+    /*&:before {
+      @include ButtonIcon($icon: '\f0e0', $position: 'before');
+      position: absolute;
+      left: 1em;
+      bottom: 0.55em;
+      font-size: 0.9em;
+      color: $darkGray;
+      display: inline;
+      pointer-events: none;
+    }*/
+
+    &:hover:before {
+      color: white;
+    }
+
+    input[type=submit] {
+      padding-left: 2.5em;
+      padding-right: 1em;
+    }
+  }
+
+  .Footer & {
+    .float-labels-label {
+      margin-top: $FooterFormInput-borderWidth;
+    }
+
+    .FormItem--type-item,
+    .TextArea,
+    .FormItem--type-textfield .FormItem-input,
+    .FormItem--type-email .FormItem-input {
+      background: $FooterFormInput-background;
+      color: $FooterFormInput-textColor;
+      border: 0;
+      border-top: $FooterFormInput-topBorder;
+
+      //padding: $FooterFormInput-padding;
+
+      &::-webkit-input-placeholder,
+      &:-moz-placeholder,
+      &::-moz-placeholder,
+      &:-ms-input-placeholder,
+      &::placeholder {
+        color: $fontColor-footer;
+      }
+    }
+
+    // Customize text-only form items without an input field
+    .FormItem--type-item {
+      &.FormItem--name,
+      &.FormItem--mail {
+        border: 0;
+        margin-bottom: $spacing-base / 3;
+
+        label {
+          color: white;
+          opacity: 0.5;
+        }
+
+        .FormItem-children {
+          background: $FooterFormInput-background;
+          border: 0;
+          border-top: $FooterFormInput-topBorder;
+          border-top-color: darken($FooterFormInput-borderColor, 15%);
+          color: darken($FooterFormInput-textColor, 15%);
+        }
+      }
+    }
+  }
+
+  .PageSection--sidebar & {
+    .FormItem--type-item,
+    .TextArea,
+    .FormItem--type-textfield .FormItem-input,
+    .FormItem--type-email .FormItem-input {
+      border-color: darken($lightGray, 15%);
+
+      &:focus {
+        border-color: $blue;
+      }
+    }
+
+    .FormItem--type-item {
+      &.FormItem--name,
+      &.FormItem--mail {
+        .FormItem-children {
+          border-color: darken($lightGray, 15%);
+        }
+      }
+    }
+  }
+}
+
+.contact-message-get-catalog-form .field--name-field-product-interests {
+  margin-top: $spacing-base;
+}

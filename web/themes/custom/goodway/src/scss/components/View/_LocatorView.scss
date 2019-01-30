@@ -1,0 +1,74 @@
+$lightGray: #eee !default;
+
+.LocatorView {
+  .view-filters,
+  .view-empty,
+  .view-content {
+    @include OuterPadding();
+  }
+
+  .LocatorView-title {
+    background: $lightGray;
+    text-align: center;
+    padding: 0.5em 1em;
+    margin: 1em 0 0.5em 0;
+  }
+
+  .views-exposed-form {
+    .form-actions {
+      display: none;
+    }
+
+    .FormElement-label {
+      display: none;
+    }
+
+    .form--inline {
+      display: block;
+    }
+
+    .FormItem--type-select {
+      max-width: inherit;
+      width: 100%;
+    }
+
+    .shs-field-container {
+      @include clearfix;
+      margin-bottom: 0;
+    }
+
+    .shs-widget-container {
+      @include span-columns(12 of 12);
+
+      @include media($screen-largeUp) {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    .shs-select {
+      appearance: none;
+      width: 100%;
+      padding: 0.5em;
+      margin-bottom: 0.25em;
+      background-color: white;
+      border: 1px solid $mediumGray;
+    }
+  }
+}
+
+.LocatorView--salesReps {
+  .LocatorView-row {
+    @include span-columns(12 of 12);
+    margin-bottom: $gutter;
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(3 of 12);
+      @include omega(4n);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+// Base variables
+$spacing-fixed: 1rem !default;
+
+.Region--responsive_header {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 70%;
+  pointer-events: auto;
+}

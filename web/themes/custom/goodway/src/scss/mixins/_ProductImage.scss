@@ -1,0 +1,22 @@
+$lightGray: #eee !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+@mixin ProductImage(
+  $border: 1px solid darken($lightGray, 15%),
+  $boxShadow: $boxShadow-base,
+  $padding: 0.5em
+) {
+  .Field-item {
+    background-color: white;
+    padding: $padding;
+    border: $border;
+    box-shadow: $boxShadow;
+    display: inline-block;
+  }
+
+  img {
+    display: block;
+    height: auto;
+  }
+}

@@ -1,0 +1,36 @@
+// Base variables
+$lightGray: #eee !default;
+
+// Component variables
+$SurveyQuestionOfTheWeek-titleBackground: $lightGray !default;
+$SurveyQuestionOfTheWeek-margin: 0 0 2em 0 !default;
+
+.Block--surveyquestionoftheweek {
+  margin: $SurveyQuestionOfTheWeek-margin;
+
+  //padding-top: 150px;
+  //margin-top: -150px;
+  pointer-events: none;
+
+  * {
+    pointer-events: auto;
+  }
+
+  .Block-title {
+    background: $SurveyQuestionOfTheWeek-titleBackground;
+    font-size: 1.4em;
+    padding: 0.5em 1rem;
+  }
+
+  .Block-content {
+    margin-top: 1.5em;
+    padding: 0 1rem;
+    @include clearfix;
+  }
+}
+
+.Block--survey-of-the-week-block {
+  iframe body {
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,49 @@
+.Block--aluminum-content.Block--content-3 {
+  margin-bottom: $spacing-base;
+  padding-bottom: 1em;
+  border-bottom: 1px solid $mediumGray;
+
+  .CommerceOrder {
+    display: flex;
+    flex-direction: column;
+
+    @include media($screen-mediumUp) {
+      flex-direction: row;
+    }
+
+    .CommerceOrder-content {
+      flex-grow: 1;
+    }
+
+    .CommerceOrder-link {
+      margin-top: $spacing-base / 2;
+
+      @include media($screen-mediumUp) {
+        margin-top: 0;
+      }
+
+      .CommerceOrder-viewLink {
+        @include PrimaryActionButton($prependIcon: true, $icon: "\f0ca");
+      }
+    }
+  }
+
+  .Field--name-order-number {
+    font-size: 1.4em;
+    font-weight: $fontWeight-bold;
+
+    .Field-label {
+      text-transform: capitalize;
+    }
+
+    .Field-item {
+      &:before {
+        content: '#';
+      }
+    }
+  }
+
+  .Profile {
+    display: none;
+  }
+}

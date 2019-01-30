@@ -1,0 +1,106 @@
+$fontWeight-thin: 300 !default;
+$lightGray: #eee !default;
+
+.TradeShow {
+  @include clearfix;
+
+  .TradeShow-image {
+    @include span-columns(12 of 12);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(3 of 12);
+    }
+
+    img {
+      height: auto;
+    }
+  }
+
+  .TradeShow-content {
+    @include span-columns(12 of 12);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(9 of 12);
+    }
+  }
+
+  .TradeShow-details {
+    display: flex;
+    flex-direction: column;
+    font-weight: $fontWeight-thin;
+    margin: 0.5em 0;
+
+    @include media($screen-largeUp) {
+      flex-direction: row;
+    }
+
+    .Field {
+      flex-grow: 1;
+      text-align: left;
+
+      @include media($screen-largeUp) {
+        text-align: center;
+      }
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: left;
+
+        @include media($screen-largeUp) {
+          text-align: right;
+        }
+      }
+    }
+
+    .Field-label {
+      margin-right: 0.5em;
+    }
+
+    .Field-item {
+      font-weight: $fontWeight-bold;
+    }
+  }
+
+  .TradeShow-title {
+    margin-bottom: 0;
+  }
+
+  .Field--name-field-related-products {
+    padding: 0.5em;
+    background-color: $lightGray;
+    margin-bottom: 0.5em;
+
+    .Field-label {
+      &:after {
+        content: ":"
+      }
+    }
+
+    .Field-item {
+      display: inline-block;
+      margin-right: 1.5em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .Field--name-field-description {
+    font-size: 0.9em;
+  }
+
+  .Field--name-field-link {
+    @include clearfix;
+    margin-top: 0.5em;
+
+    a {
+      @include ActionButton(
+        $appendIcon: true
+      );
+    }
+  }
+}
