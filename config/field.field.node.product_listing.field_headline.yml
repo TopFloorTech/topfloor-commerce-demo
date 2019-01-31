@@ -1,0 +1,19 @@
+uuid: 8af9f3b4-8515-4cc4-97c6-0efd2b607f9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_headline
+    - node.type.product_listing
+id: node.product_listing.field_headline
+field_name: field_headline
+entity_type: node
+bundle: product_listing
+label: Headline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

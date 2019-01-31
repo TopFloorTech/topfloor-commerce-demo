@@ -1,0 +1,30 @@
+uuid: efc3ad7e-f044-446b-8e8b-c133d9da3e47
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.product_listing.body
+    - node.type.product_listing
+  module:
+    - text
+    - user
+id: node.product_listing.teaser
+targetEntityType: node
+bundle: product_listing
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
