@@ -1,4 +1,4 @@
-uuid: 1c13e740-0021-4da5-a54a-25350cb0f91c
+uuid: 3cfcb0f6-6a93-4947-96e3-f5c26ec557c5
 langcode: en
 status: true
 dependencies:
@@ -7,49 +7,39 @@ dependencies:
     - field.field.commerce_product_variation.default.field_image
   module:
     - commerce_price
-_core:
-  default_config_hash: tPYXAFcoBHG1jtgfl021t-ns7EE7da_S-o2zfS7aLUQ
 id: commerce_product_variation.default.default
 targetEntityType: commerce_product_variation
 bundle: default
 mode: default
 content:
   field_image:
-    weight: 12
+    type: entity_reference_entity_view
+    weight: 2
+    label: above
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   list_price:
-    type: commerce_list_price
+    label: above
+    type: commerce_price_default
     weight: -1
     region: content
-    settings: {  }
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
     third_party_settings: {  }
   price:
+    label: above
     type: commerce_price_default
     weight: 0
-    settings: {  }
-    third_party_settings: {  }
     region: content
-  sku:
-    type: string_textfield
-    weight: -4
     settings:
-      size: 60
-      placeholder: ''
+      strip_trailing_zeroes: false
+      currency_display: symbol
     third_party_settings: {  }
-    region: content
-  status:
-    type: boolean_checkbox
-    weight: 10
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    region: content
 hidden:
-  created: true
-  uid: true
+  product_id: true
+  sku: true
+  title: true
