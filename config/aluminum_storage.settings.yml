@@ -1,0 +1,22 @@
+aluminum_storage:
+  admin: {  }
+  content:
+    social:
+      instagram_page_url: 'https://www.instagram.com/topfloortech/'
+      flickr_page_url: ''
+      google_plus_page_url: ''
+      youtube_page_url: 'https://www.youtube.com/user/topfloortech'
+      linkedin_page_url: 'https://www.linkedin.com/company/top-floor-technologies?trk=prof-exp-company-name'
+      twitter_page_url: 'https://twitter.com/topfloortech'
+      facebook_page_url: 'https://www.facebook.com/topfloortech'
+    contact_info:
+      fax_number: ''
+      phone_number: 262-364-0010
+      phone_number_toll_free: 888-901-2102
+      primary_phone_number: phone_number
+      company_name: 'Top Floor'
+  appearance:
+    icons:
+      base_icon_class: fa
+_core:
+  default_config_hash: hBTciZkZ33uTl2ybmg7GQUqAB6yjEPH_PbpoKaKUmKQ

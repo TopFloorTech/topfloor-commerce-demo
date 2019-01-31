@@ -1,0 +1,28 @@
+uuid: 085f0a64-3541-4743-9d4f-51b89a0814ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.feedback
+    - field.storage.paragraph.field_form
+    - paragraphs.paragraphs_type.contact_form
+id: paragraph.contact_form.field_form
+field_name: field_form
+entity_type: paragraph
+bundle: contact_form
+label: Form
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:contact_message'
+  handler_settings:
+    target_bundles:
+      feedback: feedback
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

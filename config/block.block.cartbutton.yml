@@ -1,0 +1,34 @@
+uuid: fcafb34e-bae4-46d2-b5e3-57ae5df58e72
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart_blocks
+  theme:
+    - goodway
+id: cartbutton
+theme: goodway
+region: utility
+weight: -6
+provider: null
+plugin: commerce_cart_blocks_button
+settings:
+  id: commerce_cart_blocks_button
+  label: 'Cart link'
+  provider: commerce_cart_blocks
+  label_display: '0'
+  dropdown: 1
+  icon_type: class
+  icon_class: 'fa fa-shopping-cart'
+  display_heading: 0
+  heading_text: '@items in your cart'
+  show_items: 1
+  hide_if_empty: 0
+  display_links:
+    cart: cart
+    checkout: checkout
+  cart_link_text: 'View Cart'
+  checkout_link_text: Checkout
+  count_text_singular: '@count item'
+  count_text_plural: '@count items'
+visibility: {  }

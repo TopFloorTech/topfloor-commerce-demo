@@ -1,0 +1,29 @@
+uuid: 96daaddc-a1ff-4fb3-a8bd-3d502db98a66
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - goodway
+id: main_navigation
+theme: goodway
+region: header
+weight: -8
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation'
+  provider: menu_block
+  label_display: '0'
+  follow: 0
+  follow_parent: child
+  level: 1
+  depth: 3
+  expand: 1
+  parent: 'main:'
+  suggestion: main
+visibility: {  }

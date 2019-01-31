@@ -1,0 +1,29 @@
+uuid: 16691068-d327-43b6-a7a8-7667205a92d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.utility
+  module:
+    - menu_block
+  theme:
+    - goodway
+id: utilitynavigation
+theme: goodway
+region: utility
+weight: -7
+provider: null
+plugin: 'menu_block:utility'
+settings:
+  id: 'menu_block:utility'
+  label: 'Utility navigation'
+  provider: menu_block
+  label_display: '0'
+  follow: 0
+  follow_parent: child
+  level: 1
+  depth: 1
+  expand: 0
+  parent: 'utility:'
+  suggestion: utility
+visibility: {  }

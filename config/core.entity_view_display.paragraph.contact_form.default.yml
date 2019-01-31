@@ -1,0 +1,22 @@
+uuid: e5fadde5-7d54-4cb6-943e-6062320d6eb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_form.field_form
+    - paragraphs.paragraphs_type.contact_form
+id: paragraph.contact_form.default
+targetEntityType: paragraph
+bundle: contact_form
+mode: default
+content:
+  field_form:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

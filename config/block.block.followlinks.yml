@@ -1,0 +1,49 @@
+uuid: ef944717-d0b7-4a04-8a07-d6029cc37f02
+langcode: en
+status: true
+dependencies:
+  module:
+    - aluminum_blocks
+  theme:
+    - goodway
+id: followlinks
+theme: goodway
+region: footer_top
+weight: -8
+provider: null
+plugin: aluminum_follow
+settings:
+  id: aluminum_follow
+  label: 'Follow links'
+  provider: aluminum_blocks
+  label_display: '0'
+  link_target: _blank
+  facebook_enabled: 1
+  facebook_url_override: 0
+  facebook_url: ''
+  facebook_weight: '10'
+  twitter_enabled: 1
+  twitter_url_override: 0
+  twitter_url: ''
+  twitter_weight: '20'
+  linkedin_enabled: 1
+  linkedin_url_override: 0
+  linkedin_url: ''
+  linkedin_weight: '30'
+  youtube_enabled: 1
+  youtube_url_override: 0
+  youtube_url: ''
+  youtube_weight: '40'
+  google_plus_enabled: 0
+  google_plus_url_override: 0
+  google_plus_url: ''
+  google_plus_weight: '50'
+  flickr_enabled: 0
+  flickr_url_override: 0
+  flickr_url: ''
+  flickr_weight: '60'
+  instagram_enabled: 0
+  instagram_url_override: 0
+  instagram_url: ''
+  instagram_weight: '70'
+visibility: {  }

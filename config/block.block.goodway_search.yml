@@ -1,0 +1,22 @@
+uuid: 1b1b748f-4a5a-45e6-9a56-2687cfc5a6fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - goodway
+_core:
+  default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
+id: goodway_search
+theme: goodway
+region: header
+weight: -7
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: '0'
+visibility: {  }

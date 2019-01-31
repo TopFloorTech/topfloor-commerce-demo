@@ -1,0 +1,21 @@
+uuid: cf867b3d-ba3e-4ef8-9e0d-1e82f823df2f
+langcode: en
+status: true
+dependencies:
+  module:
+    - aluminum_blocks
+  theme:
+    - goodway
+id: phonenumber
+theme: goodway
+region: utility
+weight: -8
+provider: null
+plugin: aluminum_phone_number
+settings:
+  id: aluminum_phone_number
+  label: 'Phone number'
+  provider: aluminum_blocks
+  label_display: '0'
+  phone_number_type: phone_number
+visibility: {  }

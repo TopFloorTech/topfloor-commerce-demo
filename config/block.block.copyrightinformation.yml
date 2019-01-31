@@ -1,0 +1,21 @@
+uuid: 7770520f-78d3-45de-915d-bd8dca436303
+langcode: en
+status: true
+dependencies:
+  module:
+    - aluminum_blocks
+  theme:
+    - goodway
+id: copyrightinformation
+theme: goodway
+region: footer_bottom
+weight: -8
+provider: null
+plugin: aluminum_copyright
+settings:
+  id: aluminum_copyright
+  label: 'Copyright information'
+  provider: aluminum_blocks
+  label_display: '0'
+  copyright_text: 'Copyright [date:custom:Y] [site:name]. All rights reserved.'
+visibility: {  }

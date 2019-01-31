@@ -1,0 +1,25 @@
+uuid: a4f66f54-adc2-4457-90b1-e6d88db124bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic_block
+    - field.storage.block_content.field_content
+  module:
+    - entity_reference_revisions
+id: block_content.basic_block.field_content
+field_name: field_content
+entity_type: block_content
+bundle: basic_block
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles: null
+field_type: entity_reference_revisions

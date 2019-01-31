@@ -1,0 +1,22 @@
+uuid: 7a257abc-fd1b-4c6d-82cf-156b3e78cb42
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - goodway
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: goodway_content
+theme: goodway
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,9 @@
+uuid: 95cc0cff-efad-479f-8fb4-e66011297222
+langcode: en
+status: true
+dependencies: {  }
+id: basic_content
+label: 'Basic content'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

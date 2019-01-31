@@ -1,0 +1,22 @@
+uuid: c6631707-bec0-4d2f-b059-77d27f9665dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - spacelift
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: spacelift_breadcrumbs
+theme: spacelift
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }
