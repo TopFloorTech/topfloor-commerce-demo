@@ -1,0 +1,28 @@
+name: Goodway
+type: theme
+description: A custom Goodway theme built on the Spacelift base theme.
+base theme: spacelift
+core: 8.x
+libraries:
+  - goodway/global-styling
+  - goodway/global-scripts
+regions:
+  utility: Utility
+  header: Header
+  responsive_header: Responsive header
+  breadcrumb: Breadcrumb
+  featured: Featured
+  sidebar_first: 'Sidebar first'
+  content: Content
+  after_content: 'After content'
+  content_bottom: 'Content bottom'
+  content_bottom_second: 'Content bottom second'
+  sidebar_second: 'Sidebar second'
+  product_content: 'Product content'
+  product_sidebar: 'Product sidebar'
+  buying_guide_sidebar: 'Buying Guide sidebar'
+  footer_top: 'Footer Top'
+  footer_bottom: 'Footer Bottom'
+  off_canvas: 'Off-canvas'
+  responsive_account_navigation: 'Responsive account navigation'
+  footer_scripts: 'Footer Scripts'

@@ -1,0 +1,850 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the goodway theme.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Url;
+use Drupal\eck\EckEntityInterface;
+use Drupal\node\NodeInterface;
+use Drupal\views\Views;
+
+/**
+ * Implements template_preprocess_html().
+ * @param array $variables
+ */
+function goodway_preprocess_html(&$variables) {
+  $sidebar_first = !empty($variables['page']['sidebar_first']);
+  $sidebar_second = !empty($variables['page']['sidebar_second']);
+
+  $landingPage = goodway_get_landing_page();
+  if ($landingPage && !goodway_should_show_buying_guide_block($landingPage)) {
+    $sidebar_second = FALSE;
+  }
+
+  // Dynamic sidebars.
+  if ($sidebar_first && $sidebar_second) {
+    $variables['attributes']['class'][] = 'two-sidebars';
+  }
+  elseif (!$sidebar_first && $sidebar_second) {
+    $variables['attributes']['class'][] = 'one-sidebar';
+    $variables['attributes']['class'][] = 'sidebar-second';
+  }
+  elseif ($sidebar_first && !$sidebar_second) {
+    $variables['attributes']['class'][] = 'one-sidebar';
+    $variables['attributes']['class'][] = 'sidebar-first';
+  }
+  else {
+    $variables['attributes']['class'][] = 'no-sidebars';
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['attributes']['class'][] = 'content-type--' . str_replace('_', '-', $node->bundle());
+  }
+}
+
+function goodway_get_landing_page() {
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface && $node->bundle() === 'landing_page') {
+    return $node;
+  }
+
+  return FALSE;
+}
+
+function goodway_should_show_buying_guide_block(NodeInterface $node) {
+  $field = $node->get('field_show_buying_guide_block');
+
+  return $field->isEmpty() || $field->value;
+}
+
+/**
+ * Implements template_preprocess_page.
+ * @param array $variables
+ */
+function goodway_preprocess_page(&$variables) {
+  $site_name = \Drupal::configFactory()->get('system.site')->get('name');
+  $variables['linked_site_name'] = ['#type' => 'link', '#title' => $site_name, '#url' => Url::fromRoute('<front>')];
+
+  $landingPage = goodway_get_landing_page();
+
+  if ($landingPage) {
+    $showBuyingGuideBlock = goodway_should_show_buying_guide_block($landingPage);
+
+    if (!$showBuyingGuideBlock) {
+      unset($variables['page']['sidebar_second']);
+    }
+
+    $background_image = $landingPage->get('field_background_image');
+
+    if (!$background_image->isEmpty()) {
+      $variables['background_image_uri'] = $background_image->entity->uri->value;
+    }
+
+    $show_breadcrumbs = $landingPage->get('field_show_breadcrumbs')->value;
+
+    if (!$show_breadcrumbs) {
+      unset($variables['page']['breadcrumb']);
+    }
+  }
+}
+
+function goodway_preprocess_field(&$variables) {
+  $fieldName = $variables['field_name'];
+  $viewMode = $variables['element']['#view_mode'];
+  $entityType = $variables['element']['#entity_type'];
+
+  if ($fieldName === 'field_price') {
+      foreach ($variables['items'] as $key => $item) {
+          $variables['items'][$key]['content']['#prefix'] = '<span class="prefix">$</span>';
+      }
+  }
+
+  if ($fieldName === 'field_body' && $viewMode === 'full' && $entityType === 'node') {
+    if (\Drupal::service('path.matcher')->isFrontPage()) {
+      if (!isset($variables['attributes']['class'])) {
+        $variables['attributes']['class'] = [];
+      }
+
+      $variables['attributes']['class'] = array_merge(
+        $variables['attributes']['class'], ['ReadMoreContainer']
+      );
+      $variables['attributes']['data-height'] = '5em';
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_node.
+ * @param array $variables
+ */
+function goodway_preprocess_node(&$variables) {
+  /** @var NodeInterface $node */
+  $node = $variables['node'];
+
+  $type = $node->getType();
+  $viewMode = $variables['elements']['#view_mode'];
+
+  $variables['node_url'] = $node->id() ? $node->toUrl()->toString() : '';
+
+  if ($viewMode === 'search_result') {
+    if ($node->hasField('field_search_image') && !$node->get('field_search_image')->isEmpty()) {
+      unset($variables['content']['field_teaser_image']);
+    }
+  }
+
+  if ($type === 'form_page') {
+    $variables['icon'] = goodway_form_icon($node);
+  }
+
+  if ($type === 'article') {
+    $variables['icon'] = goodway_article_icon($node);
+  }
+
+  if ($type === 'industry') {
+    $variables['icon'] = goodway_industry_icon($node);
+  }
+
+  if ($type === 'listing_page') {
+    if ($node->hasField('field_hide_headline') && $node->get('field_hide_headline')->value) {
+      unset($variables['content']['field_headline']);
+    }
+  }
+
+  if ($type === 'landing_page') {
+    $variables['show_headline'] = $node->get('field_show_headline')->value;
+  }
+
+  spacelift_set_interior_regions($variables, ['buying_guide_sidebar']);
+
+  $headerImageType = $node->hasField('field_header_image_type') ? $node->get('field_header_image_type')->value : '';
+  if (!$headerImageType) {
+    $headerImageType = 'fluid';
+  }
+
+  $variables['header_image_type'] = $headerImageType;
+
+  $variables['float_container'] = goodway_show_float_container($node);
+}
+
+function goodway_preprocess_facets_item_list(&$variables) {
+  $variables['#attached']['library'][] = 'chosen_lib/chosen';
+  $variables['#attached']['library'][] = 'chosen_lib/chosen.css';
+}
+
+function goodway_show_float_container(FieldableEntityInterface $entity) {
+  $show = FALSE;
+
+  $fields = ['field_image', 'field_video'];
+
+  foreach ($fields as $field) {
+    if ($entity->hasField($field) && !$entity->get($field)->isEmpty()) {
+      $show = TRUE;
+
+      break;
+    }
+  }
+
+  return $show;
+}
+
+function goodway_listing_page_is_locator(NodeInterface $node) {
+  $listingViews = $node->get('field_listing_views')->getValue();
+
+  $isLocator = false;
+
+  foreach ($listingViews as $id => $item) {
+    if (empty($item['vname'])) {
+      continue;
+    }
+
+    list($view, $display) = explode('|', $item['vname']);
+
+    $parts = explode('_', $view);
+    $part = array_pop($parts);
+
+    if ($part == 'locator') {
+      $isLocator = true;
+
+      break;
+    }
+  }
+
+  return $isLocator;
+}
+
+function goodway_form_icon(NodeInterface $node) {
+  $icon = 'envelope-o';
+
+  if (isset($node->field_icon)) {
+    $icon = $node->field_icon->value;
+  }
+
+  return $icon;
+}
+
+function goodway_industry_icon(NodeInterface $node) {
+  $icon = '';
+
+  if (isset($node->field_icon)) {
+    $iconType = $node->field_icon->value;
+
+    switch ($iconType) {
+      case 'hvac':
+        $icon = 'IndustryIcon IndustryIcon--hvac';
+        break;
+      case 'power generation':
+        $icon = 'fa fa-plug';
+        break;
+      case 'food and beverage':
+        $icon = 'fa fa-cutlery';
+        break;
+      case 'facility maintenance':
+        $icon = 'fa fa-wrench';
+        break;
+      case 'maritime and offshore':
+        $icon = 'fa fa-ship';
+        break;
+      default:
+        $icon = 'fa';
+        break;
+    }
+  }
+
+  return $icon;
+}
+
+function goodway_article_icon(NodeInterface $node) {
+  $icon = '';
+
+  if (isset($node->field_article_type)) {
+    $articleType = $node->field_article_type->value;
+
+    switch ($articleType) {
+      case 'tips_tricks':
+        $icon = 'lightbulb-o';
+        break;
+      default:
+        $icon = 'newspaper-o';
+        break;
+    }
+  }
+
+  return $icon;
+}
+
+function goodway_preprocess_commerce_product(&$variables) {
+  $view_mode = $variables['elements']['#view_mode'];
+  if (in_array($view_mode, ['full', 'quick_view'])) {
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    $product = $variables['product_entity'];
+
+    $variables['tabs'] = goodway_product_tab_items($variables);
+    $variables['tips_tricks'] = goodway_product_tab_item_view('related_tips_tricks', NULL, [$product->id()]);
+
+    spacelift_set_interior_regions($variables, ['product_sidebar', 'product_content']);
+  } elseif ($view_mode == 'listing_teaser') {
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    $product = $variables['product_entity'];
+    $variables['quick_view'] = goodway_quick_view($product);
+  }
+}
+
+function goodway_quick_view(\Drupal\Core\Entity\EntityInterface $entity) {
+  return entity_reference_dialog_formatter_link('Quick View', $entity->getEntityTypeId(), $entity->id(), 'quick_view', ['width' => '940']);
+}
+
+function goodway_product_tab_item_fields(&$variables, $fieldNames) {
+  $fields = [];
+
+  foreach ($fieldNames as $fieldName) {
+    if (isset($variables['product'][$fieldName])) {
+      $field = $variables['product'][$fieldName];
+
+      if (isset($field['#items'])) {
+        /** @var \Drupal\Core\Field\FieldItemListInterface $items */
+        $items = $field['#items'];
+
+        if (!$items->isEmpty()) {
+          $fields[$fieldName] = $field;
+        }
+      }
+    }
+  }
+
+  return $fields;
+}
+
+function goodway_product_tab_item_view($viewName, $displayName = NULL, $arguments = []) {
+  $view = Views::getView($viewName);
+
+  $values = [];
+
+  if (is_object($view)) {
+    $view->setDisplay($displayName);
+    $view->setArguments($arguments);
+    $view->preExecute();
+    $view->execute();
+
+    if (count($view->result) > 0) {
+      $values[$viewName . '__' . $displayName] = $view->buildRenderable($displayName);
+    }
+  }
+
+  return $values;
+}
+
+function goodway_product_tab_items(&$variables) {
+  /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+  $product = $variables['product_entity'];
+
+  $items = [];
+
+  $items[] = [
+    'title' => t('Features/Specs'),
+    'fields' => goodway_product_tab_item_fields($variables, ['field_features', 'field_specifications']),
+  ];
+
+  $items[] = [
+    'title' => t('Brochure'),
+    'fields' => goodway_product_tab_item_view('related_documents'),
+  ];
+
+  $items[] = [
+    'title' => t('Support'),
+    'fields' => [
+      'manuals' => goodway_product_tab_item_view('related_documents_support'),
+      'support_text' => [
+        '#type' => 'markup',
+        '#markup' => t('<p>Visit our <a href="/support">support section</a> for more information.</p>'),
+      ]
+    ],
+  ];
+
+  $items[] = [
+    'title' => t('Accessories'),
+    'fields' => goodway_product_tab_item_fields($variables, [
+      'field_required_accessories',
+      'field_suggested_accessories',
+    ]),
+  ];
+
+  $items[] = [
+    'title' => t('Compatibility'),
+    'fields' => goodway_product_tab_item_fields($variables, [
+      'field_required_for',
+      'field_recommended_with',
+    ])
+  ];
+
+//  $items[] = [
+//    'title' => t('Tips'),
+//    'fields' => goodway_product_tab_item_view('related_tips_tricks', NULL, [$product->id()]),
+//  ];
+
+  $tabs = [];
+
+  foreach ($items as $tab) {
+    if (!empty($tab['fields'])) {
+      $tabs[] = $tab;
+    }
+  }
+
+  return $tabs;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function goodway_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'contact_message_') === 0) {
+    if (array_key_exists('field_referrer', $form)) {
+      $form['#cache']['max-age'] = 0;
+    }
+
+    if (
+      array_key_exists('field_product_interests', $form)
+      && array_key_exists('field_product_interests_other', $form)
+    ) {
+      $form['field_product_interests_other']['#states']['visible'][':input[name="field_product_interests[other]"]'] = ['checked' => TRUE];
+    }
+
+    if (array_key_exists('mail', $form)) {
+      $form['mail']['#title'] = t('Email');
+    }
+
+    if (array_key_exists('field_page', $form)) {
+      $request = \Drupal::request();
+      $route_match = \Drupal::routeMatch();
+      $request_uri = $request->getRequestUri();
+      $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+      if (empty($title)) {
+        $title = $request_uri;
+      }
+
+      $form['field_page']['widget'][0]['#type'] = 'value';
+
+      $form['field_page']['widget'][0]['uri']['#type'] = 'value';
+      $form['field_page']['widget'][0]['uri']['#default_value'] = $request_uri;
+      $form['field_page']['widget'][0]['uri']['#value'] = $request_uri;
+
+      $form['field_page']['widget'][0]['title']['#type'] = 'value';
+      $form['field_page']['widget'][0]['title']['#default_value'] = $title;
+      $form['field_page']['widget'][0]['title']['#value'] = $title;
+    }
+  }
+
+  if ($form_id === 'views_exposed_form') {
+    if (array_key_exists('search-documents', $form)) {
+      $form['search-documents']['#label'] = t('Search Documents');
+    }
+
+    if (array_key_exists('product_category', $form)) {
+      $newOptions = goodway_filter_product_category_article_options();
+
+      if (count($newOptions) > 1) {
+        $form['product_category']['#options'] = $newOptions;
+        $form['product_category']['#options']['All'] = t(' - Filter by product category -');
+      } else {
+        $form['product_category']['#access'] = FALSE;
+      }
+    }
+
+    if (array_key_exists('industry', $form)) {
+      $form['industry']['#options']['All'] = t(' - Filter by industry -');
+    }
+
+    if (array_key_exists('document-type', $form)) {
+      $form['document-type']['#options']['All'] = t('- Filter Documents -');
+    }
+
+    if ($form['#id'] === 'views-exposed-form-videos-videos-block') {
+      $query = \Drupal::entityQuery('video');
+      $videoIDs = $query->execute();
+      $availableProducts = [];
+      $availableProducts[''] = t('- Filter by Product -');
+      $videos = \Drupal::entityTypeManager()->getStorage('video')->loadMultiple($videoIDs);
+
+      foreach ($videos as $video) {
+        $relatedProducts = $video->get('field_related_products')->referencedEntities();
+
+        foreach ($relatedProducts as $product) {
+          /* @var ContentEntityInterface $product*/
+          $availableProducts[$product->id()] = $product->label();
+        }
+      }
+
+      $form['product_id']['#type'] = 'select';
+      unset($form['product_id']['#size']);
+      $form['product_id']['#multiple'] = FALSE;
+      $form['product_id']['#options'] = $availableProducts;
+      $form['field_video_categories_target_id']['#options']['All'] = t('- Filter by Category -');
+    }
+  }
+}
+
+function goodway_filter_product_category_article_options() {
+  $query = \Drupal::entityQuery('node');
+  $query
+    ->condition('type', 'article')
+    ->condition('field_article_type', 'tips_tricks');
+
+  $tipsAndTricksIds = $query->execute();
+
+  $tipsAndTricks = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($tipsAndTricksIds);
+
+  $newOptions = ['All' => '- Filter by product category -'];
+
+  /** @var NodeInterface $node */
+  foreach ($tipsAndTricks as $node) {
+    /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $field */
+    $field = $node->get('field_related_product_categories');
+
+    if (!$field->isEmpty()) {
+      /** @var \Drupal\taxonomy\TermInterface[] $referencedEntities */
+      $referencedEntities = $field->referencedEntities();
+
+      foreach ($referencedEntities as $entity) {
+        $newOptions[$entity->id()] = $entity->label();
+      }
+    }
+  }
+
+  return $newOptions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function goodway_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function goodway_preprocess_block(&$variables) {
+  $variables['content']['#attributes']['block'] = $variables['attributes']['id'];
+
+  if ($variables['elements']['#base_plugin_id'] === 'block_content') {
+    /** @var \Drupal\block_content\Entity\BlockContent $blockContent */
+    $blockContent = $variables['content']['#block_content'];
+
+    $variables['imageFloat'] = goodway_get_image_float_direction($blockContent);
+    $variables['icon'] = goodway_get_block_icon($blockContent);
+  }
+
+  if ($variables['elements']['#plugin_id'] === 'commerce_cart_blocks_button') {
+    if (\Drupal::routeMatch()->getRouteName() === 'commerce_cart.page') {
+      $variables['attributes']['class'][] = 'CartBlock--active';
+    }
+  }
+
+  if ($variables['elements']['#plugin_id'] === 'aluminum_addthis') {
+    $cpid = \Drupal::routeMatch()->getRawParameter('commerce_product');
+    $variables['cpid'] = $cpid;
+
+    // jquery ui dialog options
+    $variables['dialog_options'] = \Drupal\Component\Serialization\Json::encode([
+      'width' => 600
+    ]);
+
+    $variables['cache']['max_age'] = 0;
+  }
+
+  if ($variables['id'] === 'site_search_exposed_form_main') {
+    $variables['label'] = t('Not what you\'re looking for? Search again...');
+  }
+
+  if ($variables['id'] === 'buying_guide_jump_menu_block_landing_page') {
+    $landingPage = \Drupal::routeMatch()->getParameter('node');
+    if ($landingPage instanceof NodeInterface) {
+      $showBuyingGuideBlockField = $landingPage->get('field_show_buying_guide_block');
+
+      if (!$showBuyingGuideBlockField->isEmpty() && !$showBuyingGuideBlockField->value) {
+
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function goodway_theme_suggestions_menu_alter(array &$suggestions, array $variables) {
+  // Remove the block and replace dashes with underscores in the block ID to
+  // use for the hook name.
+  if (isset($variables['attributes']['block'])) {
+    $hook = str_replace(array('block-', '-'), array('', '_'), $variables['attributes']['block']);
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $hook;
+  }
+}
+
+function goodway_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (!isset($variables['elements']['content']['#block_content'])) {
+    return;
+  }
+
+  /** @var \Drupal\block_content\Entity\BlockContent $blockContent */
+  $blockContent = $variables['elements']['content']['#block_content'];
+
+  $suggestions[] = $variables['theme_hook_original'] . '__block_content__' . $blockContent->bundle();
+}
+
+function goodway_preprocess_eck_entity(array &$variables) {
+  if (isset($variables['elements']['#ribbon'])) {
+    /** @var EckEntityInterface $ribbon */
+    $ribbon = $variables['elements']['#ribbon'];
+
+    $variables['ribbon_id'] = $ribbon->id();
+    $variables['ribbon_type'] = $ribbon->bundle();
+    $variables['ribbon_style'] = $ribbon->get('field_ribbon_style')->value;
+    $variables['ribbon_corner'] = $ribbon->get('field_ribbon_corner')->value;
+    $variables['ribbon_background_color'] = $ribbon->get('field_background_color')->color;
+    $variables['ribbon_text_color'] = $ribbon->get('field_text_color')->color;
+  }
+
+
+  if (isset($variables['elements']['#document'])) {
+    /** @var EckEntityInterface $document */
+    $document = $variables['elements']['#document'];
+
+    $type = $document->get('field_document_type')->value;
+    $authTypes = ['manual'];
+    $requiresAuth = (in_array($type, $authTypes));
+
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList $fileField */
+    $fileField = $document->get('field_file');
+
+    $variables['has_access'] = $requiresAuth ? \Drupal::currentUser()->isAuthenticated() : TRUE;
+    $variables['tooltip'] = $requiresAuth ? goodway_authentication_tooltip($document) : '';
+
+    $variables['file_url'] = file_create_url($fileField->entity->uri->value);
+    $variables['document_title'] = goodway_document_title($document);
+    $variables['login_link'] = \Drupal::service('link_generator')->generate('Go to login', Url::fromRoute('user.login'));
+    $variables['register_link'] = \Drupal::service('link_generator')->generate('Create one.', Url::fromRoute('user.register'));
+  }
+
+  if (isset($variables['elements']['#distributor'])) {
+    goodway_preprocess_distributor($variables);
+  }
+}
+
+function goodway_preprocess_commerce_product_variation(&$variables) {
+  foreach ($variables['product_variation'] as $field_name => $field) {
+    if (strpos($field_name, 'attribute_') === 0 && isset($field[0])) {
+      if ($field[0]['#plain_text'] == 'N/A') {
+        unset($variables['product_variation'][$field_name]);
+      }
+    }
+  }
+}
+
+function goodway_get_block_icon(ContentEntityInterface $entity) {
+  $icon = '';
+
+  if ($entity->hasField('field_icon') &&
+    (!$entity->hasField('field_image') || empty($entity->get('field_image')->value))) {
+    $icon = $entity->get('field_icon')->value;
+  }
+
+  return $icon;
+}
+
+function goodway_get_image_float_direction(ContentEntityInterface $entity) {
+  $floatDirection = 'none';
+
+  if ($entity->hasField('field_image_float_direction')) {
+    $floatDirection = $entity->get('field_image_float_direction')->value;
+  }
+
+  return $floatDirection;
+}
+
+function goodway_document_title(EckEntityInterface $document) {
+  /** @var \Drupal\file\Plugin\Field\FieldType\FileFieldItemList $fileField */
+  $fileField = $document->get('field_file');
+  $value = $fileField->get(0)->description;
+  $title = !empty($value) ? $value : $document->label();
+
+  return $title;
+}
+
+function goodway_authentication_tooltip(\Drupal\eck\EckEntityInterface $document) {
+  // TODO: Move tooltip output from template to here
+
+  return '';
+}
+
+function goodway_preprocess_distributor(&$variables) {
+  /** @var EckEntityInterface $distributor */
+  $distributor = $variables['elements']['#distributor'];
+
+  if (!isset($variables['elements']['field_form'][0])) {
+    return;
+  }
+
+  $variables['content']['field_form'][0]['field_distributor']['widget']['#default_value'] = $distributor->id();
+  $variables['content']['field_form'][0]['field_distributor']['widget']['#value'] = $distributor->id();
+  $variables['content']['field_form'][0]['field_distributor']['widget']['#attributes']['class'][] = 'js-hide';
+}
+
+function goodway_preprocess_swiftmailer(&$variables) {
+  $variables['base_url'] = \Drupal::request()->getSchemeAndHttpHost() . '/';
+}
+
+function goodway_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+  }
+}
+
+function goodway_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['paragraph'];
+  $paragraphType = $paragraph->bundle();
+  $variables['paragraph_id'] = $paragraph->id();
+
+  if ($paragraphType === 'split_content') {
+    $variables['vertical_separator'] = FALSE;
+    $add_separator = $paragraph->get('field_vertical_separator')->value;
+
+    if ($add_separator == 1) {
+      $variables['vertical_separator'] = TRUE;
+      $variables['vertical_separator_color'] = $paragraph->get('field_vertical_separator_color')->color;
+    }
+  }
+
+  if ($paragraphType === 'price_paragraph') {
+    $variables['price_paragraph_text_color'] = $paragraph->get('field_text_color')->color;
+  }
+
+  if ($paragraphType === 'headline') {
+    $variables['headline_content'] = $paragraph->get('field_heading')->value;
+  }
+
+  if ($paragraphType === 'bounding_box') {
+    $color = $paragraph->get('field_background_color')->color;
+    $opacity = $paragraph->get('field_background_color')->opacity;
+    list($r, $g, $b) = sscanf($color, '#%02x%02x%02x');
+    $variables['bounding_box_background_color'] = sprintf('rgba(%d, %d, %d, %f)', $r, $g, $b, $opacity);
+    $variables['bounding_box_text_color'] = $paragraph->get('field_text_color')->color;
+    $variables['bounding_box_margin'] = $paragraph->get('field_margin')->value;
+    $variables['bounding_box_padding'] = $paragraph->get('field_padding')->value;
+  }
+
+  if ($paragraphType === 'media') {
+    $variables['media_max_width'] = $paragraph->get('field_max_width')->value;
+  }
+
+  if ($paragraphType === 'banner_link') {
+    $variables['media_max_width'] = $paragraph->get('field_max_width')->value;
+
+    $variables['link'] = '';
+    if (!$paragraph->get('field_link')->isEmpty()) {
+      /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link */
+      $link = $paragraph->get('field_link')->first();
+      $variables['link'] = $link->getUrl()->toString();
+    }
+  }
+
+  if ($paragraphType === 'content_break') {
+    $field = $paragraph->get('field_show_horizontal_line');
+    $variables['show_hr'] = $field->isEmpty() ? TRUE : $field->value;
+  }
+
+  if ($paragraphType === 'inline_media') {
+    $floatField = $paragraph->get('field_float');
+    $variables['float'] = $floatField->isEmpty() ? FALSE : $floatField->value;
+
+    if ($variables['float']) {
+      $variables['attributes']['class'][] = 'inline-media--' . $variables['float'];
+    }
+  }
+
+  if ($paragraphType === 'product_finder') {
+    /** @var \Drupal\entity_reference_revisions\EntityReferenceRevisionsFieldItemList $applicationsField */
+    $applicationsField = $paragraph->get('field_applications');
+    $applicationsTerms = goodway_get_terms_from_reference_field($applicationsField, TRUE);
+
+    $element = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['product-finder-applications-filter']],
+      '#weight' => 1,
+      'items' => [],
+    ];
+
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('taxonomy_term');
+
+    /** @var \Drupal\taxonomy\TermInterface $applicationsTerm */
+    foreach ($applicationsTerms as $applicationsTerm) {
+      $url = Url::fromRoute('<current>', [], ['query' => [
+        'field_applications_target_id' => $applicationsTerm->id(),
+      ]]);
+      $link = \Drupal\Core\Link::fromTextAndUrl('', $url);
+      $renderableLink = $link->toRenderable();
+      $renderableLink['#attributes']['class'][] = 'product-finder-application-filter-item-link';
+      $renderableLink['#attributes']['data-filter-id'] = $applicationsTerm->id();
+
+      $element['items'][] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['product-finder-applications-filter-item']],
+        'item' => $view_builder->view($applicationsTerm),
+        'link' => $renderableLink,
+      ];
+    }
+
+    $variables['content']['field_applications'] = $element;
+
+    if (isset($variables['content']['field_products'][0])) {
+      $productsFieldInfo = $variables['content']['field_products'][0];
+
+      $view = Views::getView('product_finder');
+
+      if (is_object($view)) {
+        $view->setArguments($productsFieldInfo['#arguments']);
+        $view->setDisplay($productsFieldInfo['#display_id']);
+        $view->preExecute();
+        $view->execute();
+
+        $viewContent = $view->buildRenderable($productsFieldInfo['#display_id'], $productsFieldInfo['#arguments']);
+        //$viewContent['#attributes']['class'][] = 'js-hide';
+        $viewContent['#attributes']['class'][] = 'product-finder-filtered-view';
+        $viewContent['#weight'] = $productsFieldInfo = $variables['content']['field_products']['#weight'] - 1;
+
+        $variables['content']['product_finder_filtered'] = $viewContent;
+      }
+    }
+  }
+}
+
+function goodway_get_terms_from_reference_field(\Drupal\Core\Field\EntityReferenceFieldItemListInterface $field, $sorted = FALSE) {
+  $entities = $field->referencedEntities();
+
+  if ($sorted) {
+    uasort($entities, function($a, $b) {
+      $aWeight = $a->get('weight')->value;
+      $bWeight = $b->get('weight')->value;
+
+      if ($aWeight === $bWeight) {
+        return 0;
+      }
+
+      return ($aWeight < $bWeight) ? -1 : 1;
+    });
+  }
+
+  return $entities;
+}
