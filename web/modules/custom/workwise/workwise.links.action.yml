@@ -3,3 +3,8 @@ entity.workwise_connection.add_form:
   title: 'Add WorkWise connection'
   appears_on:
     - entity.workwise_connection.collection
+entity.workwise_integration.add_form:
+  route_name: entity.workwise_integration.add_form
+  title: 'Add WorkWise integration'
+  appears_on:
+    - entity.workwise_integration.collection

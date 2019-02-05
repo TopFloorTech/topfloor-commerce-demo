@@ -4,7 +4,7 @@ namespace Drupal\workwise;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
-class WorkWiseConnectionManager implements WorkWiseConnectionManagerInterface {
+class WorkWiseIntegrationManager implements WorkWiseIntegrationManagerInterface {
 
   /** @var EntityTypeManagerInterface */
   protected $entityTypeManager;
@@ -13,7 +13,7 @@ class WorkWiseConnectionManager implements WorkWiseConnectionManagerInterface {
   protected $storage;
 
   /**
-   * WorkWiseConnectionManager constructor.
+   * WorkWiseIntegrationManager constructor.
    *
    * @param EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
@@ -24,28 +24,28 @@ class WorkWiseConnectionManager implements WorkWiseConnectionManagerInterface {
   public function __construct(EntityTypeManagerInterface $entityTypeManager)
   {
     $this->entityTypeManager = $entityTypeManager;
-    $this->storage = $entityTypeManager->getStorage('workwise_connection');
+    $this->storage = $entityTypeManager->getStorage('workwise_integration');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getConnections($includeInactive = FALSE)
+  public function getIntegrations($includeInactive = FALSE)
   {
     $properties = [];
     if (!$includeInactive) {
       $properties['enabled'] = TRUE;
     }
 
-    return $this->entityTypeManager->getStorage('workwise_connection')->loadByProperties($properties);
+    return $this->entityTypeManager->getStorage('workwise_integration')->loadByProperties($properties);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getConnection($id)
+  public function getIntegration($id)
   {
-    return $this->entityTypeManager->getStorage('workwise_connection')->load($id);
+    return $this->entityTypeManager->getStorage('workwise_integration')->load($id);
   }
 
 }

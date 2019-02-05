@@ -1,6 +1,6 @@
-workwise.workwise_connection_plugin_configuration:
+workwise.workwise_plugin:
   type: mapping
-  label: 'WorkWise connection plugin configuration'
+  label: 'WorkWise plugin configuration'
   mapjping: {}
 
 workwise.workwise_connection.*:
@@ -22,8 +22,28 @@ workwise.workwise_connection.*:
     password:
       type: string
       label: 'Password'
+    enabled:
+      type: boolean
+      label: 'Enabled'
+
+workwise.workwise_integration.*:
+  type: config_entity
+  label: 'WorkWise integration'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    connection_id:
+      type: string
+      label: 'Connection ID'
+    plugin_id:
+      type: string
+      label: 'Plugin ID'
     plugin_configuration:
-      type: workwise.workwise_connection_plugin_configuration
+      type: workwise.workwise_plugin
       label: 'Plugin configuration'
     enabled:
       type: boolean

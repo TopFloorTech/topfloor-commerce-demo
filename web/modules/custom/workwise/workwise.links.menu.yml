@@ -1,5 +1,17 @@
+workwise.admin:
+  title: 'WorkWise'
+  route_name: workwise.admin
+  parent: system.admin_config_services
+  description: 'Manage WorkWise integration on on this site.'
+
 entity.workwise_connection.collection:
   title: 'WorkWise connections'
   route_name: entity.workwise_connection.collection
-  parent: system.admin_config_services
-  description: 'Manage WorkWise connections.'
+  parent: workwise.admin
+  description: 'Manage connections to one or more WorkWise servers.'
+
+entity.workwise_integration.collection:
+  title: 'WorkWise integrations'
+  route_name: entity.workwise_integration.collection
+  parent: workwise.admin
+  description: 'Manage integrations to connect site components to WorkWise.'

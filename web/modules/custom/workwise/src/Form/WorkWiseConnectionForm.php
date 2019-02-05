@@ -110,7 +110,7 @@ class WorkWiseConnectionForm extends EntityForm {
     $form['enabled'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enabled'),
-      '#description' => $this->t('When enabled, this WorkWise connection will be live.'),
+      '#description' => $this->t('When disabled, integrations that rely on this connection will be inactive.'),
       '#default_value' => $workWiseConnection->isEnabled(),
     ];
 
@@ -181,7 +181,7 @@ class WorkWiseConnectionForm extends EntityForm {
   }
 
   protected function getPlugins(array $configuration) {
-    /** @var \Drupal\workwise\WorkWiseConnectionPluginManager $pluginManager */
+    /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
     $pluginManager = \Drupal::service('plugin.manager.workwise_connection');
 
     return $pluginManager->getAllPlugins($configuration);

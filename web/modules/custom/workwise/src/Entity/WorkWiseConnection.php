@@ -26,9 +26,9 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "label" = "label"
  *   },
  *   links = {
- *     "collection" = "/admin/config/services/workwise",
- *     "edit-form" = "/admin/config/services/workwise/{workwise_connection}",
- *     "delete-form" = "/admin/config/services/workwise/{workwise_connection}/delete"
+ *     "collection" = "/admin/config/services/workwise/connections",
+ *     "edit-form" = "/admin/config/services/workwise/connections/{workwise_connection}",
+ *     "delete-form" = "/admin/config/services/workwise/connections/{workwise_connection}/delete"
  *   }
  * )
  */
@@ -162,21 +162,6 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
    */
   public function setPassword($password) {
     $this->password = $password;
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getPluginConfiguration() {
-    return $this->plugin_configuration;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setPluginConfiguration(array $pluginConfiguration) {
-    $this->plugin_configuration = $pluginConfiguration;
     return $this;
   }
 

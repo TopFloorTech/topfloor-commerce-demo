@@ -5,9 +5,9 @@ namespace Drupal\workwise;
 use Drupal\Core\Config\Entity\ConfigEntityStorage;
 
 /**
- * Defines the WorkWise connection storage.
+ * Defines the WorkWise integration storage.
  */
-class WorkWiseConnectionStorage extends ConfigEntityStorage implements WorkWiseConnectionStorageInterface {
+class WorkWiseIntegrationStorage extends ConfigEntityStorage implements WorkWiseIntegrationStorageInterface {
 
   /**
    * {@inheritdoc}

@@ -5,11 +5,11 @@ namespace Drupal\workwise\Annotation;
 use Drupal\Component\Annotation\Plugin;
 
 /**
- * Defines a WorkWise connection plugin.
+ * Defines a WorkWise plugin.
  *
  * @Annotation
  */
-class WorkWiseConnectionPlugin extends Plugin {
+class WorkWisePlugin extends Plugin {
 
   /**
    * The plugin label.

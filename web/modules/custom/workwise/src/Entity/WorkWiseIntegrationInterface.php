@@ -5,12 +5,12 @@ namespace Drupal\workwise\Entity;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 
 /**
- * Defines the interface for WorkWise connection config entities.
+ * Defines the interface for WorkWise integration config entities.
  */
-interface WorkWiseConnectionInterface extends ConfigEntityInterface {
+interface WorkWiseIntegrationInterface extends ConfigEntityInterface {
 
   /**
-   * Gets the WorkWise connection machine name.
+   * Gets the WorkWise integration machine name.
    *
    * @return string
    *   The machine name.
@@ -18,7 +18,7 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
   public function getId();
 
   /**
-   * Sets the WorkWise connection machine name.
+   * Sets the WorkWise integration machine name.
    *
    * @param string $id
    *   The machine name.
@@ -28,7 +28,7 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
   public function setId($id);
 
   /**
-   * Gets the WorkWise connection label.
+   * Gets the WorkWise integration label.
    *
    * @return string
    *   The label.
@@ -36,7 +36,7 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
   public function getLabel();
 
   /**
-   * Sets the WorkWise connection label.
+   * Sets the WorkWise integration label.
    *
    * @param string $label
    *   The label.
@@ -46,58 +46,40 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
   public function setLabel($label);
 
   /**
-   * Gets the WorkWise company.
+   * Gets the WorkWise plugin ID.
    *
    * @return string
-   *   The company.
+   *   The plugin ID.
    */
-  public function getCompany();
+  public function getPluginId();
 
   /**
-   * Sets the WorkWise company.
+   * Sets the WorkWise plugin ID.
    *
-   * @param string $company
-   *   The company.
+   * @param string $pluginId
+   *   The plugin ID.
    *
    * @return self
    */
-  public function setCompany($company);
+  public function setPluginId($pluginId);
 
   /**
-   * Gets the WorkWise username.
+   * Gets the WorkWise plugin configuration.
    *
-   * @return string
-   *   The username.
+   * @return array
+   *   The plugin configuration.
    */
-  public function getUsername();
+  public function getPluginConfiguration();
 
   /**
-   * Sets the WorkWise username.
+   * Sets the WorkWise plugin configuration.
    *
-   * @param string $username
-   *   The username.
+   * @param array $configuration
+   *   The plugin configuration.
    *
    * @return self
    */
-  public function setUsername($username);
-
-  /**
-   * Gets the WorkWise password.
-   *
-   * @return string
-   *   The password.
-   */
-  public function getPassword();
-
-  /**
-   * Sets the WorkWise password.
-   *
-   * @param string $password
-   *   The password.
-   *
-   * @return self
-   */
-  public function setPassword($password);
+  public function setPluginConfiguration(array $configuration);
 
   /**
    * Get whether the WorkWise connection is enabled.

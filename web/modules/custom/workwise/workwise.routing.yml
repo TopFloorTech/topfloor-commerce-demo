@@ -1,5 +1,13 @@
-entity.workwise_connection.collection:
+workwise.admin:
   path: '/admin/config/services/workwise'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'WorkWise'
+  requirements:
+    _permission: 'access administration pages'
+
+entity.workwise_connection.collection:
+  path: '/admin/config/services/workwise/connections'
   defaults:
     _entity_list: 'workwise_connection'
     _title: 'WorkWise connections'
@@ -7,7 +15,7 @@ entity.workwise_connection.collection:
     _permission: 'administer workwise'
 
 entity.workwise_connection.add_form:
-  path: '/admin/config/services/workwise/add'
+  path: '/admin/config/services/workwise/connections/add'
   defaults:
     _entity_form: 'workwise_connection.add'
     _title: 'Add WorkWise connection'
@@ -15,7 +23,7 @@ entity.workwise_connection.add_form:
     _permission: 'administer workwise'
 
 entity.workwise_connection.edit_form:
-  path: '/admin/config/services/workwise/{workwise_connection}'
+  path: '/admin/config/services/workwise/connections/{workwise_connection}'
   defaults:
     _entity_form: 'workwise_connection.edit'
     _title: 'Edit WorkWise connection'
@@ -23,9 +31,41 @@ entity.workwise_connection.edit_form:
     _permission: 'administer workwise'
 
 entity.workwise_connection.delete_form:
-  path: '/admin/config/services/workwise/{workwise_connection}/delete'
+  path: '/admin/config/services/workwise/connections/{workwise_connection}/delete'
   defaults:
     _entity_form: 'workwise_connection.delete'
     _title: 'Delete WorkWise connection'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_integration.collection:
+  path: '/admin/config/services/workwise/integrations'
+  defaults:
+    _entity_list: 'workwise_integration'
+    _title: 'WorkWise integrations'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_integration.add_form:
+  path: '/admin/config/services/workwise/integrations/add'
+  defaults:
+    _entity_form: 'workwise_integration.add'
+    _title: 'Add WorkWise connection'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_integration.edit_form:
+  path: '/admin/config/services/workwise/integrations/{workwise_integration}'
+  defaults:
+    _entity_form: 'workwise_integration.edit'
+    _title: 'Edit WorkWise integration'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_integration.delete_form:
+  path: '/admin/config/services/workwise/integrations/{workwise_integration}/delete'
+  defaults:
+    _entity_form: 'workwise_integration.delete'
+    _title: 'Delete WorkWise integration'
   requirements:
     _permission: 'administer workwise'

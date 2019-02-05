@@ -6,7 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContextAwarePluginBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-abstract class WorkWiseConnectionPluginBase extends ContextAwarePluginBase implements WorkWiseConnectionPluginInterface {
+abstract class WorkWisePluginBase extends ContextAwarePluginBase implements WorkWisePluginInterface {
 
   /**
    * {@inheritdoc}

@@ -2,6 +2,9 @@ services:
   workwise_connection.manager:
     class: Drupal\workwise\WorkWiseConnectionManager
     arguments: ['@entity_type.manager']
-  plugin.manager.workwise_connection:
-    class: \Drupal\workwise\WorkWiseConnectionPluginManager
+  workwise_integration.manager:
+    class: Drupal\workwise\WorkWiseIntegrationManager
+    arguments: ['@entity_type.manager']
+  plugin.manager.workwise:
+    class: \Drupal\workwise\WorkWisePluginManager
     parent: default_plugin_manager

@@ -10,7 +10,7 @@ use Drupal\Core\Plugin\PluginFormInterface;
 /**
  * Represents a plugin for WorkWise connections.
  */
-interface WorkWiseConnectionPluginInterface extends ConfigurablePluginInterface, ContainerFactoryPluginInterface, ContextAwarePluginInterface, PluginFormInterface {
+interface WorkWisePluginInterface extends ConfigurablePluginInterface, ContainerFactoryPluginInterface, ContextAwarePluginInterface, PluginFormInterface {
 
   /**
    * Retrieves the plugin's label.
