@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains workwise_commerce.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function workwise_commerce_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the workwise_commerce module.
+    case 'help.page.workwise_commerce':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('WorkWise integration for Drupal Commerce 2.x') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,30 @@
+workwise.workwise_connection_plugin_configuration:
+  type: mapping
+  label: 'WorkWise connection plugin configuration'
+  mapjping: {}
+
+workwise.workwise_connection.*:
+  type: config_entity
+  label: 'WorkWise connection'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    company:
+      type: string
+      label: 'Company'
+    username:
+      type: string
+      label: 'Username'
+    password:
+      type: string
+      label: 'Password'
+    plugin_configuration:
+      type: workwise.workwise_connection_plugin_configuration
+      label: 'Plugin configuration'
+    enabled:
+      type: boolean
+      label: 'Enabled'

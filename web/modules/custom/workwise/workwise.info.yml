@@ -1,0 +1,8 @@
+name: 'WorkWise Integration'
+type: module
+description: 'Integrate Drupal 8 with the WorkWise ERP'
+core: 8.x
+package: 'WorkWise'
+dependencies:
+  - entity
+  - rest

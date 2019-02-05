@@ -1,0 +1,7 @@
+name: 'WorkWise: Commerce'
+type: module
+description: 'WorkWise integration for Drupal Commerce 2.x'
+core: 8.x
+package: 'WorkWise'
+dependencies:
+  - workwise

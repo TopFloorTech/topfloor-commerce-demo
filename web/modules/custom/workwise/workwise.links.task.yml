@@ -1,0 +1,9 @@
+entity.workwise_connection.collection:
+  route_name: entity.workwise_connection.collection
+  base_route: entity.workwise_connection.collection
+  title: List
+
+entity.workwise_connection.edit_form:
+  route_name: entity.workwise_connection.edit_form
+  base_route: entity.workwise_connection.edit_form
+  title: Edit

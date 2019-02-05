@@ -1,0 +1,5 @@
+entity.workwise_connection.collection:
+  title: 'WorkWise connections'
+  route_name: entity.workwise_connection.collection
+  parent: system.admin_config_services
+  description: 'Manage WorkWise connections.'

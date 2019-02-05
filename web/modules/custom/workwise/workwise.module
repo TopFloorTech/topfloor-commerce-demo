@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains workwise.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function workwise_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the workwise module.
+    case 'help.page.workwise':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Integrate Drupal 8 with the WorkWise ERP') . '</p>';
+      return $output;
+
+    default:
+  }
+}

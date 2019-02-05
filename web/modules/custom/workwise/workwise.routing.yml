@@ -1,0 +1,31 @@
+entity.workwise_connection.collection:
+  path: '/admin/config/services/workwise'
+  defaults:
+    _entity_list: 'workwise_connection'
+    _title: 'WorkWise connections'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_connection.add_form:
+  path: '/admin/config/services/workwise/add'
+  defaults:
+    _entity_form: 'workwise_connection.add'
+    _title: 'Add WorkWise connection'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_connection.edit_form:
+  path: '/admin/config/services/workwise/{workwise_connection}'
+  defaults:
+    _entity_form: 'workwise_connection.edit'
+    _title: 'Edit WorkWise connection'
+  requirements:
+    _permission: 'administer workwise'
+
+entity.workwise_connection.delete_form:
+  path: '/admin/config/services/workwise/{workwise_connection}/delete'
+  defaults:
+    _entity_form: 'workwise_connection.delete'
+    _title: 'Delete WorkWise connection'
+  requirements:
+    _permission: 'administer workwise'
