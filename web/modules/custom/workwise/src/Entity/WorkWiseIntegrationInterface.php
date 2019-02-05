@@ -46,6 +46,24 @@ interface WorkWiseIntegrationInterface extends ConfigEntityInterface {
   public function setLabel($label);
 
   /**
+   * Gets the WorkWise connection ID.
+   *
+   * @return string
+   *   The connection ID.
+   */
+  public function getConnectionId();
+
+  /**
+   * Sets the WorkWise connection ID.
+   *
+   * @param string $connectionId
+   *   The connection ID.
+   *
+   * @return self
+   */
+  public function setConnectionId($connectionId);
+
+  /**
    * Gets the WorkWise plugin ID.
    *
    * @return string
@@ -99,4 +117,27 @@ interface WorkWiseIntegrationInterface extends ConfigEntityInterface {
    */
   public function setEnabled($enabled);
 
+  /**
+   * Checks whether the WorkWise plugin is active.
+   *
+   * @return bool
+   *   TRUE if the integration is enabled and its plugin requirements have been met, FALSE otherwise.
+   */
+  public function isActive();
+
+  /**
+   * Returns the WorkWise connection entity associated with this integration.
+   *
+   * @return \Drupal\workwise\Entity\WorkWiseConnectionInterface
+   *   The WorkWise connection.
+   */
+  public function getConnection();
+
+  /**
+   * Returns the plugin associated with this integration.
+   *
+   * @return \Drupal\workwise\Plugin\WorkWiseConnection\WorkWisePluginInterface
+   *   The plugin associated with this integration.
+   */
+  public function getPlugin();
 }

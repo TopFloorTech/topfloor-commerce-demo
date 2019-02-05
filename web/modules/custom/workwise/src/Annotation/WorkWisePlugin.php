@@ -29,4 +29,15 @@ class WorkWisePlugin extends Plugin {
    */
   public $description;
 
+  /**
+   * The requirements for this plugin to be active, in the format:
+   *
+   * [
+   *   'modules' => [],
+   * ]
+   *
+   * @var array
+   */
+  public $requirements;
+
 }

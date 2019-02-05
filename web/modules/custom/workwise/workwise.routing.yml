@@ -50,7 +50,7 @@ entity.workwise_integration.add_form:
   path: '/admin/config/services/workwise/integrations/add'
   defaults:
     _entity_form: 'workwise_integration.add'
-    _title: 'Add WorkWise connection'
+    _title: 'Add WorkWise integration'
   requirements:
     _permission: 'administer workwise'
 

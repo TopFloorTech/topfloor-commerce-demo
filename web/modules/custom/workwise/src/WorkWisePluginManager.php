@@ -31,4 +31,40 @@ class WorkWisePluginManager extends DefaultPluginManager {
     $this->alterInfo('workwise_plugin');
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function validateRequirements($pluginId)
+  {
+    $plugin = $this->getDefinition($pluginId);
+
+    if (isset($plugin['requirements'])) {
+      $requirements = $plugin['requirements'];
+
+      if (isset($requirements['modules'])) {
+        $moduleHandler = \Drupal::moduleHandler();
+
+        foreach ($requirements['modules'] as $module) {
+          if (!$moduleHandler->moduleExists($module)) {
+            return FALSE;
+          }
+        }
+      }
+    }
+
+    return TRUE;
+  }
+
+  public function getValidDefinitions() {
+    $definitions = [];
+
+    foreach ($this->getDefinitions() as $id => $definition) {
+      if ($this->validateRequirements($id)) {
+        $definitions[$id] = $definition;
+      }
+    }
+
+    return $definitions;
+  }
+
 }

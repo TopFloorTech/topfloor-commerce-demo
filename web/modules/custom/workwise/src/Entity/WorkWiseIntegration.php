@@ -49,6 +49,13 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
   public $label;
 
   /**
+   * The WorkWise connection ID.
+   *
+   * @var string
+   */
+  public $connection_id;
+
+  /**
    * The plugin ID.
    *
    * @var string
@@ -109,6 +116,21 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
   /**
    * {@inheritdoc}
    */
+  public function getConnectionId() {
+    return $this->connection_id;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setConnectionId($connectionId) {
+    $this->connection_id = $connectionId;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getPluginId() {
     return $this->plugin_id;
   }
@@ -149,5 +171,53 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
   public function setEnabled($enabled) {
     $this->enabled = $enabled;
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isActive() {
+    if (!$this->isEnabled()) {
+      return FALSE;
+    }
+
+    $connection = $this->getConnection();
+
+    if ($connection && !$connection->isEnabled()) {
+      return FALSE;
+    }
+
+    /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
+    $pluginManager = \Drupal::service('plugin.manager.workwise');
+    $pluginId = $this->getPluginId();
+
+    return $pluginManager->validateRequirements($pluginId);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getConnection() {
+    /** @var \Drupal\workwise\WorkWiseConnectionManagerInterface $manager */
+    $manager = \Drupal::service('workwise_connection.manager');
+    return $manager->getConnection($this->getConnectionId());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPlugin() {
+    $id = $this->getPluginId();
+    $configuration = $this->getPluginConfiguration();
+
+    $plugin = NULL;
+
+    if (!empty($id)) {
+      /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
+      $pluginManager = \Drupal::service('plugin.manager.workwise');
+      $plugin = $pluginManager->createInstance($id, $configuration);
+    }
+
+    return $plugin;
   }
 }

@@ -76,6 +76,24 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
   /**
    * {@inheritdoc}
    */
+  public function getRequirements()
+  {
+    return isset($this->pluginDefinition['requirements']) ? $this->pluginDefinition['requirements'] : [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateRequirements()
+  {
+    /** @var \Drupal\workwise\WorkWisePluginManager $manager */
+    $manager = $this->typedDataManager;
+    return $manager->validateRequirements($this->pluginId);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state)
   {
     return [];

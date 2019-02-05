@@ -28,4 +28,20 @@ interface WorkWisePluginInterface extends ConfigurablePluginInterface, Container
    */
   public function getDescription();
 
+  /**
+   * Retrieves the plugin's requirements.
+   *
+   * @return array
+   *   The requirements keyed by requirement type (e.g. "modules").
+   */
+  public function getRequirements();
+
+  /**
+   * Validates whether the requirements for this plugin have been met.
+   *
+   * @return bool
+   *   TRUE if the requirements have been met, FALSE otherwise.
+   */
+  public function validateRequirements();
+
 }

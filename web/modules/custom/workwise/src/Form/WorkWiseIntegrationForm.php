@@ -93,7 +93,7 @@ class WorkWiseIntegrationForm extends EntityForm {
 
     $form['plugin_id'] = [
       '#type' => 'select',
-      '#title' => $this->t('Integration'),
+      '#title' => $this->t('Integration type'),
       '#options' => $this->getPluginOptions(),
       '#default_value' => $pluginId,
     ];
@@ -189,7 +189,7 @@ class WorkWiseIntegrationForm extends EntityForm {
   protected function getPluginOptions() {
     /** @var \Drupal\workwise\WorkWisePluginManager $manager */
     $manager = \Drupal::service('plugin.manager.workwise');
-    $plugins = $manager->getDefinitions();
+    $plugins = $manager->getValidDefinitions();
     $options = [];
 
     foreach ($plugins as $id => $definition) {
