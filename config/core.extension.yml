@@ -99,10 +99,12 @@ module:
   redirect: 0
   responsive_image: 0
   responsive_tables_filter: 0
+  rest: 0
   robotstxt: 0
   search: 0
   search_api: 0
   search_api_db: 0
+  serialization: 0
   settings_tray: 0
   shortcut: 0
   simple_block: 0
@@ -126,6 +128,8 @@ module:
   views_menu_children_filter: 0
   views_pager_summary: 0
   views_ui: 0
+  workwise: 0
+  workwise_commerce: 0
   menu_link_content: 1
   pathauto: 1
   views: 10

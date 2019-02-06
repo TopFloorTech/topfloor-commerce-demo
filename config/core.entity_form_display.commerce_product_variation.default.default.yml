@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.default
     - field.field.commerce_product_variation.default.field_image
+    - field.field.commerce_product_variation.default.field_workwise_id
   module:
     - commerce_price
 _core:
@@ -15,7 +16,7 @@ bundle: default
 mode: default
 content:
   field_image:
-    weight: 12
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -25,19 +26,19 @@ content:
     region: content
   list_price:
     type: commerce_list_price
-    weight: -1
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   price:
     type: commerce_price_default
-    weight: 0
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: content
   sku:
     type: string_textfield
-    weight: -4
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -45,11 +46,12 @@ content:
     region: content
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 3
     settings:
       display_label: true
     third_party_settings: {  }
     region: content
 hidden:
   created: true
+  field_workwise_id: true
   uid: true

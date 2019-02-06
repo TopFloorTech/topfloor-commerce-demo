@@ -1,0 +1,10 @@
+uuid: 56668760-6c47-4897-b53a-2a8d9e42ca8c
+langcode: en
+status: true
+dependencies: {  }
+id: commerce_order
+label: 'Commerce order'
+connection_id: workwise_demo
+plugin_id: commerce_order
+plugin_configuration: null
+enabled: true

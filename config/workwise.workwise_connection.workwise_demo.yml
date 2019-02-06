@@ -1,0 +1,11 @@
+uuid: f7228570-7467-4c9e-8277-77d2be2026c3
+langcode: en
+status: true
+dependencies: {  }
+id: workwise_demo
+label: 'WorkWise Demo'
+url: 'https://18.216.35.129'
+company: tft
+username: Salesdemov96_r2\tcm
+password: W0rkwise
+enabled: true
