@@ -1,9 +1,11 @@
 <?php
 
-namespace Drupal\workwise\Plugin\WorkWiseConnection;
+namespace Drupal\workwise\Plugin\WorkWise;
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContextAwarePluginBase;
+use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class WorkWisePluginBase extends ContextAwarePluginBase implements WorkWisePluginInterface {
@@ -111,6 +113,37 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
   {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getApiMethods() {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getApiMethod($operation = 'read') {
+    $methods = $this->getApiMethods();
+
+    if (!array_key_exists($operation, $methods)) {
+      return NULL;
+    }
+
+    return $methods[$operation];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  abstract public function prepareRequestData(EntityInterface $entity, $operation = 'create');
+
+  /**
+   * {@inheritdoc}
+   */
+  public function handleResponse(ApiRequestInterface $request, $operation = 'create') {
   }
 
 }

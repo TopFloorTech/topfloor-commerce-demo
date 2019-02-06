@@ -13,6 +13,9 @@ workwise.workwise_connection.*:
     label:
       type: label
       label: 'Label'
+    url:
+      type: uri
+      label: 'WorkWise URL'
     company:
       type: string
       label: 'Company'

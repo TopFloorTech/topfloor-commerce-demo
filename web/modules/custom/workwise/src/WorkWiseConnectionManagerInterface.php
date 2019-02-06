@@ -26,4 +26,12 @@ interface WorkWiseConnectionManagerInterface {
    */
   public function getConnection($id);
 
+  /**
+   * Gets an array of connection titles, keyed by ID, of all active connections.
+   *
+   * @return string[]
+   *   The connection titles, keyed by ID.
+   */
+  public function getConnectionOptions();
+
 }

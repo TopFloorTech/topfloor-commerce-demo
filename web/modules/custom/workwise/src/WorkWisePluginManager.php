@@ -6,7 +6,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\workwise\Annotation\WorkWisePlugin;
-use Drupal\workwise\Plugin\WorkWiseConnection\WorkWisePluginInterface;
+use Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface;
 
 /**
  * Provides a plugin manager for WorkWise plugins.

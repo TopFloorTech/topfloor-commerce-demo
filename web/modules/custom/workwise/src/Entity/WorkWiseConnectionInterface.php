@@ -3,6 +3,7 @@
 namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
+use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
 
 /**
  * Defines the interface for WorkWise connection config entities.
@@ -26,6 +27,24 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
    * @return self
    */
   public function setId($id);
+
+  /**
+   * Gets the WorkWise connection URL.
+   *
+   * @return string
+   *   The URL.
+   */
+  public function getUrl();
+
+  /**
+   * Sets the WorkWise connection URL.
+   *
+   * @param string $url
+   *   The URL.
+   *
+   * @return self
+   */
+  public function setUrl($url);
 
   /**
    * Gets the WorkWise connection label.

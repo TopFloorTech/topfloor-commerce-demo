@@ -10,5 +10,7 @@
     "issues": "https://www.drupal.org/project/issues/workwise",
     "source": "http://cgit.drupalcode.org/workwise"
   },
-  "require": { }
+  "require": {
+      "ext-json": "*"
+  }
 }

@@ -3,6 +3,7 @@
 namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
 
 /**
  * Defines a WorkWise connection entity.
@@ -47,6 +48,13 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
    * @var string
    */
   public $label;
+
+  /**
+   * The WorkWise connection URL.
+   *
+   * @var string
+   */
+  public $url;
 
   /**
    * The WorkWise company.
@@ -123,6 +131,21 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
   /**
    * {@inheritdoc}
    */
+  public function getUrl() {
+    return $this->url;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUrl($url) {
+    $this->url = $url;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCompany() {
     return $this->company;
   }
@@ -179,4 +202,5 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
     $this->enabled = $enabled;
     return $this;
   }
+
 }

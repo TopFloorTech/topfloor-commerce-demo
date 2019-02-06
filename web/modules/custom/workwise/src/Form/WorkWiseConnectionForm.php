@@ -80,6 +80,14 @@ class WorkWiseConnectionForm extends EntityForm {
       '#disabled' => !$workWiseConnection->isNew(),
     ];
 
+    $form['url'] = [
+      '#type' => 'url',
+      '#title' => $this->t('WorkWise URL'),
+      '#description' => $this->t('The fully-qualified URL of the WorkWise server.'),
+      '#default_value' => $workWiseConnection->getUrl(),
+      '#required' => TRUE,
+    ];
+
     $form['company'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Company'),
@@ -104,8 +112,6 @@ class WorkWiseConnectionForm extends EntityForm {
       '#default_value' => '',
       '#required' => empty($workWiseConnection->getPassword()),
     ];
-
-
 
     $form['enabled'] = [
       '#type' => 'checkbox',
@@ -169,11 +175,13 @@ class WorkWiseConnectionForm extends EntityForm {
     }
 
     /** @var \Drupal\workwise\Entity\WorkWiseConnectionInterface $entity */
-    $entity->set('id', $values['id']);
-    $entity->set('label', $values['label']);
-    $entity->set('enabled', $values['enabled']);
-    $entity->set('company', $values['company']);
-    $entity->set('username', $values['username']);
+    $entity
+      ->set('id', $values['id'])
+      ->set('label', $values['label'])
+      ->set('enabled', $values['enabled'])
+      ->set('url', $values['url'])
+      ->set('company', $values['company'])
+      ->set('username', $values['username']);
 
     if (!empty($values['password'])) {
       $entity->set('password', $values['password']);
@@ -183,7 +191,6 @@ class WorkWiseConnectionForm extends EntityForm {
   protected function getPlugins(array $configuration) {
     /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
     $pluginManager = \Drupal::service('plugin.manager.workwise_connection');
-
     return $pluginManager->getAllPlugins($configuration);
   }
 

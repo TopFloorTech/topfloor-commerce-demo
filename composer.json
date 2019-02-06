@@ -121,7 +121,8 @@
         "pantheon-systems/quicksilver-pushback": "~1",
         "rvtraveller/qs-composer-installer": "^1.1",
         "topfloor/composer-cleanup-vcs-dirs": "^1.0",
-        "webflo/drupal-core-strict": "^8"
+        "webflo/drupal-core-strict": "^8",
+        "ext-json": "*"
     },
     "require-dev": {
         "mikey179/vfsstream": "^1.2",

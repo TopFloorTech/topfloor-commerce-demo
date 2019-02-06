@@ -81,6 +81,18 @@ class WorkWiseIntegrationForm extends EntityForm {
       '#disabled' => !$workWiseIntegration->isNew(),
     ];
 
+    /** @var \Drupal\workwise\WorkWiseConnectionManagerInterface $manager */
+    $manager = \Drupal::service('workwise_connection.manager');
+
+    $form['connection_id'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Connection'),
+      '#description' => $this->t('The WorkWise connection that this integration should utilize.'),
+      '#options' => $manager->getConnectionOptions(),
+      '#default_value' => $workWiseIntegration->getConnectionId(),
+      '#required' => TRUE,
+    ];
+
     $pluginId = (!empty($input['plugin_id'])) ? $input['plugin_id'] : $workWiseIntegration->getPluginId();
     if (empty($pluginId)) {
       $pluginId = NULL;
@@ -96,6 +108,7 @@ class WorkWiseIntegrationForm extends EntityForm {
       '#title' => $this->t('Integration type'),
       '#options' => $this->getPluginOptions(),
       '#default_value' => $pluginId,
+      '#required' => TRUE,
     ];
 
     if (!empty($pluginId)) {
@@ -167,26 +180,29 @@ class WorkWiseIntegrationForm extends EntityForm {
     }
 
     /** @var \Drupal\workwise\Entity\WorkWiseConnectionInterface $entity */
-    $entity->set('id', $values['id']);
-    $entity->set('label', $values['label']);
-    $entity->set('enabled', $values['enabled']);
-    $entity->set('plugin_id', $values['plugin_id']);
+    $entity
+      ->set('id', $values['id'])
+      ->set('label', $values['label'])
+      ->set('enabled', $values['enabled'])
+      ->set('connection_id', $values['connection_id'])
+      ->set('plugin_id', $values['plugin_id']);
 
     if (!empty($values['plugin_configuration'])) {
-      /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
-      $pluginManager = \Drupal::service('plugin.manager.workwise');
-
-      /** @var \Drupal\workwise\Plugin\WorkWiseConnection\WorkWisePluginInterface $plugin */
-      $plugin = $pluginManager
-        ->createInstance($values['plugin_id'])
-        ->setContextValue('workwise_integration', $workWiseIntegration)
-        ->submitConfigurationForm($form['plugin_configuration'], $form_state);
-
-      $entity->set('plugin_configuration', $plugin->getConfiguration());
+      $entity->set('plugin_configuration', $this->getPluginConfiguration($values['plugin_id'], $form['plugin_configuration'], $form_state));
     }
   }
 
-  protected function getPluginOptions() {
+  private function getPluginConfiguration($pluginId, $formField, $formState) {
+    /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
+    $pluginManager = \Drupal::service('plugin.manager.workwise');
+
+    return $pluginManager->createInstance($pluginId)
+      ->setContextValue('workwise_integration', $this->entity)
+      ->submitConfigurationForm($formField, $formState)
+      ->getConfiguration();
+  }
+
+  private function getPluginOptions() {
     /** @var \Drupal\workwise\WorkWisePluginManager $manager */
     $manager = \Drupal::service('plugin.manager.workwise');
     $plugins = $manager->getValidDefinitions();

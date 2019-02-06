@@ -48,4 +48,17 @@ class WorkWiseConnectionManager implements WorkWiseConnectionManagerInterface {
     return $this->entityTypeManager->getStorage('workwise_connection')->load($id);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getConnectionOptions() {
+    $connections = $this->getConnections();
+    $options = [];
+
+    foreach ($connections as $id => $connection) {
+      $options[$id] = $connection->getLabel();
+    }
+
+    return $options;
+  }
 }
