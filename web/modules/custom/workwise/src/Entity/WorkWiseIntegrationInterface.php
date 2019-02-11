@@ -3,6 +3,7 @@
 namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Defines the interface for WorkWise integration config entities.
@@ -140,4 +141,32 @@ interface WorkWiseIntegrationInterface extends ConfigEntityInterface {
    *   The plugin associated with this integration.
    */
   public function getPlugin();
+
+  /**
+   * Sends an API request for the given operation, returning the
+   * ApiRequestInterface object containing the response.
+   *
+   * @param $operation
+   *   The operation to perform, such as "create".
+   * @param \Drupal\Core\Entity\EntityInterface|NULL $entity
+   *   The entity to operate on, if provided.
+   *
+   * @return \Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface
+   *   The API request that was submitted also containing the response.
+   */
+  public function performOperation($operation, EntityInterface $entity = NULL);
+
+  /**
+   * Determines if the operation should be allowed to proceed.
+   *
+   * @param $operation
+   *   The operation to be validated.
+   * @param \Drupal\Core\Entity\EntityInterface|NULL $entity
+   *   The optional entity to operate on.
+   *
+   * @return bool
+   *   TRUE if operation should proceed, FALSE otherwise.
+   */
+  public function validateOperation($operation, EntityInterface $entity = NULL);
+
 }

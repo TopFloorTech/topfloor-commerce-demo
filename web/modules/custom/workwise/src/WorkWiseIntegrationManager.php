@@ -3,6 +3,7 @@
 namespace Drupal\workwise;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface;
 
 class WorkWiseIntegrationManager implements WorkWiseIntegrationManagerInterface {
 
@@ -48,4 +49,19 @@ class WorkWiseIntegrationManager implements WorkWiseIntegrationManagerInterface 
     return $this->entityTypeManager->getStorage('workwise_integration')->load($id);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function getIntegrationsForEntityType($entityTypeId) {
+    $integrations = [];
+
+    foreach ($this->getIntegrations() as $integration) {
+      $plugin = $integration->getPlugin();
+      if ($plugin instanceof WorkWisePluginInterface && $plugin->getEntityTypeId() === $entityTypeId) {
+        $integrations[$integration->id()] = $integration;
+      }
+    }
+
+    return $integrations;
+  }
 }

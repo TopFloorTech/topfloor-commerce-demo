@@ -26,4 +26,15 @@ interface WorkWiseIntegrationManagerInterface {
    */
   public function getIntegration($id);
 
+  /**
+   * Retrieves an array of all integrations that act on the provided entity type.
+   *
+   * @param $entityTypeId
+   *   The entity type to get integrations for.
+   *
+   * @return \Drupal\workwise\Entity\WorkWiseIntegrationInterface[]
+   *   The associated integrations.
+   */
+  public function getIntegrationsForEntityType($entityTypeId);
+
 }

@@ -33,6 +33,14 @@ interface WorkWisePluginInterface extends ConfigurablePluginInterface, Container
   public function getDescription();
 
   /**
+   * Retrieves the entity type ID associated with this plugin.
+   *
+   * @return string|NULL
+   *   The entity type ID, or NULL if this plugin doesn't relate to an entity type.
+   */
+  public function getEntityTypeId();
+
+  /**
    * Retrieves the form state key from the parent form containing the configuration for this plugin.
    *
    * @return string

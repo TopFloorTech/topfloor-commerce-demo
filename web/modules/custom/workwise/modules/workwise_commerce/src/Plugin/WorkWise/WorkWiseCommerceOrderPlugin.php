@@ -24,6 +24,7 @@ use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
  *       "commerce_order",
  *     },
  *   },
+ *   entity_type = "commerce_order",
  *   context = {
  *     "workwise_integration" = @ContextDefinition("entity:workwise_integration", label = @Translation("WorkWise integration"))
  *   }
@@ -177,6 +178,33 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
         \Drupal::messenger()->addMessage(Markup::create('WorkWise error: ' . $request->getErrorMessage()));
       }
     }
+  }
+
+  public function validateOperation($operation, EntityInterface $entity = NULL) {
+    $valid = parent::validateOperation($operation, $entity);
+
+    if ($valid) {
+      $valid = !empty($entity)
+        && $entity instanceof OrderInterface
+        && $entity->hasField($this->remoteIdField);
+    }
+
+    if ($valid) {
+      if ($operation === 'create') {
+        $valid = $entity->hasItems()
+          && !$entity->cart->value
+          && $entity->getPlacedTime()
+          && $entity->get($this->remoteIdField)->isEmpty();
+      } elseif ($operation === 'read' || $operation === 'delete') {
+        $valid = !$entity->get($this->remoteIdField)->isEmpty();
+      } elseif ($operation === 'update') {
+        $valid = !$entity->cart->value
+          && $entity->getPlacedTime()
+          && !$entity->get($this->remoteIdField)->isEmpty();
+      }
+    }
+
+    return $valid;
   }
 
 }

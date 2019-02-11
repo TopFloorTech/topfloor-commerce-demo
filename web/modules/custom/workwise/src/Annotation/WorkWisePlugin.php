@@ -40,4 +40,10 @@ class WorkWisePlugin extends Plugin {
    */
   public $requirements;
 
+  /**
+   * The entity type that this plugin primarily acts on.
+   *
+   * @var string
+   */
+  public $entity_type;
 }

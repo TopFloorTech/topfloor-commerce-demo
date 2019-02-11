@@ -85,6 +85,10 @@ abstract class CrudPluginBase extends WorkWisePluginBase {
    * {@inheritdoc}
    */
   public function validateOperation($operation, EntityInterface $entity = NULL) {
+    if (!parent::validateOperation($operation, $entity)) {
+      return FALSE;
+    }
+
     $configuration = $this->getConfiguration();
     $allowedOperations = $configuration['allowed_operations'];
 

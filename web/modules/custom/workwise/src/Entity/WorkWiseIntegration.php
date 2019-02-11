@@ -3,6 +3,8 @@
 namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\workwise\WorkWise\ApiRequest\ApiRequest;
 
 /**
  * Defines a WorkWise connection entity.
@@ -220,4 +222,39 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
 
     return $plugin;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function performOperation($operation, EntityInterface $entity = NULL) {
+    /** @var \Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface $plugin */
+    $plugin = $this->getPlugin();
+    $connection = $this->getConnection();
+    $apiRequest = NULL;
+
+    if ($this->validateOperation($operation, $entity)) {
+      $apiMethod = $plugin->getApiMethod($operation);
+      $requestData = $plugin->prepareRequestData($operation, $entity);
+      $apiRequest = $connection->sendRequest($apiMethod, $requestData);
+    }
+
+    return $apiRequest;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateOperation($operation, EntityInterface $entity = NULL) {
+    /** @var \Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface $plugin */
+    $plugin = $this->getPlugin();
+    $connection = $this->getConnection();
+
+    return ($this->isActive()
+      && $connection
+      && $connection->isEnabled()
+      && $plugin
+      && $plugin->validateRequirements()
+      && $plugin->validateOperation($operation, $entity));
+  }
+
 }

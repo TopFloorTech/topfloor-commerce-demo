@@ -90,6 +90,13 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
   /**
    * {@inheritdoc}
    */
+  public function getEntityTypeId() {
+    return isset($this->pluginDefinition['entity_type']) ? $this->pluginDefinition['entity_type'] : NULL;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function validateRequirements()
   {
     /** @var \Drupal\workwise\WorkWisePluginManager $manager */
@@ -178,7 +185,10 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
   /**
    * {@inheritdoc}
    */
-  abstract public function validateOperation($operation, EntityInterface $entity = NULL);
+  public function validateOperation($operation, EntityInterface $entity = NULL) {
+    $apiMethod = $this->getApiMethod($operation);
+    return !empty($apiMethod);
+  }
 
   /**
    * {@inheritdoc}

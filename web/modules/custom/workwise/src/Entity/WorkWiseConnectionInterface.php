@@ -136,4 +136,31 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
    */
   public function setEnabled($enabled);
 
+  /**
+   * Submits an API request for the given method containing the provided data.
+   *
+   * @param $apiMethod
+   * @param array $data
+   *
+   * @return ApiRequestInterface
+   *   The API request that was submitted and that contains the response.
+   */
+  public function sendRequest($apiMethod, array $data = []);
+
+  /**
+   * Validates whether this connection is able to be used.
+   *
+   * @return bool
+   *   TRUE if connection is valid, FALSE otherwise.
+   */
+  public function validateConnection();
+
+  /**
+   * Returns an array of all connection info for this connection.
+   *
+   * @return array
+   *   The connection information in an associative array.
+   */
+  public function getConnectionInfo();
+
 }

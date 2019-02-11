@@ -3,7 +3,7 @@
 namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
-use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
+use Drupal\workwise\WorkWise\ApiRequest\ApiRequest;
 
 /**
  * Defines a WorkWise connection entity.
@@ -203,4 +203,50 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
     return $this;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function sendRequest($apiMethod, array $data = []) {
+    if (!$this->validateConnection()) {
+      return NULL;
+    }
+
+    $request = new ApiRequest($this->getConnectionInfo(), $apiMethod, $data);
+    $request->sendRequest();
+
+    return $request;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateConnection() {
+    $connectionInfo = $this->getConnectionInfo();
+    $url = $this->getUrl();
+
+    return $this->isEnabled()
+      && !empty($connectionInfo)
+      && !empty($url);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getConnectionInfo() {
+    $connectionInfo = [];
+
+    if ($this->getCompany()) {
+      $connectionInfo['company'] = $this->getCompany();
+    }
+
+    if ($this->getUsername()) {
+      $connectionInfo['username'] = $this->getUsername();
+    }
+
+    if ($this->getPassword()) {
+      $connectionInfo['password'] = $this->getPassword();
+    }
+
+    return $connectionInfo;
+  }
 }

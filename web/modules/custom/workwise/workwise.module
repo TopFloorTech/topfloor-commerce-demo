@@ -22,3 +22,15 @@ function workwise_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
+
+/**
+ * Implements hook_entity_presave().
+ */
+function workwise_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  /** @var \Drupal\workwise\WorkWiseIntegrationManagerInterface $manager */
+  $manager = \Drupal::service('workwise_integration.manager');
+
+  $integrations = $manager->getIntegrationsForEntityType($entity->getEntityTypeId());
+
+  // @todo check if integration already saved, and either create or update.
+}
