@@ -8,5 +8,5 @@ url: 'https://18.216.35.129'
 company: dem
 username: Salesdemov96_r2\tcm
 password: W0rkwise
-dry_run: true
+dry_run: false
 enabled: true
