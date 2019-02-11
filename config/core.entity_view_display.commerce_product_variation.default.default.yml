@@ -16,14 +16,14 @@ content:
   field_image:
     type: entity_reference_entity_view
     weight: 2
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
   list_price:
-    label: above
+    label: inline
     type: commerce_price_default
     weight: 0
     region: content
@@ -32,7 +32,7 @@ content:
       currency_display: symbol
     third_party_settings: {  }
   price:
-    label: above
+    label: inline
     type: commerce_price_default
     weight: 1
     region: content

@@ -1,0 +1,21 @@
+uuid: 61e2551b-fa26-4d5e-9fff-cbe5a5c8c60d
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: profile.field_workwise_id
+field_name: field_workwise_id
+entity_type: profile
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

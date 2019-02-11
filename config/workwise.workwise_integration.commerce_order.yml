@@ -6,5 +6,11 @@ id: commerce_order
 label: 'Commerce order'
 connection_id: workwise_demo
 plugin_id: commerce_order
-plugin_configuration: null
+plugin_configuration:
+  allowed_operations:
+    - create
+    - read
+    - update
+    - delete
+  order_taken_by_id: ''
 enabled: true

@@ -5,7 +5,8 @@ dependencies: {  }
 id: workwise_demo
 label: 'WorkWise Demo'
 url: 'https://18.216.35.129'
-company: tft
+company: dem
 username: Salesdemov96_r2\tcm
 password: W0rkwise
+dry_run: true
 enabled: true

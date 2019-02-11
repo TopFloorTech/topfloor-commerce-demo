@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.profile.customer.address
+    - field.field.profile.customer.field_workwise_id
     - profile.type.customer
   enforced:
     module:
@@ -20,7 +21,9 @@ content:
   address:
     type: address_default
     weight: 0
-    settings: {  }
+    settings:
+      default_country: null
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_workwise_id: true
