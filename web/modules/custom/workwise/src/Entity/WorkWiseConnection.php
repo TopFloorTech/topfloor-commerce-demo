@@ -241,6 +241,10 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
   public function getConnectionInfo() {
     $connectionInfo = [];
 
+    if ($this->getUrl()) {
+      $connectionInfo['url'] = $this->getUrl();
+    }
+
     if ($this->getCompany()) {
       $connectionInfo['company'] = $this->getCompany();
     }

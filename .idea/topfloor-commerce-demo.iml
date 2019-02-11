@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <content url="file://$USER_HOME$/.lando/services/config/pantheon" />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/vendor/alchemy/zippy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />

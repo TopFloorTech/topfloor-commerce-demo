@@ -4,6 +4,7 @@ namespace Drupal\workwise_commerce\Plugin\WorkWise;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItemInterface;
+use Drupal\commerce_price\Price;
 use Drupal\Core\Annotation\ContextDefinition;
 use Drupal\Core\Annotation\Translation;
 use Drupal\Core\Entity\EntityInterface;
@@ -40,7 +41,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
 
   public function defaultConfiguration() {
     $defaultConfiguration = parent::defaultConfiguration();
-    $defaultConfiguration['order_taken_by_id'];
+    $defaultConfiguration['order_taken_by_id'] = 'TCM'; // @todo Default should be blank once settings are saving properly.
 
     return $defaultConfiguration;
   }
@@ -62,7 +63,6 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
 
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
-
     $values = $form_state->getValue($this->getConfigurationFormStateKey(), []);
     $this->configuration['order_taken_by_id'] = $this->getValue('order_taken_by_id', $values);
   }
@@ -152,7 +152,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
         'SEQ_LINE_ORD' => $index + 1,
         'ID_ITEM' => $this->getProductRemoteId($orderItem),
         'QTY_OPEN' => $orderItem->getQuantity(),
-        'PRICE_SELL_NET_VP_FC' => $orderItem->getTotalPrice()->getNumber(),
+        'PRICE_SELL_NET_VP_FC' => $this->getOrderItemPrice($orderItem),
       ];
     }
 
@@ -176,12 +176,24 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
 
   private function getShippingPrice(OrderInterface $order) {
     $shipment = $this->getShipment($order);
-    return $shipment->getAmount()->getNumber();
+    $price = $shipment->getAmount();
+    return $this->formatPrice($price);
   }
 
   private function getSalesTaxPrice(OrderInterface $order) {
     // @todo Return actual sales tax once we're calculating it.
-    return "0.00";
+    $price = new Price('0.00', 'USD');
+    return $this->formatPrice($price);
+  }
+
+  private function getOrderItemPrice(OrderItemInterface $orderItem) {
+    $price = $orderItem->getTotalPrice();
+    return $this->formatPrice($price);
+  }
+
+  private function formatPrice(Price $price) {
+    $number = $price->getNumber();
+    return number_format((float)$number, 2, '.', '');
   }
 
   /**
