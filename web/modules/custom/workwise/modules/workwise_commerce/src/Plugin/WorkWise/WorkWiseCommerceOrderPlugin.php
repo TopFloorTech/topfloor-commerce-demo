@@ -85,6 +85,9 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
   public function prepareRequestData($operation, EntityInterface $entity = NULL) {
     $data = [];
     $configuration = $this->getConfiguration();
+    if (empty($configuration['order_taken_by_id'])) {
+      $configuration['order_taken_by_id'] = 'TCM'; // @todo Remove this ASAP
+    }
 
     if ($operation === 'create' && $entity instanceof OrderInterface) {
       $data['Header'] = [
