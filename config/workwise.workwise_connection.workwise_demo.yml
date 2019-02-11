@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: workwise_demo
 label: 'WorkWise Demo'
-url: 'https://18.216.35.129'
+url: 'http://18.216.35.129:90/TcmPortal'
 company: dem
 username: Salesdemov96_r2\tcm
 password: W0rkwise
