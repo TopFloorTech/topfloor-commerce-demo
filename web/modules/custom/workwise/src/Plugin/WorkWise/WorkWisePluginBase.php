@@ -100,7 +100,8 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
   public function validateRequirements()
   {
     /** @var \Drupal\workwise\WorkWisePluginManager $manager */
-    $manager = $this->typedDataManager;
+    $manager = \Drupal::service('plugin.manager.workwise');
+
     return $manager->validateRequirements($this->pluginId);
   }
 

@@ -212,6 +212,10 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
     $id = $this->getPluginId();
     $configuration = $this->getPluginConfiguration();
 
+    if (empty($configuration)) {
+      $configuration = [];
+    }
+
     $plugin = NULL;
 
     if (!empty($id)) {

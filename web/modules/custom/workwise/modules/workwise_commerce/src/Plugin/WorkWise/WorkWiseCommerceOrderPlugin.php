@@ -94,6 +94,8 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
         'TYPE_ORD_CP' => $this->workWiseOrderType,
         //'DATE_ORD' => date('Y-m-d H:i:s', $entity->getPlacedTime()), // @todo Check format and uncomment
         'ID_USER_ORD' => $configuration['order_taken_by_id'],
+        'AMT_FRT' => $this->getShippingPrice($entity),
+        'TAX_SLS' => $this->getSalesTaxPrice($entity),
       ];
 
       $data['Lines'] = $this->getWorkWiseLineItems($entity);
@@ -111,8 +113,8 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
     return $customerId;
   }
 
-  private function getShippingProfileRemoteId(OrderInterface $order) {
-    $profileId = NULL;
+  private function getShipment(OrderInterface $order) {
+    $firstShipment = NULL;
 
     if ($order->hasField('shipments') && !$order->get('shipments')->isEmpty()) {
       /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $shipmentsField */
@@ -120,12 +122,23 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
       $shipments = $shipmentsField->referencedEntities();
       /** @var \Drupal\commerce_shipping\Entity\ShipmentInterface $firstShipment */
       $firstShipment = reset($shipments);
+    }
 
-      if ($firstShipment
-        && $firstShipment->getShippingProfile()->hasField($this->profileRemoteIdField)
-        && !$firstShipment->getShippingProfile()->get($this->profileRemoteIdField)->isEmpty()) {
-        $profileId = $firstShipment->getShippingProfile()->get($this->profileRemoteIdField)->value;
-      }
+    return $firstShipment;
+  }
+
+  private function getShippingProfileRemoteId(OrderInterface $order) {
+    // @todo Don't hardcode this once we can select an existing profile during checkout
+    return '10100-0000';
+
+    $profileId = NULL;
+
+    $shipment = $this->getShipment($order);
+
+    if ($shipment
+      && $shipment->getShippingProfile()->hasField($this->profileRemoteIdField)
+      && !$shipment->getShippingProfile()->get($this->profileRemoteIdField)->isEmpty()) {
+      $profileId = $shipment->getShippingProfile()->get($this->profileRemoteIdField)->value;
     }
 
     return $profileId;
@@ -159,6 +172,16 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
     }
 
     return $remoteId;
+  }
+
+  private function getShippingPrice(OrderInterface $order) {
+    $shipment = $this->getShipment($order);
+    return $shipment->getAmount()->getNumber();
+  }
+
+  private function getSalesTaxPrice(OrderInterface $order) {
+    // @todo Return actual sales tax once we're calculating it.
+    return "0.00";
   }
 
   /**

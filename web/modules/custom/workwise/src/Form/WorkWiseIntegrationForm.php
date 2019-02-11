@@ -196,10 +196,12 @@ class WorkWiseIntegrationForm extends EntityForm {
     /** @var \Drupal\workwise\WorkWisePluginManager $pluginManager */
     $pluginManager = \Drupal::service('plugin.manager.workwise');
 
-    return $pluginManager->createInstance($pluginId)
-      ->setContextValue('workwise_integration', $this->entity)
-      ->submitConfigurationForm($formField, $formState)
-      ->getConfiguration();
+    /** @var \Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface $plugin */
+    $plugin =  $pluginManager->createInstance($pluginId);
+    $plugin->setContextValue('workwise_integration', $this->entity);
+    $plugin->submitConfigurationForm($formField, $formState);
+
+    return $plugin->getConfiguration();
   }
 
   private function getPluginOptions() {
