@@ -78,11 +78,11 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
   public $password;
 
   /**
-   * The connection plugin configuration.
+   * Whether this connection is in dry run mode.
    *
-   * @var array
+   * @var bool
    */
-  public $plugin_configuration;
+  public $dry_run;
 
   /**
    * Whether or not this WorkWise connection is enabled.
@@ -212,7 +212,13 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
     }
 
     $request = new ApiRequest($this->getConnectionInfo(), $apiMethod, $data);
+    $request->setDryRun($this->isDryRun());
+
+    $textToAppend = $this->isDryRun() ? ' (Dry run)' : '';
+
+    \Drupal::logger('workwise')->debug("WorkWise API Request$textToAppend:\n\n" . $request->debugRequestInfo());
     $request->sendRequest();
+    \Drupal::logger('workwise')->debug("WorkWise API Response$textToAppend:\n\n" . $request->debugResponseInfo());
 
     return $request;
   }
@@ -249,4 +255,20 @@ class WorkWiseConnection extends ConfigEntityBase implements WorkWiseConnectionI
 
     return $connectionInfo;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isDryRun() {
+    return $this->dry_run;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setDryRun($dryRun) {
+    $this->dry_run = $dryRun;
+    return $this;
+  }
+
 }

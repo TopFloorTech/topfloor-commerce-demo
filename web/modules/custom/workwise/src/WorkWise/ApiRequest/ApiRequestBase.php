@@ -12,7 +12,9 @@ abstract class ApiRequestBase implements ApiRequestInterface {
 
   protected $sent = FALSE;
 
-  protected $response;
+  protected $dryRun = FALSE;
+
+  protected $response = [];
 
   public function __construct($connectionInfo, $apiMethod, $data = []) {
     $this->connectionInfo = $connectionInfo;
@@ -43,11 +45,14 @@ abstract class ApiRequestBase implements ApiRequestInterface {
   }
 
   public function sendRequest() {
-    $result = \Drupal::httpClient()->post($this->connectionInfo['url'], [
-      'json' => $this->prepareRequest(),
-    ]);
+    if (!$this->isDryRun()) {
+      $result = \Drupal::httpClient()->post($this->connectionInfo['url'], [
+        'json' => $this->prepareRequest(),
+      ]);
 
-    $this->response = json_decode($result->getBody(), TRUE);
+      $this->response = json_decode($result->getBody(), TRUE);
+    }
+
     $this->sent = TRUE;
   }
 
@@ -77,6 +82,22 @@ abstract class ApiRequestBase implements ApiRequestInterface {
     }
 
     return $this->response['Records'];
+  }
+
+  public function debugRequestInfo() {
+    return print_r($this->prepareRequest(), TRUE);
+  }
+
+  public function debugResponseInfo() {
+    return print_r($this->response, TRUE);
+  }
+
+  public function isDryRun() {
+    return $this->dryRun;
+  }
+
+  public function setDryRun($dryRun) {
+    $this->dryRun = $dryRun;
   }
 
 }

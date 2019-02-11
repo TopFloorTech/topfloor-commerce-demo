@@ -4,7 +4,7 @@ namespace Drupal\workwise\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\workwise\WorkWise\ApiRequest\ApiRequest;
+use Drupal\workwise\Plugin\WorkWise\WorkWisePluginInterface;
 
 /**
  * Defines a WorkWise connection entity.
@@ -257,4 +257,18 @@ class WorkWiseIntegration extends ConfigEntityBase implements WorkWiseIntegratio
       && $plugin->validateOperation($operation, $entity));
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function remoteRecordExists(EntityInterface $entity) {
+    $plugin = $this->getPlugin();
+    $exists = FALSE;
+
+    if ($plugin instanceof WorkWisePluginInterface) {
+      $remoteId = $plugin->getRemoteId($entity);
+      $exists = !empty($remoteId);
+    }
+
+    return $exists;
+  }
 }

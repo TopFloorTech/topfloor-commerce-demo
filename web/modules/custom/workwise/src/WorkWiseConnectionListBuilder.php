@@ -15,6 +15,7 @@ class WorkWiseConnectionListBuilder extends ConfigEntityListBuilder {
       'id' => $this->t('Machine name'),
       'company' => $this->t('Company'),
       'username' => $this->t('Username'),
+      'dry_run' => $this->t('Dry run'),
       'enabled' => $this->t('Enabled'),
     ];
 
@@ -29,10 +30,15 @@ class WorkWiseConnectionListBuilder extends ConfigEntityListBuilder {
       'id' => $entity->id(),
       'company' => $entity->getCompany(),
       'username' => $entity->getUsername(),
-      'enabled' => $entity->isEnabled() ? $this->t('Yes') : $this->t('No'),
+      'dry_run' => $this->boolText($entity->isDryRun()),
+      'enabled' => $this->boolText($entity->isEnabled()),
     ];
 
     return $row + parent::buildRow($entity);
+  }
+
+  private function boolText($value) {
+    return $value ? $this->t('Yes') : $this->t('No');
   }
 
 }

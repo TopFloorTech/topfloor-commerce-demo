@@ -169,4 +169,12 @@ interface WorkWiseIntegrationInterface extends ConfigEntityInterface {
    */
   public function validateOperation($operation, EntityInterface $entity = NULL);
 
+  /**
+   * Checks if a remote record exists for the provided entity.
+   *
+   * @return bool
+   *   TRUE if remote record already exists, FALSE otherwise.
+   */
+  public function remoteRecordExists(EntityInterface $entity);
+
 }

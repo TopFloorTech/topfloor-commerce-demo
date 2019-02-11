@@ -29,8 +29,27 @@ function workwise_help($route_name, RouteMatchInterface $route_match) {
 function workwise_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
   /** @var \Drupal\workwise\WorkWiseIntegrationManagerInterface $manager */
   $manager = \Drupal::service('workwise_integration.manager');
-
   $integrations = $manager->getIntegrationsForEntityType($entity->getEntityTypeId());
 
-  // @todo check if integration already saved, and either create or update.
+  foreach ($integrations as $integration) {
+    $remoteRecordExists = $integration->remoteRecordExists($entity);
+    $operation = $remoteRecordExists ? 'update' : 'create';
+    $integration->performOperation($operation, $entity);
+  }
+}
+
+/**
+ * Implements hook_entity_predelete().
+ */
+function workwise_entity_predelete(Drupal\Core\Entity\EntityInterface $entity) {
+  /** @var \Drupal\workwise\WorkWiseIntegrationManagerInterface $manager */
+  $manager = \Drupal::service('workwise_integration.manager');
+  $integrations = $manager->getIntegrationsForEntityType($entity->getEntityTypeId());
+
+  foreach ($integrations as $integration) {
+    $remoteRecordExists = $integration->remoteRecordExists($entity);
+    if ($remoteRecordExists) {
+      $integration->performOperation('delete', $entity);
+    }
+  }
 }

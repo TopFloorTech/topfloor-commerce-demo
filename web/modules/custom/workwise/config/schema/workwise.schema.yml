@@ -25,6 +25,9 @@ workwise.workwise_connection.*:
     password:
       type: string
       label: 'Password'
+    dry_run:
+      type: boolean
+      label: 'Dry run'
     enabled:
       type: boolean
       label: 'Enabled'

@@ -119,6 +119,27 @@ interface WorkWiseConnectionInterface extends ConfigEntityInterface {
   public function setPassword($password);
 
   /**
+   * Indicates whether this connection should be in "dry run" mode.
+   *
+   * In this mode, requests are logged but not sent to WorkWise.
+   *
+   * @return bool
+   *   TRUE if dry run mode, FALSE otherwise.
+   */
+  public function isDryRun();
+
+  /**
+   * Sets whether this connection should be in dry run mode.
+   *
+   * @param bool $dryRun
+   *   TRUE for dry run mode, FALSE for live mode.
+   *
+   * @return self
+   *   The connection for chaining.
+   */
+  public function setDryRun($dryRun);
+
+  /**
    * Get whether the WorkWise connection is enabled.
    *
    * @return bool

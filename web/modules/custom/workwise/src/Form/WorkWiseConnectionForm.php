@@ -113,6 +113,13 @@ class WorkWiseConnectionForm extends EntityForm {
       '#required' => empty($workWiseConnection->getPassword()),
     ];
 
+    $form['dry_run'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable dry-run mode'),
+      '#description' => $this->t('In this mode, API requests will be logged but not sent to WorkWise.'),
+      '#default_value' => $workWiseConnection->isDryRun(),
+    ];
+
     $form['enabled'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enabled'),
@@ -181,7 +188,8 @@ class WorkWiseConnectionForm extends EntityForm {
       ->set('enabled', $values['enabled'])
       ->set('url', $values['url'])
       ->set('company', $values['company'])
-      ->set('username', $values['username']);
+      ->set('username', $values['username'])
+      ->set('dry_run', $values['dry_run']);
 
     if (!empty($values['password'])) {
       $entity->set('password', $values['password']);
