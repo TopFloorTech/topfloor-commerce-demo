@@ -13,5 +13,7 @@ interface ApiRequestInterface {
 
   public function getResponseCode();
 
+  public function getErrorMessage();
+
   public function getResponseData();
 }

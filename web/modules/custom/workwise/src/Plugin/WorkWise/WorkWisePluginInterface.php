@@ -33,10 +33,18 @@ interface WorkWisePluginInterface extends ConfigurablePluginInterface, Container
   public function getDescription();
 
   /**
+   * Retrieves the form state key from the parent form containing the configuration for this plugin.
+   *
+   * @return string
+   *   The form state key, or NULL if there is no configuration for this plugin.
+   */
+  public function getConfigurationFormStateKey();
+
+  /**
    * Retrieves the plugin's requirements.
    *
    * @return array
-   *   The requirements keyed by requirement type (e.g. "modules").
+   *   The requirements keyed by requirement type (e.g. "modules", "plugins").
    */
   public function getRequirements();
 
@@ -79,16 +87,15 @@ interface WorkWisePluginInterface extends ConfigurablePluginInterface, Container
   /**
    * Translates the provided entity into a dataset that can be sent to the API.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
-   *   The entity to get the data from.
-   *
    * @param string $operation
    *   The operation that the data will be used for.
+   * @param \Drupal\Core\Entity\EntityInterface|NULL $entity
+   *   The entity to get the data from.
    *
    * @return array
    *   A structured array of data representing the provided entity.
    */
-  public function prepareRequestData(EntityInterface $entity, $operation = 'create');
+  public function prepareRequestData($operation, EntityInterface $entity = NULL);
 
   /**
    * Allows the plugin to take action based on the API response.
@@ -96,13 +103,47 @@ interface WorkWisePluginInterface extends ConfigurablePluginInterface, Container
    * If the attempted operation was not successful, and cannot be handled
    *   adequately, a WorkWiseException should be thrown.
    *
-   * @param \Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface $request
-   *   The request object that contains the response data.
-   *
    * @param string $operation
    *   The type of operation that was requested from the API.
+   * @param \Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface $request
+   *   The request object that contains the response data.
+   * @param \Drupal\Core\Entity\EntityInterface|null $entity
+   *   The entity the request was acting on, if available.
    *
    * @return void
    */
-  public function handleResponse(ApiRequestInterface $request, $operation = 'create');
+  public function handleResponse($operation, ApiRequestInterface $request, EntityInterface $entity = NULL);
+
+  /**
+   * Gets an array of labels for each operation keyed by the operation ID.
+   *
+   * @return string[]
+   */
+  public function getOperationDefinitions();
+
+  /**
+   * Validates that this plugin can perform the requested operation, optionally
+   * against the supplied entity.
+   *
+   * @param $operation
+   *   The name of the operation.
+   * @param EntityInterface|null $entity
+   *
+   *
+   * @return bool
+   *   TRUE if the operation should proceed, FALSE otherwise.
+   */
+  public function validateOperation($operation, EntityInterface $entity = NULL);
+
+  /**
+   * Retrieve the remote ID for a given entity if possible.
+   *
+   * @param \Drupal\Core\Entity\EntityInterface $entity
+   *   The entity whose data to retrieve the remote ID for.
+   *
+   * @return string|NULL
+   *   The remote ID, or NULL if there is no remote ID or it doesn't exist yet.
+   */
+  public function getRemoteId(EntityInterface $entity);
+
 }

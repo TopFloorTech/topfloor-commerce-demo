@@ -2,7 +2,7 @@
 
 namespace Drupal\workwise\WorkWise\ApiRequest;
 
-class ApiRequestBase implements ApiRequestInterface {
+abstract class ApiRequestBase implements ApiRequestInterface {
 
   protected $connectionInfo;
 
@@ -63,7 +63,7 @@ class ApiRequestBase implements ApiRequestInterface {
     return (int) $this->response['Status']['ErrorCode'];
   }
 
-  public function getResponseMessage() {
+  public function getErrorMessage() {
     if (!isset($this->response['Status']['Message'])) {
       return NULL;
     }
@@ -78,4 +78,5 @@ class ApiRequestBase implements ApiRequestInterface {
 
     return $this->response['Records'];
   }
+
 }

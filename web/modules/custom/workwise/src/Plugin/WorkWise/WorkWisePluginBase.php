@@ -3,12 +3,16 @@
 namespace Drupal\workwise\Plugin\WorkWise;
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContextAwarePluginBase;
 use Drupal\workwise\WorkWise\ApiRequest\ApiRequestInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class WorkWisePluginBase extends ContextAwarePluginBase implements WorkWisePluginInterface {
+
+  protected $configurationFormStateKey = 'workwise_plugin';
+  protected $remoteIdField = 'field_workwise_id';
 
   /**
    * {@inheritdoc}
@@ -96,6 +100,13 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
   /**
    * {@inheritdoc}
    */
+  public function getConfigurationFormStateKey() {
+    return $this->configurationFormStateKey;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state)
   {
     return [];
@@ -135,15 +146,53 @@ abstract class WorkWisePluginBase extends ContextAwarePluginBase implements Work
     return $methods[$operation];
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  abstract public function prepareRequestData(EntityInterface $entity, $operation = 'create');
+  protected function getValue($key, $values) {
+    $defaults = $this->defaultConfiguration();
+
+    $value = '';
+
+    if (isset($values[$key])) {
+      $value = $values[$key];
+    } elseif (isset($defaults[$key])) {
+      $value = $defaults[$key];
+    }
+
+    return $value;
+  }
 
   /**
    * {@inheritdoc}
    */
-  public function handleResponse(ApiRequestInterface $request, $operation = 'create') {
+  abstract public function getOperationDefinitions();
+
+  /**
+   * {@inheritdoc}
+   */
+  abstract public function prepareRequestData($operation, EntityInterface $entity = NULL);
+
+  /**
+   * {@inheritdoc}
+   */
+  abstract public function handleResponse($operation, ApiRequestInterface $request, EntityInterface $entity = NULL);
+
+  /**
+   * {@inheritdoc}
+   */
+  abstract public function validateOperation($operation, EntityInterface $entity = NULL);
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getRemoteId(EntityInterface $entity) {
+    $remoteId = NULL;
+
+    if ($entity instanceof FieldableEntityInterface
+      && $entity->hasField($this->remoteIdField)
+      && !$entity->get($this->remoteIdField)->isEmpty()) {
+      $remoteId = $entity->get($this->remoteIdField)->value;
+    }
+
+    return $remoteId;
   }
 
 }
