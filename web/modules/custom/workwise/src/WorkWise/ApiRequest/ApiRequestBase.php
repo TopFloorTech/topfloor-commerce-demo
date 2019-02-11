@@ -44,9 +44,13 @@ abstract class ApiRequestBase implements ApiRequestInterface {
     return $request;
   }
 
+  public function getUrl() {
+    return $this->connectionInfo['url'] . '/api/' . $this->getApiMethod();
+  }
+
   public function sendRequest() {
     if (!$this->isDryRun()) {
-      $result = \Drupal::httpClient()->post($this->connectionInfo['url'], [
+      $result = \Drupal::httpClient()->post($this->getUrl(), [
         'json' => $this->prepareRequest(),
       ]);
 

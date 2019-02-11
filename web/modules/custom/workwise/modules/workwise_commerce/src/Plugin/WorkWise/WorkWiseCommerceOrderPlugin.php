@@ -72,7 +72,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
    */
   public function getApiMethods() {
     return [
-      'create' => 'CreateCustomerOrder',
+      'create' => 'ECommerce/CustomerOrder/CreateCustomerOrder',
       'read' => NULL,
       'update' => NULL,
       'delete' => NULL,
