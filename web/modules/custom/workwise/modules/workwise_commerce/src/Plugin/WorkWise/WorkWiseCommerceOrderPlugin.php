@@ -99,6 +99,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
         'ID_USER_ORD' => $configuration['order_taken_by_id'],
         'AMT_FRT' => $this->getShippingPrice($entity),
         'TAX_SLS' => $this->getSalesTaxPrice($entity),
+        'CODE_STAT_ORDER' => 'W',
       ];
 
       $data['Lines'] = $this->getWorkWiseLineItems($entity);
@@ -196,7 +197,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
   }
 
   private function getOrderItemPrice(OrderItemInterface $orderItem) {
-    $price = $orderItem->getTotalPrice();
+    $price = $orderItem->getUnitPrice();
     return $this->formatPrice($price);
   }
 
