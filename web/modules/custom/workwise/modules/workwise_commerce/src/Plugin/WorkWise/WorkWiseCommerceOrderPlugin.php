@@ -150,9 +150,11 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
   private function getWorkWiseLineItems(OrderInterface $order) {
     $lines = [];
 
+    $next = 0;
     foreach ($order->getItems() as $index => $orderItem) {
+      $next += 5;
       $lines[] = [
-        'SEQ_LINE_ORD' => $index + 1,
+        'SEQ_LINE_ORD' => $next,
         'ID_ITEM' => $this->getProductRemoteId($orderItem),
         'QTY_OPEN' => $this->getOrderItemQuantity($orderItem),
         'PRICE_SELL_NET_VP_FC' => $this->getOrderItemPrice($orderItem),
