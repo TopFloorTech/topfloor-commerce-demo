@@ -5,9 +5,9 @@ features:
   favicon: 1
 logo:
   use_default: 0
-  path: themes/goodway/images/logo.png
+  path: themes/custom/goodway/images/logo.png
 favicon:
-  use_default: 0
+  use_default: 1
   path: themes/goodway/favicon.ico
 _core:
   default_config_hash: sPAOPlc2IYr-adm_8i75dUSb5OyfjEaqXQUP1JMxpMg
