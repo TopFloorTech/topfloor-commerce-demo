@@ -1,0 +1,47 @@
+@mixin IconInputButton(
+  $icon: "\f05d",
+  $first: false,
+  $last: false
+) {
+  @include PrimaryActionButton($padding: 0, $icon: $icon, $prependIcon: true);
+  position: relative;
+  display: block;
+  margin-left: $spacing-fixed/3;
+  margin-right: $spacing-fixed/3;
+  text-align: left;
+  margin-bottom: $spacing-fixed/2;
+
+  @include media($screen-mediumUp) {
+    display: inline-block;
+  }
+
+  @include media($screen-xLargeUp) {
+    @if $first {
+      margin-left: 0;
+    }
+
+    @if $last {
+      margin-right: 0;
+    }
+  }
+
+  &:before {
+    margin-right: .25em;
+    line-height: 2em;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0.4em;
+    left: 1.5em;
+    pointer-events: none;
+  }
+
+  input.CheckoutButton-input {
+    background-color: transparent;
+    transition: none;
+    color: inherit;
+    border-radius: 0;
+    padding-left: 3em;
+  }
+
+}

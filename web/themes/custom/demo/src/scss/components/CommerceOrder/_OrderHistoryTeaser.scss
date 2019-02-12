@@ -1,0 +1,18 @@
+.CommerceOrder.CommerceOrder--historyTeaser {
+  .CommerceOrder-orderNumber {
+    @include span-columns(12 of 12);
+
+    @include media($screen-largeUp) {
+      @include span-columns(6 of 12);
+    }
+  }
+
+  .CommerceOrder-content {
+    @include span-columns(12 of 12);
+
+    @include media($screen-largeUp) {
+      @include span-columns(6 of 12);
+    }
+  }
+}
+

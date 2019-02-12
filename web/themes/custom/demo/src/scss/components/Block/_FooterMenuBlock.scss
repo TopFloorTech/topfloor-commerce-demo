@@ -1,0 +1,8 @@
+// Component variables
+.Block--menu-footer {
+  @include span-columns(12 of 12);
+
+  @include media($screen-largeUp) {
+    @include span-columns(6 of 12);
+  }
+}

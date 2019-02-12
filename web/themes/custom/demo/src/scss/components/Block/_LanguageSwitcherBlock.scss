@@ -1,0 +1,16 @@
+// Component variables
+$LanguageSwitcherBlock-columns: 1 !default;
+
+.Block.Block--language {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  z-index: 1; // TODO: put in z-index map?
+
+  .contextual .trigger {
+    left: 20px;
+  }
+  .Block-content {
+    display: flex;
+  }
+}

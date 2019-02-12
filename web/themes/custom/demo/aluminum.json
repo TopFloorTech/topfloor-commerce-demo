@@ -1,0 +1,39 @@
+{
+  "assets": {
+    "js": [
+      "node_modules/jquery-match-height/jquery.matchHeight-min.js",
+      "node_modules/aluminum-components/assets/js/drupal/AccordionTabs.js",
+      "node_modules/aluminum-components/assets/js/drupal/MatchHeights.js",
+      "node_modules/aluminum-components/assets/js/drupal/ReadMoreContainer.js"
+    ]
+  },
+  "browserSync": {
+    "enabled": true,
+    "hostname": "topfloorcommercedemo.lndo.site"
+  },
+  "drush": {
+    "enabled": false,
+    "watchDelay": 5000
+  },
+  "icons": {
+    "enabled": false
+  },
+  "fonts": {
+    "enabled": false
+  },
+  "fontAwesome": {
+    "enabled": true
+  },
+  "kbox": {
+    "enabled": false
+  },
+  "sass": {
+    "enabled": true
+  },
+  "scripts": {
+    "enabled": true
+  },
+  "twig": {
+    "enabled": true
+  }
+}

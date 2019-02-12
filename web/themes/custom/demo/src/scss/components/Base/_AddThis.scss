@@ -1,0 +1,47 @@
+.AddThis {
+    text-align: right;
+    float:left;
+    .at-svc-email,.at-svc-print {
+        display:none!important;
+    }
+
+    .at-share-btn {
+        transition: color 150ms ease!important;
+    }
+
+  & > * > * > * > * {
+      background-color: $blue!important;
+      &:hover {
+          background-color: $yellow!important;
+          color:$darkGray!important;
+          transition: color 150ms ease!important;
+          &.at-svc-compact:before {
+              background-color: $yellow!important;
+              color:$darkGray!important;
+              transition: color 150ms ease!important;
+          }
+      }
+    &.at-svc-compact {
+      position:relative;
+    }
+    &.at-svc-compact:before {
+      background-color:$blue;
+      display:flex;
+      align-items:center;
+      position:absolute;
+      top: 50%;
+      left:50%;
+      height:100%;
+      -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      font-family:"fontawesome";
+      content:"\f064";
+      color:white;
+      font-size:1.2rem;
+      &:hover {
+
+      }
+    }
+  }
+}

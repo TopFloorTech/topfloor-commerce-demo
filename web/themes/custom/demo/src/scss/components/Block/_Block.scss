@@ -1,0 +1,74 @@
+$lightGray: #eee !default;
+$blue: blue !default;
+$fontSize-h2: 1.6em !default;
+
+// Component variables
+$Block-iconBackground: $lightGray !default;
+$Block-iconColor: $blue !default;
+$Block-titleFontSize--footer: $fontSize-h2 !default;
+
+@include media($screen-mediumDown) {
+  .Block--surveyquestionoftheweek,
+  .Block--scalebreakfiretubeboilercalculator {
+    .Block-content {
+      display:flex;
+      flex-direction:column;
+      .Block-floatContainer {
+        margin-top:0;
+      }
+      .Field--name-body {
+        order:-1;
+      }
+    }
+  }
+}
+
+.Block {
+  position: relative;
+
+  .Block-floatContainer {
+    margin-top: -0.75em;
+    text-align: center;
+
+    @include media($screen-mediumUp) {
+      text-align: left;
+    }
+
+    .fa-stack {
+      font-size: 5em;
+      color: $Block-iconBackground;
+
+      .fa-stack-1x {
+        color: $Block-iconColor;
+      }
+    }
+  }
+
+  .Block-floatContainer--right {
+    @include media($screen-mediumUp) {
+      float: right;
+      margin-left: 1.5em;
+    }
+  }
+
+  .Block-floatContainer--left {
+    @include media($screen-mediumUp) {
+      float: left;
+      margin-right: 1.5em;
+    }
+  }
+}
+
+.Block--region-footer-top {
+  .Block-title {
+    font-size: $Block-titleFontSize--footer;
+  }
+}
+
+.Block--region-content {
+  @include OuterPadding();
+
+  .sidebar-second & {
+    @include OuterPadding($sidebar: true);
+  }
+}

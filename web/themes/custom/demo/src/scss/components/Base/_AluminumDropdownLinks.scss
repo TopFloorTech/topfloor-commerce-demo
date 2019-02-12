@@ -1,0 +1,64 @@
+.AluminumDropdownLinks {
+  font-size: 0.9em;
+  height: 100%;
+
+  .AluminumDropdownLinks-button {
+    color: white;
+    padding: 0 $spacing-fixed/2;
+    line-height: 40px;
+    display: block;
+
+    &:after {
+      @include ButtonIcon($icon: '\f078');
+    }
+
+    &.is-active,
+    &:hover {
+      background-color: $yellow;
+      color: $darkGray;
+    }
+  }
+
+  .AluminumDropdownLinks-list {
+    position: absolute;
+    background-color: white;
+    border: 5px solid $blue;
+    border-top: none;
+    top: 40px;
+    width: 10em;
+    right: -5px;
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .AluminumDropdownLinks-item {
+    border-bottom: 1px solid $lightGray;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .AluminumDropdownLinks-link {
+    display: block;
+    padding: $spacing-base/3;
+
+    &:hover {
+      background-color: $yellow;
+      color: $darkGray;
+    }
+  }
+
+  .AluminumDropdownLinks-icon {
+    float: right;
+    margin-top: 0.25em;
+  }
+}

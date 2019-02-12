@@ -1,0 +1,22 @@
+// Base variables
+$lightGray: #eee !default;
+
+// Component variables
+$RegulationsAndRequirementsBlock-titleBackground: $lightGray !default;
+$RegulationsAndRequirementsBlock-margin: 2em 0 !default;
+
+.Block--regulationsrequirementsdocumentation {
+  margin: $RegulationsAndRequirementsBlock-margin;
+
+  .Block-title {
+    background: $RegulationsAndRequirementsBlock-titleBackground;
+    font-size: 1.4em;
+    padding: 0.5em 1rem;
+  }
+
+  .Block-content {
+    margin-top: 1.5em;
+    padding: 0 1rem;
+    @include clearfix;
+  }
+}

@@ -1,0 +1,3 @@
+.PageSection--afterContent {
+  @include OuterPadding($sidebar: true);
+}

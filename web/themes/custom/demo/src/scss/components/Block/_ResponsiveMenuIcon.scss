@@ -1,0 +1,30 @@
+$blue: blue !default;
+$yellow: yellow !default;
+$mediumGray: #555 !default;
+
+.Block--menu-icon {
+  color: $blue;
+  font-size: 2em;
+  padding: 0 .75rem;
+  cursor: pointer;
+
+  &.is-open {
+    background-color: $blue;
+    color: white;
+  }
+
+  &.is-active,
+  &:hover {
+    background-color: $yellow;
+    color: $mediumGray;
+
+    .is-touch & {
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+
+  .AluminumIcon {
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,16 @@
+// Base variables
+$darkGray: #38383a !default;
+
+// Component variables
+$FooterTopSection-background: $darkGray !default;
+$FooterTopSection-padding: 1.5em 0 1em 0 !default;
+
+.PageSection--footerTop {
+  background: $FooterTopSection-background;
+  padding: $FooterTopSection-padding;
+
+  .Block {
+    @include OuterPadding();
+    margin-bottom: $spacing-base/2;
+  }
+}

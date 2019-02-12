@@ -1,0 +1,27 @@
+.Heading {
+  display: block;
+  font-weight: bold;
+  font-size: $fontSize-h1;
+}
+
+.Heading--buyingGuideTitle {
+  font-size: $fontSize-h1;
+  margin-bottom: 12px;
+}
+
+.Heading--buyingGuideHeadline {
+  font-size: $fontSize-h2;
+  font-weight: 500;
+}
+
+.Heading--slab {
+  font-size: $fontSize-h1;
+  padding: 10px;
+  color: $darkGray;
+  background-color: $lightGray;
+}
+
+.Heading--callout {
+  color: $blue;
+  font-size: $fontSize-h2;
+}

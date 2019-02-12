@@ -1,0 +1,24 @@
+$fontWeight-thin: 300 !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+$borderRadius-button: 5px !default;
+
+.CareerTeaser {
+  margin: 0 0 1em 0;
+  @include clearfix;
+
+  .Node-metaContainer {
+    font-size: 0.9em;
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+  }
+
+  .CareerTeaser-viewLink {
+    @include PrimaryActionButton($appendIcon: true);
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 0.5em;
+  }
+}

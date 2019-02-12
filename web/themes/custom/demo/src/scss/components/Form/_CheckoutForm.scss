@@ -1,0 +1,265 @@
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+$fontWeight-base: 500 !default;
+$fontWeight-bold: 600 !default;
+
+.layout-checkout-form {
+  margin-bottom: $spacing-base;
+  @include OuterPadding();
+
+  fieldset {
+    background: transparent;
+    border: none;
+    text-transform: capitalize;
+  }
+
+  .layout-region-checkout-footer {
+    .form-actions {
+      > a {
+        float: left;
+      }
+    }
+  }
+
+  #shipping-information-wrapper {
+
+  }
+
+  .layout-region-checkout-main > div > fieldset,
+  .layout-region-checkout-main > fieldset,
+  #shipping-information-wrapper > fieldset {
+    padding: 0;
+
+    > legend > span {
+      font-size: 1.3em;
+      font-weight: $fontWeight-bold;
+    }
+
+    fieldset {
+      margin-top: 0;
+    }
+
+    .FormItem--type-select {
+      .FormElement-label {
+        display: none;
+      }
+    }
+  }
+
+  .layout-region-checkout-secondary {
+    position: relative;
+  }
+
+  .layout-region-checkout-footer {
+    .form-actions {
+      text-align: center;
+    }
+  }
+
+  input[data-drupal-selector="edit-shipping-information-recalculate-shipping"] {
+    margin: $spacing-base/3 0 $spacing-base/2 0;
+  }
+
+  .fieldgroup[data-drupal-selector="edit-payment-information-payment-method"],
+  .field--name-shipping-method .fieldgroup {
+    background-color: $lightGray;
+    position: relative;
+
+    legend {
+      width: 100%;
+      background: #555;
+      color: white;
+      padding: .5em 1em;
+      font-weight: normal
+    }
+
+    .FormItem {
+      border-top: 1px solid #c3c3c3;
+      padding: 1em 1em;
+      margin-bottom: 0;
+
+      &:hover {
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-contact-information"] {
+    legend {
+      @include CheckoutLegend();
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-payment-information"] {
+    legend {
+      @include CheckoutLegend();
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-order-comments"] {
+    legend {
+      @include CheckoutLegend();
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-shipping-information"] {
+    margin-top: 0;
+
+    legend {
+      @include CheckoutLegend();
+    }
+  }
+
+  #edit-contact-information {
+    margin-bottom: $spacing-base;
+  }
+
+  #shipping-information-wrapper {
+    margin-bottom: $spacing-base;
+  }
+
+  #payment-information-wrapper {
+    margin-bottom: $spacing-base;
+  }
+
+  div[data-drupal-selector="edit-shipping-information-shipping-profile"] {
+    margin-bottom: $spacing-base;
+
+    .form-submit {
+      margin-left: 0;
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-shipping-information-shipments-0-shipping-method-0"] {
+    margin: 0;
+  }
+
+  .order-total {
+    background: $lightGray;
+    margin-bottom: $spacing-base;
+    padding: $spacing-fixed/2;
+
+    .order-total__label {
+      font-size: 1em;
+      font-weight: $fontWeight-bold;
+      padding: 0 0 0.25em;
+    }
+
+    .OrderTotalSummary {
+      font-size: 0.9em;
+
+      .order-total-line {
+        padding: 0 0 0.25em;
+
+        &:last-child {
+          padding: 0;
+        }
+      }
+
+      .order-total-line-label {
+        font-weight: $fontWeight-base;
+        display: inline;
+        width: auto;
+
+        &:after {
+          content: ":";
+          margin-left: -0.25em;
+          margin-right: 0.5em;
+        }
+      }
+
+      .order-total-line-value {
+        font-weight: $fontWeight-bold;
+        display: inline;
+        width: auto;
+      }
+    }
+  }
+
+  .payment-message {
+    margin-bottom: $spacing-base;
+    font-size: 0.8em;
+  }
+
+  // Review page
+  fieldset[data-drupal-selector="edit-review-contact-information"] {
+    margin-top: 0;
+
+    legend {
+      @include CheckoutLegend();
+    }
+
+    .fieldset-wrapper {
+      text-transform: none;
+    }
+  }
+
+  fieldset[data-drupal-selector="edit-review-payment-information"],
+  fieldset[data-drupal-selector="edit-review-shipping-information"] {
+    legend {
+      @include CheckoutLegend();
+
+      a {
+        float: right;
+        @include EditButton();
+        font-size: 0.75em;
+        margin-top: 0.25em;
+      }
+    }
+
+    .fieldset-wrapper {
+      text-transform: none;
+    }
+  }
+
+  .form-wrapper__login-option {
+    width: 100%;
+    text-transform: none;
+
+    @include media($screen-largeUp) {
+      width: 50%;
+    }
+
+    > legend {
+      margin-bottom: 0;
+    }
+
+    .fieldset-legend {
+      font-size: $fontSize-h1;
+      font-weight: $fontWeight-bold;
+    }
+
+    [data-drupal-selector='edit-login-guest-continue'] {
+      margin-top: 4.5em;
+    }
+
+    .FormItem--login-returning-customer-password {
+      margin-bottom: 2em;
+    }
+
+    &.form-wrapper__guest-checkout {
+      position: relative;
+      padding-left: $spacing-base;
+
+      @include media($screen-largeUp) {
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          display: block;
+          border: none;
+          color: white;
+          width: 1px;
+          background: black;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(100, 100, 100, 0.75), rgba(0, 0, 0, 0));
+        }
+      }
+    }
+  }
+}
+
+.commerce-checkout-flow-multistep-quote .OrderTotalSummary .order-total-line {
+  display: none;
+}

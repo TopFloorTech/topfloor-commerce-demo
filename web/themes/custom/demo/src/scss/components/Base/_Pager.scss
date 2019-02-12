@@ -1,0 +1,72 @@
+$mediumGray: #555 !default;
+$lightGray: #eee !default;
+$darkGray: #555 !default;
+$blue: blue !default;
+
+.pager {
+  margin-bottom: $spacing-base;
+  border: 1px solid $mediumGray;
+  border-left: none;
+  border-right: none;
+  position: relative;
+  display: flex;
+
+  .pager__summary {
+    padding: 0.3em $spacing-fixed/2;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .pager__items {
+    text-align: right;
+
+    body & {
+      // Needed more specificity, but this should be refactored
+      margin-left: 0;
+    }
+  }
+
+  .pager__item {
+    display: block;
+    padding: 0;
+    float: left;
+
+    a {
+      display: block;
+      padding: .3em .8em;
+      color: $mediumGray;
+
+      &:hover {
+        background: $lightGray;
+        color: $darkGray;
+      }
+    }
+
+    &.is-active {
+      a {
+        background: $blue;
+        color: white;
+      }
+    }
+  }
+
+  .pager__item--ellipsis {
+    padding: 0.3em 0.8em;
+  }
+
+  .pager__item--first,
+  .pager__item--previous,
+  .pager__item--next,
+  .pager__item--last {
+    display: none;
+  }
+
+  @include media($screen-largeUp) {
+    .pager__item--first,
+    .pager__item--previous,
+    .pager__item--next,
+    .pager__item--last {
+      display: inline-block;
+    }
+  }
+}

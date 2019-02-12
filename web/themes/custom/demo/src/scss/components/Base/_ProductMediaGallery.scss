@@ -1,0 +1,96 @@
+// Base variables
+$lightGray: #555 !default;
+$red: red !default;
+$color-border: $lightGray !default;
+$borderWidth-base: 1px !default;
+$borderStyle-base: solid !default;
+$boxShadow-base: 0 0 3px $lightGray !default;
+
+// Component variables
+$ProductMediaGallery-border: $borderWidth-base $borderStyle-base $color-border !default;
+$ProductMediaGallery-shadow: $boxShadow-base !default;
+$ProductMediaGallery-columns: 4 of 8 !default;
+
+.ProductMediaGallery {
+  @include span-columns(12);
+  margin-bottom: $spacing-fixed/2;
+
+  @include media($screen-largeUp) {
+    @include span-columns($ProductMediaGallery-columns);
+  }
+
+  .ProductMediaGallery-largeImage {
+    border: $ProductMediaGallery-border;
+    box-shadow: $ProductMediaGallery-shadow;
+    margin-bottom: 0;
+    line-height: 0;
+    padding: 0.25em;
+    text-align: center;
+
+    img {
+      height: auto;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    a {
+      // @todo: Causes weird issue with widths
+      //display: block;
+      //width: 100%;
+    }
+  }
+
+  .ProductMediaGallery-thumbnails {
+    margin-top: 1em;
+    margin-bottom: 10px;
+  }
+
+  .ProductMediaGallery-thumbnail {
+    display: inline-block;
+    margin-right: 0.5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      height: auto;
+      display: block;
+      border: $ProductMediaGallery-border;
+      box-shadow: $ProductMediaGallery-border;
+    }
+
+    &.ProductMediaGallery-thumbnail--video {
+      a {
+        position: relative;
+        display: block;
+
+        img {
+          opacity: 0.3;
+        }
+
+        &:after {
+          @include ButtonIcon($icon: '\f16a');
+          color: $red;
+          font-size: 2em;
+          position: absolute;
+          opacity: 1;
+          line-height: 1em;
+          width: 1em;
+          height: 1em;
+          margin: auto;
+          padding: 0;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+
+        &:hover:after {
+          color: $yellow;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

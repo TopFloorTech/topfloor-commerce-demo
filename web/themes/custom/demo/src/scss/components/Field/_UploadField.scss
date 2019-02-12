@@ -1,0 +1,25 @@
+$fontWeight-thin: 300 !default;
+
+.FormItem--type-managed-file {
+  margin-top: 1em;
+
+  .description {
+    font-size: 0.8em;
+    font-weight: $fontWeight-thin;
+  }
+
+  .form-submit[type=submit] {
+    @include ActionButton(
+      $padding: 0,
+      $borderRadius: 0,
+      $mainColor: white,
+      $textColor: $blue,
+      $mainColor--hover: white,
+      $textColor--hover: $blue
+    );
+
+    &:hover {
+      border-bottom: 1px solid $blue;
+    }
+  }
+}

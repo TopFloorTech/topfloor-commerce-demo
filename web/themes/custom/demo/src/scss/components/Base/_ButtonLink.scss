@@ -1,0 +1,11 @@
+$fontWeight-bold: 600 !default;
+
+.ButtonLink {
+  display: inline-block;
+
+  a {
+    @include PrimaryActionButton($appendIcon: true);
+    font-size: 1em;
+    font-weight: $fontWeight-bold;
+  }
+}

@@ -1,0 +1,17 @@
+@mixin JumpMenuBlock() {
+  .Block-title {
+    margin-bottom: $spacing-fixed / 2;
+    font-size: 1.3em;
+  }
+
+  .Block-content {
+    .view-header {
+      font-size: 0.9em;
+      margin-bottom: 1rem;
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

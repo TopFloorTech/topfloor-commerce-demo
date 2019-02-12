@@ -1,0 +1,24 @@
+.Site .ui-dialog.account-modal {
+  .ui-dialog-title {
+
+  }
+
+  &.account-modal--login,
+  &.account-modal--password {
+    .form-actions .form-submit .ui-button-text:before {
+      content: '\f090';
+    }
+  }
+
+  &.account-modal--profile_add,
+  &.account-modal--profile_edit,
+  &.account-modal--register {
+    .form-actions .form-submit .ui-button-text:before {
+      content: '\f0c7';
+    }
+  }
+}
+
+.Region--content .account-modal-footer {
+  display: none;
+}

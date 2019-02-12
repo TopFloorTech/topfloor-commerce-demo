@@ -1,0 +1,7 @@
+.Block--demo-breadcrumbs {
+  display: none;
+
+  @include media($screen-mediumUp) {
+    display: block;
+  }
+}

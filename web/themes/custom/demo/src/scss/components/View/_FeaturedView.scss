@@ -1,0 +1,66 @@
+// Component variables
+$FeaturedView-itemMarginBottom: 1.5rem !default;
+$FeaturedView-columns: 12 !default;
+$FeaturedView-rowColumns: 3 of 12 !default;
+
+.FeaturedView {
+  @include span-columns($FeaturedView-columns);
+  @include clearfix;
+
+  .FeaturedView-row {
+    @include span-columns($FeaturedView-rowColumns);
+    margin-bottom: $FeaturedView-itemMarginBottom;
+  }
+}
+
+.FeaturedView--industries {
+  margin-bottom: -0.5rem;
+  .FeaturedView-row {
+    margin-bottom: $FeaturedView-itemMarginBottom / 2;
+
+    &:nth-child(-n+2) {
+      @include span-columns(12);
+
+      @include media($screen-mediumUp) {
+        @include span-columns(6 of 12);
+        @include omega(2n);
+      }
+
+      .IndustryFeaturedTeaser-image .Field-item img {
+        max-height: 130px;
+
+        @include media($screen-largeUp) {
+          width: 100%;
+          height: auto;
+          max-height: 180px;
+        }
+      }
+    }
+
+    &:nth-child(n+3) {
+      @include span-columns(12);
+
+      @include media($screen-mediumOnly) {
+        @include span-columns(6 of 12);
+        @include omega(2n);
+      }
+
+      @include media($screen-largeUp) {
+        @include span-columns(4 of 12);
+        @include omega(5n);
+      }
+
+      .IndustryFeaturedTeaser-image .Field-item img {
+        max-height: 130px;
+
+        @include media($screen-largeUp) {
+          max-height: 230px;
+        }
+      }
+    }
+
+    @include media($screen-largeUp) {
+      margin-bottom: $FeaturedView-itemMarginBottom;
+    }
+  }
+}

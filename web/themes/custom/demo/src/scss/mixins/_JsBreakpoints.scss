@@ -1,0 +1,24 @@
+@mixin JsBreakpoints() {
+  &:before {
+    content: "small";
+    display: none; /* Prevent from displaying. */
+  }
+
+  @media (min-width: $screen-medium) {
+    &:before {
+      content: "medium";
+    }
+  }
+
+  @media (min-width: $screen-large) {
+    &:before {
+      content: "large";
+    }
+  }
+
+  @media (min-width: $screen-xLarge) {
+    &:before {
+      content: "xLarge";
+    }
+  }
+}

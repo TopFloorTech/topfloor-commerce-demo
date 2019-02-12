@@ -1,0 +1,28 @@
+.paragraph.paragraph--type--split-content {
+  @include span-columns(12 of 12);
+  margin-bottom: 0;
+
+  .Field--name-field-content-first {
+    @include span-columns(12 of 12);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(6 of 12);
+    }
+  }
+
+  .Field--name-field-content-second {
+    @include span-columns(12 of 12);
+    font-size: 0.9em;
+
+    @include media($screen-mediumUp) {
+      @include span-columns(6 of 12);
+      @include omega();
+    }
+  }
+
+  .Field--name-field-first-heading,
+  .Field--name-field-second-heading {
+    font-size: $fontSize-h3;
+    font-weight: $fontWeight-bold;
+  }
+}

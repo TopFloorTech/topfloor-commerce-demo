@@ -1,0 +1,20 @@
+$blue: blue !default;
+$mediumGray: #555 !default;
+
+.Block.Block--phone-icon {
+  display: block;
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  margin-top: 0.6rem;
+
+  @include media($screen-largeUp) {
+    display: none;
+  }
+
+  .Block-content {
+    a {
+      @include OuterPadding($reset: true, $breakpoint: false);
+    }
+  }
+}

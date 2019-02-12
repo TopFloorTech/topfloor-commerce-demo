@@ -1,0 +1,75 @@
+// Base variables
+$lightGray: #eee !default;
+
+// Component variables
+$RelatedView-titleBackground: $lightGray !default;
+$RelatedView-margin: 0 0 2em !default;
+
+.Block--views-blockrelated-products-block-1,
+.Block--views-blockrelated-case-studies-block-1,
+.Block--views-blockrelated-articles-block-1,
+.Block--related-faq-industry-block,
+.Block--views-blockrecent-case-studies-recent-case-studies-block,
+.Block--helpful-tips-tricks-news-block,
+.Block--core-industries-served-block,
+.Block--related-testimonials-block,
+.Block--related-products-case-study-block,
+.Block--related-industries-case-study-block {
+  margin: $RelatedView-margin;
+  @include OuterPadding($amount: 0);
+
+  //padding-top: 150px;
+  //margin-top: -150px;
+  pointer-events: none;
+
+  * {
+    pointer-events: auto;
+  }
+
+  .Block-title {
+    background: $RelatedView-titleBackground;
+    font-size: 1.4em;
+    padding: 0.5em 1rem;
+  }
+
+  .Block-content {
+    margin-top: 1.5em;
+    @include clearfix;
+  }
+}
+
+.Block.Block--featured-products-homepage-block,
+.Block.Block--featured-categories-homepage-block {
+  .Block-title {
+    text-align: center;
+    padding-top: 0.5rem;
+  }
+}
+
+.Block.Block--related-products-case-study-block,
+.Block--related-industries-case-study-block {
+  .Block-title {
+    background: $mediumGray;
+    color: #fff;
+  }
+
+  .ViewMoreLink-link {
+    @include media($screen-largeUp) {
+      color: #fff;
+    }
+  }
+}
+
+.Block.Block--related-tips-tricks-block,
+.Block.Block--views-block__related-products-related-products-product-block {
+  @include OuterPadding();
+
+  .Block-title {
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+}
+
+.Block.Block--related-testimonials-block {
+  clear: both;
+}

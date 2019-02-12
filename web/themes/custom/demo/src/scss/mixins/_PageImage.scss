@@ -1,0 +1,24 @@
+$lightGray: #eee !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+@mixin PageImage(
+  $columns: 12 of 12,
+  $boxShadow: $boxShadow-base,
+  $border: 1px solid $lightGray
+) {
+  @include span-columns($columns);
+  margin-bottom: $gutter;
+  margin-right: 0;
+  clear: both;
+
+  .Field-item {
+    text-align: center;
+  }
+
+  img {
+    height: auto;
+    border: $border;
+    box-shadow: $boxShadow;
+  }
+}

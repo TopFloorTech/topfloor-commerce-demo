@@ -1,0 +1,17 @@
+.Block--searchfilters {
+  @include span-columns(12 of 12);
+  border: none;
+
+  .Block-title {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  .Block-content {
+    display: inline-block;
+  }
+
+  .chosen-container .chosen-single {
+    width: 200px;
+  }
+}

@@ -1,0 +1,11 @@
+body {
+  @include JsBreakpoints;
+
+  &:before {
+    display: none;
+  }
+
+  &.offside-js--is-open {
+    position: relative;
+  }
+}

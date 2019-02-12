@@ -1,0 +1,69 @@
+$lightGray: #eee !default;
+$BuyingGuideSidebar-background: $lightGray !default;
+
+.Block--buying-guide-jump-menu-block {
+  @include JumpMenuBlock();
+}
+
+.Block--buying-guide-jump-menu-top {
+  @include JumpMenuBlock();
+  z-index: 2;
+}
+
+.BuyingGuideSidebar,
+.Block.Block--buying-guide-jump-menu-top {
+  margin-bottom: 1rem;
+  background: $lightGray;
+  padding: 1rem;
+  display: none;
+  z-index: 2;
+
+  @include media($screen-mediumUp) {
+    @include span-columns(6 of 12);
+    @include omega(1);
+    display: block;
+    float: right;
+    margin: 0 $spacing-fixed/3 1.5rem 1rem;
+  }
+
+  @include media($screen-largeUp) {
+    @include span-columns(4 of 12);
+    float: right;
+    margin: 0 $spacing-fixed/3 1.5rem 1rem;
+  }
+
+  @include media($screen-xLargeUp) {
+    margin-right: 0;
+  }
+}
+
+.Block--buying-guide-jump-menu-block-lower {
+  @include JumpMenuBlock();
+  padding: $spacing-fixed/2 $spacing-fixed;
+  background: $lightGray;
+  margin-bottom: $gutter;
+
+  @include media($screen-mediumUp) {
+    display: none;
+  }
+
+  .Site--frontPage & {
+    margin-top: 0;
+    margin-bottom: 0;
+    background: $mediumGray;
+
+    .Block-title,
+    .Block-title a {
+      color: white;
+    }
+
+    .view-header {
+      color: white;
+    }
+  }
+}
+
+.Block--buying-guide-jump-menu-block-sidebar,
+.Block--buying-guide-jump-menu-block-landing-page {
+  @include JumpMenuBlock();
+}

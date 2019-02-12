@@ -1,0 +1,68 @@
+global-styling:
+  version: 1.0.1
+  css:
+    base:
+      js/superfish/dist/css/superfish.css: {}
+      js/SlickNav/dist/slicknav.min.css: {}
+      js/offside/dist/offside.css: {}
+      /libraries/swipebox/src/css/swipebox.min.css: {}
+      js/slick/slick/slick.css: {}
+      js/slick/slick/slick-theme.css: {}
+      js/tooltipster/dist/css/tooltipster.bundle.min.css: {}
+      js/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css: {}
+      css/demo.css: {}
+global-scripts:
+  version: 1.0.13
+  js:
+    js/breakpoints/breakpoints.js: {}
+    js/jquery.matchHeight-min.js: {}
+    /libraries/imagesloaded/imagesloaded.pkgd.js: {}
+    js/superfish/dist/js/superfish.min.js: {}
+    js/superfish/dist/js/supersubs.js: {}
+    js/superfish/dist/js/hoverIntent.js: {}
+    js/SlickNav/dist/jquery.slicknav.min.js: {}
+    js/offside/dist/offside.min.js: {}
+    /libraries/swipebox/src/js/jquery.swipebox.js: {}
+    js/slick/slick/slick.min.js: {}
+    js/tooltipster/dist/js/tooltipster.bundle.min.js: {}
+    js/waypoints/lib/jquery.waypoints.min.js: {}
+    js/waypoints/lib/shortcuts/sticky.min.js: {}
+    js/breakpoints.js: {}
+    js/AccordionTabs.js: {}
+    js/ReadMoreContainer.js: {}
+    js/touch-hover.js: {}
+    js/equal-heights.js: {}
+    js/faq-accordion.js: {}
+    js/fixed-header.js: {}
+    js/filter-results-button.js: {}
+    js/homepage-slideshow.js: {}
+    js/language-switcher.js: {}
+    js/listing-hover-class.js: {}
+    js/menus.js: {}
+    js/product-media-gallery.js: {}
+    js/related-view-sliders.js: {}
+    js/facets.js: {}
+    js/dropdown-links.js: {}
+    js/job-application-form.js: {}
+    js/scroll-to-top.js: {}
+    js/tooltips.js: {}
+    js/auto-submit-filters.js: {}
+    js/external-links.js: {}
+    js/sticky-cart.js: {}
+    js/hide-logout-menu-item.js: {}
+    js/quick-view-buttons.js: {}
+    js/product-finder.js: {}
+  dependencies:
+    - core/drupal.ajax
+    - core/jquery.ui.dialog
+    - chosen_lib/chosen
+video-gallery:
+  version: 1.0.0
+  js:
+    js/video-gallery.js: {}
+  css:
+    theme:
+      css/libraries/VideoGallery.css: {}
+  dependencies:
+    - core/jquery
+

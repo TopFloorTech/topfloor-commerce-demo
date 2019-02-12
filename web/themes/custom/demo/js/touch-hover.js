@@ -1,0 +1,2 @@
+!function(t){"use strict";function o(){clearTimeout(u),c=!0,"is-touch"!==n&&(n="is-touch",t("body").addClass("is-touch")),u=setTimeout(function(){c=!1},1e3)}function e(){c||"is-touch"!==n||(c=!1,n="",t("body").removeClass("is-touch"))}var u,c=!1,n="";Drupal.behaviors.touchHover={attach:function(t,u){t===document&&(document.addEventListener("touchstart",o,!1),document.addEventListener("mouseover",e,!1))}}}(jQuery);
+//# sourceMappingURL=maps/touch-hover.js.map

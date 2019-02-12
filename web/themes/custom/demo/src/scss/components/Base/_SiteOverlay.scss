@@ -1,0 +1,21 @@
+.SiteOverlay {
+  z-index: 503;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #FFF;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+  transition: visibility 0s ease, opacity .2s ease;
+}
+
+.offside-js--is-open .SiteOverlay {
+  visibility: visible;
+  opacity: 0;
+  -webkit-transition-delay: delay 0s;
+  -o-transition-delay: delay 0s;
+  transition-delay: delay 0s;
+}

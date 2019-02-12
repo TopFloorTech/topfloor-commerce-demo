@@ -1,0 +1,2 @@
+!function(i){"use strict";function e(e){i(e).find(".ProductMediaGallery-thumbnails").slick({slidesToShow:4,slidesToScroll:4})}function a(a){var l=i(".ProductMediaGallery",a);l.find(".ProductMediaGallery-largeImage, .ProductMediaGallery-thumbnail").find("a").addClass("js-swipebox"),l.find(".ProductMediaGallery-thumbnails").height()?e(l):setTimeout(function(){e(l)},500),i(".js-swipebox",a).swipebox()}Drupal.behaviors.demoProductMediaGallery={attach:function(i,e){a(i)}}}(jQuery);
+//# sourceMappingURL=maps/product-media-gallery.js.map

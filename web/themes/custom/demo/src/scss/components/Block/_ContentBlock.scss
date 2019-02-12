@@ -1,0 +1,43 @@
+.Block.Block--block-content {
+  .Block-content {
+    margin-top: $spacing-base;
+  }
+
+  .Block-headerLink {
+    display: none;
+
+    @include media($screen-largeUp) {
+      display: block;
+    }
+  }
+
+  .Block-footerLink {
+    display: block;
+
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+
+  .Field--name-body {
+    font-size: 0.9em;
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .Field--name-field-image {
+    .Field-item {
+      text-align: center;
+    }
+  }
+
+  &.Block--type-button-block {
+    .Block-content {
+      margin-top: 0;
+    }
+  }
+}

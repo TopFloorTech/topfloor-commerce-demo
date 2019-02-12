@@ -1,0 +1,14 @@
+.contact-message-request-support-form {
+  .field--name-field-contact-me-by {
+    border-bottom: 1px solid $lightGray;
+    margin-bottom: $spacing-base/3;
+
+    fieldset {
+      margin: 0;
+    }
+  }
+
+  .field--name-field-send-me-a-catalog {
+    margin-top: $spacing-base/3;
+  }
+}

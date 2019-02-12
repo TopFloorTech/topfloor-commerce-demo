@@ -1,0 +1,8 @@
+.Block--views-block__related-products-related-products-product-block {
+  @include OuterPadding();
+
+  .Block-title {
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+}

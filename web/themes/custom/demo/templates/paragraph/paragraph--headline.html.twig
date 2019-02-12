@@ -1,0 +1,10 @@
+{%
+set classes = [
+  'paragraph',
+  'HeadlineParagraph',
+  'HeadlineParagraph--id-' ~ paragraph_id
+]
+%}
+<div {{ attributes.addClass(classes) }}>
+  <h1>{{ headline_content }}</h1>
+</div>

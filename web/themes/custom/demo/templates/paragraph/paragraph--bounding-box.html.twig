@@ -1,0 +1,27 @@
+{%
+set classes = [
+  'paragraph',
+  'BoundingBox',
+  'BoundingBox--id-' ~ paragraph_id
+]
+%}
+
+<style>
+  .BoundingBox.BoundingBox--id-{{ paragraph_id }} {
+    background-color: {{ bounding_box_background_color }};
+    color: {{ bounding_box_text_color }};
+    margin: {{ bounding_box_margin }};
+    padding: {{ bounding_box_padding }};
+    overflow: hidden;
+
+  }
+  @media screen and (max-width: 600px) {
+    .BoundingBox.BoundingBox--id-{{ paragraph_id }} {
+      padding: 1em;
+    }
+  }
+</style>
+
+<div {{ attributes.addClass(classes) }}>
+  {{ content }}
+</div>

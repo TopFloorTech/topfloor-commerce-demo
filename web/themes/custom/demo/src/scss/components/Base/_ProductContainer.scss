@@ -1,0 +1,10 @@
+$ProductContainer-columns: 5 !default;
+
+.ProductContainer {
+  @include media($screen-largeDown) {
+    @include span-columns(8 of 8);
+  }
+  @include media($screen-largeUp) {
+    @include span-columns($ProductContainer-columns of 8);
+  }
+}

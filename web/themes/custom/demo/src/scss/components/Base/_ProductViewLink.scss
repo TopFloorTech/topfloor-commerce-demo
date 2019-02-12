@@ -1,0 +1,18 @@
+.ProductViewLink {
+  @include PrimaryActionButton(
+    $prependIcon: true,
+    $icon: "\f0ca"
+  );
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+
+  .CommerceProduct--display-quick-view & {
+    margin-bottom: $spacing-base;
+
+    @include media($screen-mediumUp) {
+      margin-bottom: 0;
+    }
+  }
+}

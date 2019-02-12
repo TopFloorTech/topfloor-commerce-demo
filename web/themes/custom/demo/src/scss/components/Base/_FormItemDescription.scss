@@ -1,0 +1,9 @@
+$fontWeight-thin: 300 !default;
+$mediumGray: #555 !default;
+
+.FormItem .description {
+  font-size: 0.8em;
+  margin: 0.25em 0 1em;
+  color: $mediumGray;
+  font-weight: $fontWeight-thin;
+}

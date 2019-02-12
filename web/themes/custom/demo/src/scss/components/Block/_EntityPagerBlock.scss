@@ -1,0 +1,4 @@
+.Block--views-block__careers-pager-careers-pager {
+  @include span-columns(12 of 12);
+  @include OuterPadding($sidebar: true);
+}

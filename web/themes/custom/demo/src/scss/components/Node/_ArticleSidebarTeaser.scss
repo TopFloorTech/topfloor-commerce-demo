@@ -1,0 +1,26 @@
+$fontWeight-bold: 600 !default;
+
+.ArticleSidebarTeaser {
+  @include clearfix;
+
+  .ArticleSidebarTeaser-image {
+    @include span-columns(5 of 12);
+
+    .Field--name-field-teaser-image .Field-item img {
+      background-color: white;
+      padding: 0.5em;
+      border: 1px solid darken($lightGray, 15%);
+      box-shadow: $boxShadow-base;
+      display: inline-block;
+    }
+  }
+
+  .ArticleSidebarTeaser-content {
+    @include span-columns(7 of 12);
+    font-size: 0.8em;
+  }
+
+  .Field--name-field-teaser-title {
+    font-weight: $fontWeight-bold;
+  }
+}

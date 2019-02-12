@@ -1,0 +1,18 @@
+.PageSection--main {
+  margin-top: 0;
+  @include clearfix;
+
+  @include media($screen-largeUp) {
+    &:not(.background-image) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &.background-image {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 3em;
+    padding-bottom: 10em;
+  }
+}

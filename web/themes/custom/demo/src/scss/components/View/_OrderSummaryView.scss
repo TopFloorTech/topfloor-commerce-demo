@@ -1,0 +1,71 @@
+$lightGray: #eee !default;
+
+.view-commerce-checkout-order-summary {
+
+  .view-content {
+    @include media($screen-largeUp) {
+      max-height: 200px;
+      overflow-y: scroll;
+    }
+  }
+
+  table {
+    width: auto;
+
+    tbody td {
+      border-top-color: darken($lightGray, 15%);
+    }
+
+    thead th,
+    tbody {
+      background: transparent;
+    }
+
+    tbody tr:first-child td {
+      border-top: none;
+    }
+
+    tbody tr td:last-child {
+      padding-left: 0.5rem;
+    }
+
+    .views-field-rendered-entity {
+      padding-right: 0.5rem;
+    }
+  }
+
+  .view-footer {
+    border: 1px solid $mediumGray;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 0.5rem ($spacing-fixed / 2);
+    display: flex;
+
+    > div {
+      flex-grow: 1;
+    }
+
+    .order-total-line {
+      padding: 0;
+      text-align: left;
+    }
+
+    .order-total-line-label {
+      width: 6em;
+
+      &:after {
+        content: ":";
+        margin-left: -0.2em;
+      }
+    }
+
+    .order-total-line-value {
+      text-align: left;
+    }
+
+    a {
+      @include EditButton();
+    }
+  }
+}

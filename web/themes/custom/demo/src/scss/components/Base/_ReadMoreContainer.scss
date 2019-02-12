@@ -1,0 +1,16 @@
+.ReadMoreContainer {
+  .ReadMoreContainer-content,
+  .Field-item {
+    overflow: hidden;
+  }
+
+  .Field-item {
+    //margin-bottom: 2.5em;
+  }
+
+  .ReadMoreContainer-button {
+    i {
+      padding-right: 0.5em;
+    }
+  }
+}

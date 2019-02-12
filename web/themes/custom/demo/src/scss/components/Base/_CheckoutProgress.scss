@@ -1,0 +1,70 @@
+.checkout-progress {
+  border: 1px solid $mediumGray;
+  border-left: none;
+  border-right: none;
+  padding: 0.5em;
+  font-size: 1.2em;
+
+  @include media($screen-mediumUp) {
+    display: flex;
+  }
+
+  .checkout-progress--step {
+    color: lighten($mediumGray, 25%);
+    flex-grow: 1;
+    list-style-type: none;
+    position: relative;
+    display: block;
+    text-align: left;
+
+    @include media($screen-mediumUp) {
+      display: inline;
+      text-align: center;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+
+      @include media($screen-mediumUp) {
+        @include ButtonIcon($position: "after");
+        float: right;
+        color: $mediumGray;
+      }
+    }
+
+    &:first-child {
+      text-align: left;
+      flex-grow: 0.5;
+    }
+
+    &:last-child {
+      flex-grow: 0.5;
+      padding-right: 0;
+
+      @include media($screen-mediumUp) {
+        text-align: right;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .checkout-progress--step__previous {
+    $color: $mediumGray;
+
+    &:before {
+      @include ButtonIcon($icon: "\f00c", $position: "before");
+      display: inline;
+    }
+  }
+
+  .checkout-progress--step__current {
+    color: $blue;
+  }
+}

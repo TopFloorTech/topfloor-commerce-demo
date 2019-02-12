@@ -1,0 +1,28 @@
+@mixin ResponsiveToggleLinkBar(
+  $background: $blue,
+  $color: white,
+  $icon: '\f0c9',
+  $iconPosition: 'before',
+  $breakpoint: $screen-largeUp
+) {
+  background: $background;
+  padding: 0.5em $spacing-fixed / 2;
+
+  .aluminum-link {
+    display: block;
+    color: $color;
+    text-align: right;
+    text-transform: uppercase;
+    font-weight: $fontWeight-bold;
+
+    @if $icon and $iconPosition {
+      &:#{$iconPosition} {
+        @include ButtonIcon($icon: $icon, $position: $iconPosition);
+      }
+    }
+  }
+
+  @include media($breakpoint) {
+    display: none;
+  }
+}

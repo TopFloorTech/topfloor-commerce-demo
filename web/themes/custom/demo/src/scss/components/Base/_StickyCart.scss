@@ -1,0 +1,23 @@
+.layout-checkout-form {
+  position: relative;
+
+  .sticky-wrapper {
+    float: none;
+    width: auto;
+
+    @include media($screen-commerceLargeUp) {
+      width: 35%;
+      float: right;
+    }
+
+    .layout-region-checkout-secondary {
+      width: auto;
+    }
+  }
+
+  .layout-region-checkout-secondary.js-stuck {
+    @include media($screen-commerceLargeUp) {
+      position: fixed;
+    }
+  }
+}

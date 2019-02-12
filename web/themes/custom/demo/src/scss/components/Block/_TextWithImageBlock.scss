@@ -1,0 +1,16 @@
+.TextWithImageBlock {
+  @include clearfix;
+}
+
+.TextWithImageBlock-image {
+  @include PageImage();
+  float: right;
+  margin-left: $spacing-base;
+  margin-bottom: $spacing-base;
+
+  @include media($screen-mediumUp) {
+    @include span-columns(5 of 12);
+    @include omega();
+    float: right;
+  }
+}

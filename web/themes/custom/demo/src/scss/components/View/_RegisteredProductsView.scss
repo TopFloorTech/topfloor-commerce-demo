@@ -1,0 +1,81 @@
+$mediumGray: #555 !default;
+$lightGray: #eee !default;
+$fontWeight-bold: 600 !default;
+$blue: blue !default;
+
+.RegisteredProducts {
+  .views-table {
+    margin-top: 0;
+
+    tbody tr {
+      &:last-child .views-field {
+        border-bottom: 1px solid $mediumGray;
+      }
+
+      .views-field {
+        border-color: $mediumGray;
+      }
+    }
+  }
+
+  &.RegisteredProducts--list {
+    @include OuterPadding($sidebar: true);
+
+    .view-header {
+      position: relative;
+
+      .RegisteredProducts-button {
+        display: block;
+        margin-top: $spacing-fixed/2;
+        margin-bottom: $spacing-fixed/2;
+        text-align: center;
+
+        @include media($screen-largeUp) {
+          position: absolute;
+          bottom: 0.6em;
+          margin-top: 0;
+          margin-bottom: 0;
+          right: $spacing-fixed / 2;
+        }
+
+        a {
+          @include ActionButton($appendIcon: true, $mainColor: $mediumGray, $mainColor--hover: $blue, $textColor--hover: white);
+        }
+      }
+    }
+
+    .view-footer {
+      .RegisteredProducts-button {
+        text-align: center;
+        margin-bottom: 1.5em;
+
+        a {
+          @include PrimaryActionButton($appendIcon: true);
+        }
+      }
+    }
+
+    .RegisteredProducts-description {
+      font-size: 0.9em;
+      margin-bottom: 1.5em;
+    }
+
+    .RegisteredProducts-count {
+      padding: 1em ($spacing-fixed / 2);
+      background: $lightGray;
+      border: 1px solid $mediumGray;
+      border-left: none;
+      border-right: none;
+      font-style: italic;
+      font-weight: $fontWeight-bold;
+
+      @include media($screen-largeUp) {
+        padding-right: 25em;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

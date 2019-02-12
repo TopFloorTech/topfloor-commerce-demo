@@ -1,0 +1,134 @@
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+
+.view.view-commerce-cart-form {
+  .Form {
+    @include OuterPadding($breakpoint: $screen-mediumUp);
+  }
+
+  .view-header {
+    @include OuterPadding();
+  }
+
+  .form-actions {
+    text-align: right;
+  }
+
+  .OrderTotalSummary {
+    @include clearfix;
+    background: $lightGray;
+    border: 1px solid $mediumGray;
+    border-left: none;
+    border-right: none;
+    padding: 0.5em 1em;
+    margin-top: $spacing-fixed/2;
+
+    @include media($screen-mediumUp) {
+      margin-top: 0;
+    }
+  }
+
+  .order-total-line {
+    text-align: right;
+    padding: 0;
+  }
+
+  .order-total-line__total,
+  .order-total-line__adjustment {
+    display: none;
+  }
+
+  .order-total-line-label {
+    width: auto;
+    display: inline;
+
+    &:after {
+      content: ": ";
+      margin-left: -0.25em;
+    }
+  }
+
+  .order-total-line-value {
+    width: auto;
+    display: inline;
+  }
+
+  .views-table {
+    border-collapse: collapse;
+    table-layout: auto;
+    margin-bottom: 0;
+
+    .Field--name-created {
+      display: none;
+    }
+
+    th, td {
+      padding-left: $spacing-base/2;
+      padding-right: $spacing-base/2;
+
+      @include media($screen-mediumUp) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      &:first-child {
+        width: 100%;
+      }
+    }
+
+    thead {
+      tr:first-child th {
+        border-top: 1px solid $mediumGray;
+        background: $lightGray;
+        padding: 0.5em 1em;
+
+        @include media($screen-mediumUp) {
+          border-color: $mediumGray;
+          border-width: 1px;
+        }
+      }
+    }
+
+    td:nth-child(3), th:nth-child(3) {
+      display: none;
+
+      @include media($screen-mediumUp) {
+        display: table-cell;
+      }
+    }
+
+    tbody tr:first-child td {
+      border-top: 1px solid $mediumGray;
+    }
+
+    td.views-field {
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+    }
+
+    td.views-field:not(.views-field-purchased-entity) {
+      vertical-align: top;
+    }
+
+    .Field--name-field-image {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include ResponsiveTable();
+
+    &.tablesaw {
+      @include media($screen-mediumDown) {
+        .views-field {
+          border-top: none;
+        }
+
+        .views-field-remove-button {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

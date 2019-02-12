@@ -1,0 +1,17 @@
+$lightGray: #eee !default;
+
+.Block.Block--my-recently-registered-products-block,
+.Block.Block--my-recent-order-history-block,
+.Block.Block--my-default-account-info-block {
+  margin-top: 2rem;
+  @include OuterPadding($amount: 0);
+
+  &:last-child {
+    margin-bottom: $spacing-fixed;
+  }
+
+  .Block-title {
+    padding: 0.5em 1rem;
+    background: $lightGray;
+  }
+}

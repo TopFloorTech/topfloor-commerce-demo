@@ -1,0 +1,30 @@
+$blue: blue !default;
+$yellow: yellow !default;
+
+.float-labels-wrapper {
+  &.float-labels-focused {
+    .float-labels-label {
+      color: $blue;
+    }
+  }
+
+  .float-labels-item:focus {
+    border-color: $blue;
+  }
+}
+
+.Footer .float-labels-wrapper {
+  .float-labels-label {
+
+  }
+
+  &.float-labels-focused {
+    .float-labels-label {
+      color: $yellow;
+    }
+  }
+
+  .float-labels-item:focus {
+    border-color: $yellow;
+  }
+}

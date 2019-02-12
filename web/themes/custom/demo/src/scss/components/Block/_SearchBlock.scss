@@ -1,0 +1,73 @@
+$blue: #477dca !default;
+
+$SearchBlock-submitColor: white !default;
+$SearchBlock-submitBackground: $blue !default;
+
+.Block--site-search-exposed-form,
+.Block--site-search-exposed-form-main {
+  .Form {
+    position: relative;
+  }
+}
+
+.Block.Block--search-form-block,
+.Block--searchform,
+.Block--searchblock,
+.Block--site-search-exposed-form.views-exposed-form {
+  @include span-columns(4 of 12);
+  @include omega();
+  @include OuterPadding($side: 'right');
+  margin-top: 0.25rem;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  margin-bottom: 0;
+
+  @include media($screen-largeUp) {
+    @include span-columns(2 of 12);
+    margin-top: 0.9rem;
+    top: 0;
+  }
+
+  .form--inline {
+    width: 100%;
+
+    .form-text {
+      padding: 0.5em;
+    }
+  }
+
+  .Block-content {
+    width: 100%;
+  }
+
+  .Form {
+    @include SearchForm();
+  }
+}
+
+.Block--site-search-exposed-form-main {
+  display: block;
+
+  @include media($screen-largeUp) {
+    display: flex;
+  }
+
+  .Block-title {
+    @include media($screen-largeUp) {
+      flex-grow: 1;
+    }
+  }
+
+  &.views-exposed-form .form--inline .form-text {
+    padding: 0.5em;
+  }
+
+  .Form {
+    @include SearchForm($flex: false);
+  }
+}
+
+.ui-autocomplete {
+  z-index: 1000;
+}

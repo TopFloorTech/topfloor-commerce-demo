@@ -1,0 +1,32 @@
+$darkGray: #555 !default;
+$fontWeight-thin: 300 !default;
+
+.slick-arrow {
+  font-size: 2em;
+  font-weight: $fontWeight-thin;
+  width: 0.675em;
+  height: 1em;
+  text-align: center;
+
+  &:before {
+    @include FontAwsesomeIcon($icon: '\f053');
+    color: $darkGray;
+    font-size: inherit;
+  }
+
+  &.slick-prev {
+    left: -0.675em;
+
+    &:before {
+      content: '\f053'
+    }
+  }
+
+  &.slick-next {
+    right: -0.65em;
+
+    &:before {
+      content: '\f054';
+    }
+  }
+}

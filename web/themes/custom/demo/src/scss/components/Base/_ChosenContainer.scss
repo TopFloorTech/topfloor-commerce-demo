@@ -1,0 +1,96 @@
+.chosen-container {
+  font-size: 1em;
+
+  .chosen-single {
+    @include SelectField();
+    height: auto;
+    box-shadow: none;
+    background: white;
+
+    .Footer & {
+      background: $mediumGray;
+      border: none;
+      border-top: 2px solid $lightGray;
+      color: white;
+    }
+
+    div {
+      width: auto;
+      padding: 0.3em 1em 0.3em;
+      background: $blue;
+
+      .Footer & {
+        background: none;
+      }
+
+      b {
+        background: none;
+        width: auto;
+        height: auto;
+        font-size: 1.1em;
+        color: white;
+
+        &:after {
+          @include ButtonIcon($icon: '\f0dc', $position: 'after');
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &.chosen-with-drop {
+    .chosen-single {
+      background: white;
+      border: 1px solid $mediumGray;
+
+      .Footer & {
+        background: $mediumGray;
+        border: none;
+        border-top: 2px solid $yellow;
+        color: white;
+      }
+
+      div {
+        background: $yellow;
+
+        .Footer & {
+          background: none;
+        }
+
+        b {
+          color: $darkGray;
+
+          .Footer & {
+            color: white;
+          }
+        }
+      }
+    }
+
+    .chosen-drop {
+      margin-top: 0;
+      border-radius: 0;
+      border: 1px solid $mediumGray;
+      border-top: none;
+
+      .Footer & {
+        border: none;
+        background: $mediumGray;
+
+        .chosen-search {
+          input {
+            color: white;
+          }
+        }
+      }
+
+      .chosen-results {
+        margin-left: 0;
+
+        .Footer & {
+          color: white;
+        }
+      }
+    }
+  }
+}

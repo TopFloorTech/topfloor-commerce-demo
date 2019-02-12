@@ -1,0 +1,261 @@
+$mediumGray: #555 !default;
+$lightGray: #eee !default;
+$fontWeight-thin: 300 !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+$fontWeight-base: 400 !default;
+$borderRadius-button: 5px !default;
+$ActionBlock-boxShadow: 0 0 3px darken($lightGray, 15%) !default;
+$blue: blue !default;
+
+.Block.Block--type-action-block {
+  box-shadow: $ActionBlock-boxShadow;
+  display: flex;
+  flex-direction: column;
+  @include clearfix();
+
+  .Site & .Block-content {
+    display: flex;
+    padding: 1rem;
+    margin-top: 0;
+  }
+
+  .Site &.Block--hasIcon .Block-content {
+    padding-top: 0.5rem;
+  }
+
+  .Block-iconContainer {
+    padding-right: 0.5rem;
+
+    .fa-stack {
+      color: $blue;
+      font-size: 1.5em;
+    }
+
+    .fa-stack-2x {
+      color: $lightGray;
+    }
+  }
+
+  .Block-contentContainer {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-x: hidden;
+  }
+
+  .Block-spacer {
+    flex-grow: 1;
+  }
+
+  &.Block--hasIcon .Block-contentContainer {
+    @include span-columns(11 of 12);
+    display: flex;
+  }
+
+  .Block-title {
+    margin: 1rem;
+  }
+
+  .Field--name-field-title-link {
+    margin: 0 0 1rem 0;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &.Block--hasIcon .Field--name-field-title-link {
+    margin-top: $spacing-fixed / 2;
+  }
+
+  .Field--name-field-header-image {
+    margin-bottom: 0;
+    border: 1px solid $lightGray;
+    border-bottom-width: 0;
+
+    img {
+      display: block;
+    }
+  }
+
+  .Field--name-field-body {
+    font-size: 0.9em;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .Field--name-field-links,
+  .Field--name-field-form {
+    font-size: 0.9em;
+
+    .Field-item a {
+      @include PrimaryActionButton(
+        $appendIcon: true,
+        $padding: 0.25em 0.5em
+      );
+      font-size: 0.875em;
+      display: block;
+      margin-bottom: 0.5rem;
+
+      @include media($screen-largeUp) {
+        @include PrimaryActionButton(
+          $appendIcon: true
+        );
+        font-size: 1em;
+      }
+    }
+  }
+
+  .Region--content_bottom & {
+    margin-bottom: 1em;
+    background: $mediumGray;
+    color: white;
+    @include span-columns(12 of 12);
+
+    @include media($screen-mediumOnly) {
+      @include span-columns(6 of 12);
+      @include omega(2n);
+    }
+
+    @include media($screen-mediumUp) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      @include omega(3n);
+      display: flex;
+    }
+
+    .Field--name-field-header-image {
+      border-width: 0;
+
+      &::before {
+        content: "";
+        width: 1px;
+        margin-left: -1px;
+        float: left;
+        height: 0;
+        padding-top: 54.54%;
+      }
+
+      &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    }
+
+    .Block-title {
+      font-size: 1em;
+      margin-bottom: 0;
+
+      @include media($screen-largeUp) {
+        font-size: 1.3em;
+      }
+    }
+
+    .Field--name-field-title-link {
+      a {
+        color: #fff;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+      h2 {
+        margin-bottom: 0;
+      }
+    }
+
+    .Block-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      .Block-contentContainer {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+      }
+    }
+
+    .Field--name-field-body {
+      font-weight: $fontWeight-thin;
+    }
+
+    .Block-spacer {
+      flex-grow: 1;
+    }
+  }
+
+  .PageSection--sidebar & {
+    border: 1px solid darken($lightGray, 15%);
+    padding-bottom: 0;
+    background: white;
+
+    .Field--name-field-body {
+      font-size: 0.8em;
+    }
+
+    .Field--name-field-links {
+      .Field-item a {
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        color: $blue;
+        border-bottom: 2px solid transparent;
+        display: inline-block;
+
+        &:hover {
+          background: none;
+          border-bottom-color: $blue;
+        }
+      }
+    }
+
+    .Block-title h2 {
+      font-size: 1.2em;
+    }
+
+    .Field--name-field-title-link {
+      h2 {
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  .Region--after_content & {
+    @include span-columns(12 of 12);
+    display: flex;
+    margin-bottom: $spacing-fixed/2;
+
+    @include media($screen-mediumUp) {
+      @include span-columns(6 of 12);
+    }
+
+    .Field--name-field-links .Field-item a {
+      display: inline-block;
+    }
+
+    .Field--name-field-title-link {
+      font-size: 1.1em;
+      font-weight: $fontWeight-bold;
+    }
+  }
+}
+.Block--viewourresources,
+.Block--findaglobaldistributorinyourarea {
+  .Field--name-field-header-image {
+    max-height: 100px;
+    overflow: hidden;
+
+    @include media($screen-largeUp) {
+      max-height: none;
+    }
+  }
+}

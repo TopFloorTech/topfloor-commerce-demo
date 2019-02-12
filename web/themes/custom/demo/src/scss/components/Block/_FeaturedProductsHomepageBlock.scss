@@ -1,0 +1,17 @@
+.Block.Block--featured-products-homepage-block,
+.Block.Block--featured-categories-homepage-block {
+  @include outer-container;
+  @include OuterPadding($amount: 2em);
+  display: none;
+
+  @include media($screen-largeUp) {
+    display: block;
+    @include outer-container;
+    @include OuterPadding($amount: 0.75em);
+  }
+
+  @include media($screen-xLargeUp) {
+    @include outer-container;
+    @include OuterPadding($amount: 0);
+  }
+}

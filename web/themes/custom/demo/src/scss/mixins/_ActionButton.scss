@@ -1,0 +1,79 @@
+$blue: blue !default;
+$borderRadius-button: 5px !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+
+@mixin ActionButton(
+  $appendIcon: false,
+  $prependIcon: false,
+  $icon: "\f054",
+  $iconPadding: 0.5em,
+  $padding: 0.5em 1.5em,
+  $mainColor: $blue,
+  $textColor: white,
+  $mainColor--hover: $yellow,
+  $textColor--hover: $darkGray,
+  $borderRadius: $borderRadius-button
+) {
+  display: inline-block;
+  background: $mainColor;
+  padding: $padding;
+  color: $textColor;
+  text-transform: uppercase;
+  border-radius: $borderRadius;
+
+  &:hover {
+    background: $mainColor--hover;
+    color: $textColor--hover;
+  }
+
+  @if $appendIcon {
+    &:after {
+      @include ButtonIcon(
+        $icon: $icon,
+        $padding: $iconPadding,
+        $position: 'after'
+      );
+    }
+  }
+
+  @if $prependIcon {
+    &:before {
+      @include ButtonIcon(
+        $icon: $icon,
+        $padding: $iconPadding,
+        $position: 'before'
+      );
+    }
+  }
+
+  i {
+    font-size: 0.8em;
+  }
+}
+
+@mixin PrimaryActionButton(
+  $appendIcon: false,
+  $prependIcon: false,
+  $icon: "\f054",
+  $iconPadding: 0.5em,
+  $padding: 0.75em 1.5em,
+  $mainColor: $yellow,
+  $textColor: $darkGray,
+  $mainColor--hover: $blue,
+  $textColor--hover: white,
+  $borderRadius: $borderRadius-button
+) {
+  @include ActionButton(
+    $appendIcon: $appendIcon,
+    $prependIcon: $prependIcon,
+    $icon: $icon,
+    $iconPadding: $iconPadding,
+    $padding: $padding,
+    $mainColor: $mainColor,
+    $textColor: $textColor,
+    $mainColor--hover: $mainColor--hover,
+    $textColor--hover: $textColor--hover,
+    $borderRadius: $borderRadius
+  );
+}

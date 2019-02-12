@@ -1,0 +1,45 @@
+// Ensure default values for base variables used
+$yellow: yellow !default;
+$blue: blue !default;
+$mediumGray: #555 !default;
+
+// Element variables
+$button-textTransform: uppercase;
+$button-backgroundColor: $yellow;
+$button-padding: 1em 1.5em;
+
+$padding-input: $spacing-base / 3;
+$spacing-input: 0;
+
+//
+// Accordion Tabs
+//
+//$AccordionTabs-tabBorder: 1px solid $base-borderColor;
+//$AccordionTabs-contentBackground: lighten($lightGray, 10);
+//$AccordionTabs-tabBackground: $base-backgroundColor !default;
+//$AccordionTabs-tabBackground--active: $AccordionTabs-contentBackground;
+//$AccordionTabs-hoverColor: darken($lightGray, 5);
+//$AccordionTabs-tabMode: $medium-screen;
+$AccordionTabs-tabBorder: 1px solid #dcdcdc;
+$AccordionTabs-tabMode: $screen-mediumUp;
+
+// Aluminum Phone Number
+$AluminumPhoneNumber-color: $yellow;
+
+$Body-backgroundColor: $blue;
+
+$FooterBlock-titleFontSize: 1.2em;
+
+// Aluminum Phone Number List
+$AluminumPhoneNumberList-marginLeft: 15rem;
+$AluminumPhoneNumberListBlock-background: asset-url('images/footer-g.png') no-repeat top left;
+$AluminumPhoneNumberListBlock-titleMargin: 0 0 0 9.5rem;
+$AluminumPhoneNumberListBlock-titleFontSize: $FooterBlock-titleFontSize;
+$AluminumPhoneNumberListBlock-minHeight: 175px;
+
+$FooterBottomSection-borderColor: $yellow;
+$Footer-background: $blue;
+
+// Main Menu
+$MainMenu-linkBorderBottom: 0.2em solid transparent;
+$MainMenu-linkBorderBottom--active: 0.2em solid $blue;

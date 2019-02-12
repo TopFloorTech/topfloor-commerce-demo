@@ -1,0 +1,18 @@
+{%
+set classes = [
+  'paragraph',
+  'PriceParagraph',
+  'PriceParagraph--id-' ~ paragraph_id
+]
+%}
+
+<style>
+  .PriceParagraph.PriceParagraph--id-{{ paragraph_id }} {
+    color: {{ price_paragraph_text_color }};
+    overflow: hidden;
+  }
+</style>
+
+<div {{ attributes.addClass(classes) }}>
+  {{ content }}
+</div>

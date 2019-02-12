@@ -1,0 +1,19 @@
+.commerce-checkout-registration {
+  margin: $spacing-base 0;
+
+  fieldset {
+    padding: 0;
+
+    legend {
+      display: none;
+    }
+  }
+
+  .password-parent {
+    max-width: none;
+  }
+
+  .form-submit {
+    @include ActionButton();
+  }
+}

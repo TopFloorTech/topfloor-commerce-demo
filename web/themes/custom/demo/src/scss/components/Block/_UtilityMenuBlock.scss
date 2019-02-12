@@ -1,0 +1,13 @@
+$UtilityMenuBlock-columns: 8 !default;
+
+#block-utilitynavigation {
+  align-items: stretch;
+  justify-content: flex-end;
+  height: 100%;
+  flex: 1;
+  display: none;
+
+  @include media($screen-largeUp) {
+    display: flex;
+  }
+}

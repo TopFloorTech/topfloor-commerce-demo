@@ -1,0 +1,48 @@
+$yellow: yellow !default;
+$darkGray: #555 !default;
+
+.Block--cart-link {
+  display: none;
+
+  @include media($screen-largeUp) {
+    display: block;
+  }
+
+  .commerce-cart-block--summary {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 0.9em;
+
+    .commerce-cart-block--link {
+      padding: 0.6rem 0.5rem;
+      color: white;
+
+      &:hover,
+      &.is-activeTrail,
+      &.is-active,
+      &.commerce-cart-block--link__open,
+      .CartBlock--active & {
+        background-color: $yellow;
+        color: $darkGray;
+      }
+    }
+
+    .commerce-cart-block--summary__icon {
+      display: inline-block;
+      margin-right: 7px;
+    }
+  }
+
+  .commerce-cart-block--type-button.is-inCart .commerce-cart-block--link {
+    background-color: $yellow;
+    color: $darkGray;
+  }
+}
+
+.Block--responsive-cart-button {
+  .is-inCart .commerce-cart-block--link {
+    background: #0051ba;
+    color: white;
+  }
+}

@@ -1,0 +1,71 @@
+$blue: blue !default;
+$yellow: yellow !default;
+$darkGray: #555 !default;
+
+.IndustryFeaturedTeaser {
+  &:hover {
+    .IndustryFeaturedTeaser-titleContainer {
+      background: $yellow;
+      * {
+        color: $darkGray;
+      }
+    }
+  }
+
+  .IndustryFeaturedTeaser-titleContainer {
+    align-items: center;
+    background: $blue;
+    bottom: 0;
+    display: flex;
+    font-size: 0.75em;
+    opacity: .9;
+    padding: 0.6em 1rem;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+
+    @include media($screen-largeUp) {
+      font-size: 1em;
+    }
+
+    * {
+      text-transform: uppercase;
+      color: white;
+    }
+  }
+
+  .IndustryFeaturedTeaser-icon {
+    color: white;
+    float: left;
+    margin-right: 10px;
+  }
+
+  .IndustryFeaturedTeaser-image {
+    .Field--name-field-header-image {
+      margin-bottom: 0;
+
+      .Field-item {
+        overflow: hidden;
+      }
+
+      img {
+        height: 100%;
+        width: auto;
+        max-width: none;
+        display: block;
+      }
+    }
+  }
+
+  .IndustryFeaturedTeaser-title a:after {
+    @include ButtonIcon();
+    font-size: 0.8em;
+  }
+}
+
+// the parent of industryTeaser needs to stretch fully to
+// position the title and icon
+.Node--type-industry.Node--display-featured-teaser {
+  position: relative;
+  height: 100%;
+}

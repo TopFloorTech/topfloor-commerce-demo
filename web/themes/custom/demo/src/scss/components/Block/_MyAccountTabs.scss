@@ -1,0 +1,24 @@
+$blue: blue !default;
+
+.Block--tabs.Block--region-sidebar-second {
+  .LocalTasks-list {
+    border-bottom: none;
+    margin: 0 0 0 1.5em;
+  }
+
+  .LocalTasks-item {
+    display: block;
+    font-size: 0.8em;
+
+    a {
+      background: none;
+      padding: 0;
+      border: none;
+    }
+
+    &.LocalTasks-item--active a,
+    a:hover {
+      color: $blue;
+    }
+  }
+}

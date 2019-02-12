@@ -1,0 +1,61 @@
+// Base variables
+$darkGray: #555 !default;
+$lightGray: #eee !default;
+$yellow: yellow !default;
+$color-border: $lightGray !default;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+// Component variables
+$CaseStudySliderTeaser-textColor: white !default;
+$CaseStudySliderTeaser-shadow: $boxShadow-base !default;
+$CaseStudySliderTeaser-imageBackgroundColor: $darkGray !default;
+$CaseStudySliderTeaser-imageOpacity: 0.45 !default;
+
+.CaseStudySliderTeaser {
+  position: relative;
+  box-shadow: $CaseStudySliderTeaser-shadow;
+  height: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .CaseStudySliderTeaser-image {
+    background-color: $CaseStudySliderTeaser-imageBackgroundColor;
+    height: 100%;
+
+    img {
+      display: block;
+      opacity: $CaseStudySliderTeaser-imageOpacity;
+    }
+  }
+
+  .CaseStudySliderTeaser-content {
+    position: absolute;
+    top: 0;
+    padding: 1em;
+    color: $CaseStudySliderTeaser-textColor;
+  }
+
+  .Field--name-field-teaser-title {
+    margin-bottom: 1em;
+    font-weight: 600;
+    font-size: 1.1em;
+
+    a {
+      color: $CaseStudySliderTeaser-textColor;
+    }
+  }
+
+  .Field--name-field-teaser-description {
+    font-size: 0.9em;
+  }
+
+  .CaseStudySliderTeaser-viewLink {
+    @include PrimaryActionButton(
+      $borderRadius: 0
+    );
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

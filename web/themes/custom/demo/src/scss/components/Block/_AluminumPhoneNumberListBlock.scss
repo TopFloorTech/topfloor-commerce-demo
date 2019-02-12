@@ -1,0 +1,31 @@
+// Base variables
+$fontSize-h2: 1.6em !default;
+
+// Component variables
+$AluminumPhoneNumberListBlock-background: none !default;
+$AluminumPhoneNumberListBlock-titleMargin: 0 !default;
+$AluminumPhoneNumberListBlock-titleFontSize: $fontSize-h2 !default;
+$AluminumPhoneNumberListBlock-minHeight: none !default;
+
+.Block.Block--aluminum-phone-number-list {
+  @include span-columns(12 of 12);
+  background: $AluminumPhoneNumberListBlock-background;
+  min-height: $AluminumPhoneNumberListBlock-minHeight;
+
+  @include media($screen-mediumUp) {
+    @include span-columns(6 of 12);
+  }
+
+  @include media($screen-largeUp) {
+    @include span-columns(5 of 12);
+  }
+
+  .Block-title {
+    margin: 0;
+    font-size: $AluminumPhoneNumberListBlock-titleFontSize;
+
+    @include media($screen-largeUp) {
+      margin: $AluminumPhoneNumberListBlock-titleMargin;
+    }
+  }
+}

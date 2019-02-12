@@ -1,0 +1,28 @@
+.TaxonomyTerm.TaxonomyTerm--vocabulary-applications {
+  .Field--name-field-icon {
+    background-color: $lightGray;
+    border-radius: 50%;
+    max-width: 150px;
+    max-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-base / 2;
+
+    @include media($screen-mediumUp) {
+      max-width: 75px;
+      max-height: 75px;
+    }
+
+    img {
+      height: auto;
+      margin: 0;
+      padding: 0;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .taxonomy-term-name {
+    margin: 0;
+  }
+}

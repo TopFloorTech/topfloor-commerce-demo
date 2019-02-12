@@ -1,0 +1,4 @@
+.Block.Block--aluminum-link-list {
+  @include OuterPadding($amount: 0);
+  z-index: 1;
+}

@@ -1,0 +1,16 @@
+$spacing-base: 1em !default;
+$fontWeight-bold: 600 !default;
+
+.CommerceOrder {
+  @include OuterPadding($sidebar: true);
+  margin-bottom: $spacing-base;
+  @include clearfix;
+}
+
+.CommerceOrder.CommerceOrder--user {
+  .Field--name-total-price {
+    .Field-item {
+      font-weight: $fontWeight-bold;
+    }
+  }
+}

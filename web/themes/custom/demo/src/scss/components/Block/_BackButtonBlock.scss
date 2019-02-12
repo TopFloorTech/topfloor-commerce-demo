@@ -1,0 +1,19 @@
+$darkGray: #555 !default;
+
+.Block--back-button {
+  display: block;
+
+  @include media($screen-mediumUp) {
+    display: none;
+  }
+
+  .aluminum-link {
+    padding: 0.5em 0;
+    display: block;
+
+    &:before {
+      @include ButtonIcon($icon: '\f053', $position: 'before');
+      color: $darkGray;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+$fontWeight-thin: 300 !default;
+$fontWeight-base: 500 !default;
+
+.NodeTeaser {
+  @include clearfix;
+  margin-bottom: 1rem;
+  position: relative;
+
+  .NodeTeaser-image {
+    @include span-columns(12 of 12);
+
+    @include media($screen-mediumUp) {
+      @include span-columns(3 of 12);
+    }
+  }
+
+  .NodeTeaser-content {
+    @include span-columns(12 of 12);
+    padding-bottom: 4em;
+
+    @include media($screen-mediumUp) {
+      @include span-columns(9 of 12);
+    }
+  }
+
+  .Links {
+    position: absolute;
+    margin-bottom: 1rem;
+    bottom: 0;
+  }
+
+  .Field--name-field-teaser-title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
+
+  .Field--name-field-publish-date {
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    font-weight: $fontWeight-thin;
+
+    .Field-label {
+      margin-right: 0.5em;
+    }
+  }
+
+  .Field--name-field-related-industries {
+    font-size: 0.9em;
+    font-weight: $fontWeight-thin;
+    margin: 0.5em 0;
+
+    .Field--name-field-teaser-title {
+      font-size: 1em;
+      font-weight: $fontWeight-base;
+    }
+
+    > .Field-items > .Field-item {
+      display: inline-block;
+      margin-right: $spacing-base/2;
+    }
+  }
+
+  .Field--name-field-teaser-description {
+    margin: 0.5em 0;
+  }
+}

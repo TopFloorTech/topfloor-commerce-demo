@@ -1,0 +1,40 @@
+.CommerceProduct-quickViewCover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $darkGray;
+  opacity: 0.6;
+}
+
+.CommerceProduct-quickViewWrapper {
+  display: none;
+
+  @include media($screen-mediumUp) {
+    display: block;
+  }
+}
+
+.CommerceProduct-quickView {
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  width: 100%;
+
+  a {
+    background: #fff;
+    border-radius: $borderRadius-button;
+    padding: $spacing-base/2 $spacing-base;
+    text-transform: uppercase;
+    color: $blue;
+
+    &:before {
+      @include ButtonIcon($icon: '\f06e', $position: 'before');
+    }
+
+    &:hover,
+    &:active {
+      color: $blue;
+    }
+  }
+}

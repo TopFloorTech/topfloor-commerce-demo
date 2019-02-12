@@ -1,0 +1,17 @@
+.Field.Field--name-field-video {
+  .Node.Node--type-page & {
+    @include span-columns(12 of 12);
+    clear: both;
+    margin-bottom: $gutter;
+
+    img {
+      height: auto;
+    }
+  }
+
+  .Node.Node--type-page .Node-content > & {
+    @include media($screen-largeUp) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.Block--product-listing-block-exposed-form,
+.Block--accessory-listing-block-exposed-form {
+  margin-bottom: 1rem;
+
+  .Block-title {
+    font-size: 1.3em;
+  }
+
+  .Form {
+    position: relative;
+  }
+
+  .FormItem--product-search {
+    margin-right: 2.5em;
+  }
+
+  @include SearchIconButton;
+
+  .form-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+  }
+}

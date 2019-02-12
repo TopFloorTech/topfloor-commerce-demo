@@ -1,0 +1,12 @@
+$blue: blue !default;
+$yellow: yellow !default;
+
+.contact-message-form .button[type=submit] {
+  @include PrimaryActionButton($padding: 0.75em 1.5em);
+  background-color: $yellow;
+
+  &:hover {
+    background-color: $blue;
+  }
+}
+

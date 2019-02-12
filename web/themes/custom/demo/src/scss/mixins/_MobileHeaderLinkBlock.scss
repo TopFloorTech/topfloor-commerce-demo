@@ -1,0 +1,33 @@
+@mixin MobileHeaderLinkBlock(
+  $icon: ''
+) {
+  .Block-content {
+    height: 100%;
+
+    a {
+      padding: 0 .75rem;
+      line-height: 45px;
+      font-size: 1.1em;
+      vertical-align: middle;
+      display: inline-block;
+
+      @if $icon {
+        &:before {
+          @include ButtonIcon($position: 'before', $icon: $icon);
+        }
+      }
+
+      .PageSection &:hover {
+        background-color: $yellow;
+        color: $mediumGray;
+      }
+    }
+  }
+
+  &.is-activeTrail {
+    .Block-content a {
+      background: $blue;
+      color: white;
+    }
+  }
+}

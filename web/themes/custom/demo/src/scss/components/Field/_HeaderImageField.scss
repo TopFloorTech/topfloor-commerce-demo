@@ -1,0 +1,23 @@
+$HeaderImage-maxWidth: 100% !default;
+$HeaderImage-height: auto !default;
+$HeaderImage-maxHeight: 272px !default;
+$HeaderImage-marginBottom: 1.5rem !default;
+
+.Field--name-field-header-image {
+  margin-bottom: $HeaderImage-marginBottom;
+
+  .Field-item {
+    img {
+      height: $HeaderImage-height;
+      max-width: $HeaderImage-maxWidth;
+    }
+  }
+
+  .Node--type-page & {
+    max-height: $HeaderImage-maxHeight;
+  }
+
+  .Node--display-header-block {
+    max-height: 500px;
+  }
+}

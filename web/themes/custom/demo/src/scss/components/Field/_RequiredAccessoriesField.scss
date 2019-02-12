@@ -1,0 +1,22 @@
+$blue: blue !default;
+
+.Field--name-field-required-accessories {
+  .Field--name-field-image .Field-item {
+    position: relative;
+    text-align: center;
+
+    &:after {
+      content: "Required";
+      position: absolute;
+      padding: 0.25em;
+      color: white;
+      font-size: 0.9em;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: $blue;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+  }
+}

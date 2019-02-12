@@ -1,0 +1,39 @@
+.TestimonialFull {
+  .TestimonialFull-quote {
+    @include span-columns(12 of 12);
+    clear: both;
+    margin-bottom: $gutter;
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 9);
+      @include omega();
+      float: left;
+      margin-right: $gutter;
+
+    }
+  }
+
+  .TestimonialFull-quote-text > * {
+    font-size: 40px;
+    line-height: .94;
+    font-weight: 300;
+    background: $lightGray;
+    padding: 30px;
+    margin-bottom: 0;
+  }
+
+  .TestimonialFull-quote-customer {
+    font-size: 13px;
+    color: white;
+    text-align: right;
+    background: $blue;
+    overflow: hidden;
+
+    & > * {
+      @include span-columns(7 of 9);
+      float: right;
+      padding: 30px;
+    }
+  }
+}
+

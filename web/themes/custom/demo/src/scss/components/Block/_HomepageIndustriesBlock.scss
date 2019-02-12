@@ -1,0 +1,16 @@
+.Block.Block--homepage-industries-block {
+  @include outer-container;
+  margin-top: 1rem;
+  @include OuterPadding($sidebar: false);
+
+  .Block-title {
+    font-size: 1em;
+    margin: 0.5em 0;
+    text-align: center;
+
+    @include media($screen-largeUp) {
+      font-size: 1.4em;
+      margin: 1.5em 0;
+    }
+  }
+}

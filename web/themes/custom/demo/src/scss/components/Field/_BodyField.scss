@@ -1,0 +1,21 @@
+// Component variables
+$BodyField-marginBottom: 1em !default;
+
+.Field.Field--name-field-body,
+.Field--name-field-essential-duties,
+.Field--name-field-job-description,
+.Field--name-field-qualifications,
+.Field--name-field-education-and-experience {
+  margin-bottom: $BodyField-marginBottom;
+  font-size: $fontSize-body;
+
+  > .Field-item {
+    ul {
+      margin-left: 2em;
+
+      ul {
+        margin-left: 1em;
+      }
+    }
+  }
+}

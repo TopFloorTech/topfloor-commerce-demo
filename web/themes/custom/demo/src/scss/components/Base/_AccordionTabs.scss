@@ -1,0 +1,13 @@
+$lightGray: #eee !default;
+$color-border: $lightGray;
+$boxShadow-base: 0 0 3px $color-border !default;
+
+.AccordionTabs .AccordionTabs-tabContent.is-open {
+  border: none;
+  box-shadow: none;
+
+  @include media($screen-mediumUp) {
+    border: 1px solid $lightGray;
+    box-shadow: $boxShadow-base;
+  }
+}

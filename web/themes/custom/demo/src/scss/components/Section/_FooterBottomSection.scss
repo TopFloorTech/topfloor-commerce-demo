@@ -1,0 +1,15 @@
+// Base variables
+$mediumGray: #555 !default;
+$blue: #477dca !default;
+$color-action: $blue !default;
+
+// Component variables
+$FooterBottomSection-borderColor: $color-action !default;
+$FooterBottomSection-topBorder: 0.25rem solid $FooterBottomSection-borderColor !default;
+$FooterBottomSection-padding: 0.5em 0 !default;
+
+.PageSection--footerBottom {
+  border-top: $FooterBottomSection-topBorder;
+  vertical-align: middle;
+  padding: $FooterBottomSection-padding;
+}

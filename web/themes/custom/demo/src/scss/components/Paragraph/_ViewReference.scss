@@ -1,0 +1,20 @@
+.paragraph.paragraph--type--view-reference {
+  @include span-columns(12 of 12);
+  margin-bottom: 0;
+
+  .field--name-field-view {
+    @include span-columns(12 of 12);
+  }
+
+  .field__item__label {
+    color: #38383a;
+    font-size: $fontSize-h3;
+    font-family: $fontFamily-heading;
+    font-weight: $fontWeight-bold;
+    display: inline-block;
+  }
+
+  .views-element-container {
+    overflow: hidden;
+  }
+}

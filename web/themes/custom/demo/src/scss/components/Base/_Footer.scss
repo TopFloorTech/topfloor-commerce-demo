@@ -1,0 +1,5 @@
+.Footer {
+  margin-top: 0 !important;
+  z-index: 1;
+  transform: scale(1); // Fix so it can sit on top of fixed cart
+}

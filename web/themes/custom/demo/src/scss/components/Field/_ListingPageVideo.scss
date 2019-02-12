@@ -1,0 +1,12 @@
+.Node.Node--type-listing_page .Field.Field--name-field-video {
+  @include span-columns(4 of 9);
+  @include omega();
+  float: right;
+  margin-left: $gutter;
+  margin-bottom: $gutter;
+  clear: both;
+
+  img {
+    height: auto;
+  }
+}

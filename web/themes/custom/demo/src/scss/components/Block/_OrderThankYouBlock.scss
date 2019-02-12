@@ -1,0 +1,8 @@
+$lightGray: #eee !default;
+
+.Block.Block--orderthankyoublock {
+  text-align: center;
+  background: $lightGray;
+  margin-bottom: $spacing-base;
+  padding: $spacing-fixed / 2;
+}

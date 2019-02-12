@@ -1,0 +1,59 @@
+$blue: blue !default;
+$lightGray: #eee !default;
+$darkGray: #555 !default;
+$fontWeight-thin: 300 !default;
+$fontWeight-base: 400 !default;
+
+$DocumentLibraryItem-disabledColor: darken($lightGray, 40%);
+$DocumentLibraryItem-disabledIconColor: darken(red, 20%);
+
+.DocumentLibraryItem {
+  padding: 0.5em 0.75em;
+  position: relative;
+  color: $DocumentLibraryItem-disabledColor;
+  font-size: 0.9em;
+  font-weight: $fontWeight-thin;
+
+  .DocumentLibraryItem-fileIcon {
+    float: left;
+    color: $DocumentLibraryItem-disabledColor;
+    pointer-events: none;
+  }
+
+  .DocumentLibraryItem-file {
+    margin-left: 1.5em;
+
+    a {
+      color: $DocumentLibraryItem-disabledColor;
+      display: block;
+    }
+  }
+
+  .DocumentLibraryItem-downloadIcon {
+    font-size: 1.3em;
+    position: absolute;
+    right: 0.75em;
+    top: 0.3em;
+    color: $DocumentLibraryItem-disabledIconColor;
+    pointer-events: none;
+  }
+
+  &.is-accessible {
+    color: $darkGray;
+
+    .DocumentLibraryItem-file {
+      a {
+        color: $darkGray;
+      }
+    }
+
+    .DocumentLibraryItem-fileIcon,
+    .DocumentLibraryItem-downloadIcon {
+      color: $blue;
+    }
+
+    &:hover {
+      font-weight: $fontWeight-base;
+    }
+  }
+}

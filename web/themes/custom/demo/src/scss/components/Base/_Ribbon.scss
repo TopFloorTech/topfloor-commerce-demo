@@ -1,0 +1,167 @@
+$Ribbon--width: 150px !default;
+$Ribbon--height: 32px !default;
+$Ribbon--overhang: 5px !default;
+$sqrt2: 1.414213562; // Square root of 2 (used for right isosceles triangles)
+
+// Calculated values:
+$xy-offset: (($Ribbon--height / 2) / $sqrt2) + 0px;
+$wrapper-width: ($Ribbon--width / $sqrt2) + 0px;
+$ribbon-offset: ($wrapper-width / 2) + 0px;
+
+.RibbonContainer {
+  position: relative;
+}
+
+.Ribbon {
+  pointer-events: none;
+  z-index: 10;
+
+  &.Ribbon--style-corner {
+    height: $wrapper-width;
+    overflow: hidden;
+    position: absolute;
+    width: $wrapper-width;
+
+    &:before,
+    &:after {
+      border: ($Ribbon--overhang / 2) solid $lightGray;
+      content: '';
+      display: block;
+      filter: brightness(75%);
+      position: absolute;
+      z-index: -1;
+    }
+
+    .Ribbon-text {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      display: block;
+      font-size: 1em;
+      height: $Ribbon--height;
+      line-height: 1;
+      position: absolute;
+      text-align: center;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      width: $Ribbon--width;
+
+      .Field--name-field-ribbon-text {
+        height: 100%;
+        position: relative;
+
+        .Field-item {
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    &.Ribbon--corner-top-left {
+      left: -$Ribbon--overhang;
+      top: -$Ribbon--overhang;
+
+      &:before,
+      &:after {
+        border-top-color: transparent;
+        border-left-color: transparent;
+      }
+
+      &:before {
+        top: 0;
+        right: 0;
+      }
+
+      &:after {
+        bottom: 0;
+        left: 0;
+      }
+
+      .Ribbon-text {
+        left: $ribbon-offset - $xy-offset;
+        top: $ribbon-offset - $xy-offset;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+
+    &.Ribbon--corner-top-right {
+      top: -$Ribbon--overhang;
+      right: -$Ribbon--overhang;
+
+      &:before,
+      &:after {
+        border-top-color: transparent;
+        border-right-color: transparent;
+      }
+
+      &:before {
+        top: 0;
+        left: 0;
+      }
+
+      &:after {
+        bottom: 0;
+        right: 0;
+      }
+
+      .Ribbon-text {
+        left: $ribbon-offset + $xy-offset;
+        top: $ribbon-offset - $xy-offset;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+
+    &.Ribbon--corner-bottom-left {
+      bottom: -$Ribbon--overhang;
+      left: -$Ribbon--overhang;
+
+      &:before,
+      &:after {
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+      }
+
+      &:before {
+        bottom: 0;
+        right: 0;
+      }
+
+      &:after {
+        top: 0;
+        left: 0;
+      }
+
+      .Ribbon-text {
+        left: $ribbon-offset - $xy-offset;
+        top: $ribbon-offset + $xy-offset;
+        transform: translate(-50%, -50%) rotate(225deg);
+      }
+    }
+
+    &.Ribbon--corner-bottom-right {
+      bottom: -$Ribbon--overhang;
+      right: -$Ribbon--overhang;
+
+      &:before,
+      &:after {
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+      }
+
+      &:before {
+        bottom: 0;
+        left: 0;
+      }
+
+      &:after {
+        top: 0;
+        right: 0;
+      }
+
+      .Ribbon-text {
+        left: $ribbon-offset + $xy-offset;
+        top: $ribbon-offset + $xy-offset;
+        transform: translate(-50%, -50%) rotate(-225deg);
+      }
+    }
+  }
+}

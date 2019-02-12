@@ -1,0 +1,24 @@
+.AluminumLinkList {
+  @include OuterPadding();
+  flex-direction: column;
+
+  @include media($screen-largeUp) {
+    flex-direction: row;
+  }
+
+  .AluminumLinkList-icon {
+    float: left;
+    padding: 0.25em 0.25em 0 0;
+
+    @include media($screen-largeUp) {
+      float: none;
+      padding: 0 0 0 0.25em;
+    }
+  }
+
+
+
+  .AluminumLinkList-link {
+    white-space: nowrap;
+  }
+}

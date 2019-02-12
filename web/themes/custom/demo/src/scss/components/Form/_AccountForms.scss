@@ -1,0 +1,7 @@
+.PageSection--content {
+  .user-login-form,
+  .user-register-form,
+  .user-pass {
+    @include OuterPadding($sidebar: true);
+  }
+}

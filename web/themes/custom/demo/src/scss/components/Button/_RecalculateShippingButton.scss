@@ -1,0 +1,14 @@
+input[data-drupal-selector="edit-shipping-information-recalculate-shipping"] {
+  padding: $spacing-base/2 0;
+  background: none;
+  color: $blue;
+  border-radius: 0;
+  text-transform: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: none;
+    color: $blue;
+  }
+}

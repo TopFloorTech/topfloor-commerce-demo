@@ -1,0 +1,48 @@
+@charset "UTF-8"; // Make sure the charset is set *first*
+
+/* @file
+ * This file is a custom file that loads all files.
+ *
+ * Do not name this file "STARTER.scss". This file should be named
+ * demo.scss. If you used the drush command to generate this subtheme,
+ * it should be named for you.
+ *
+ * This application file is where all the partials are imported.
+ */
+
+// Import eyeglass asset helper first
+@import "assets";
+
+// Import variables and core css values
+@import "settings/variables";
+@import "base/fonts";
+
+// Import generated styles
+@import "generated/**/*.scss";
+
+// Import base functions/mixins/styles
+@import "normalize";
+@import "bourbon";
+
+// Comment out the following two lines if not using Neat
+@import "settings/grid-settings"; // Must be imported BEFORE spacelift/grid and AFTER bourbon
+@import "spacelift/grid"; // Comment out if not using Neat
+
+// Import settings for components (these may require the grid to be defined above)
+@import "settings/component-settings";
+
+// Import common theme mixins and styles
+@import "aluminum-capsule";
+@import "spacelift";
+@import "spacelift/elements";
+@import "aluminum-components/base";
+@import "aluminum-components/drupal";
+
+// Import theme mixins
+@import "mixins/**/*.scss";
+
+// Import site components
+@import "components/**/*.scss";
+
+// TODO: figure out best way to organize print styles...
+@import "print.scss";

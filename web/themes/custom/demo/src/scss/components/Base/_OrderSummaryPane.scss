@@ -1,0 +1,14 @@
+[data-drupal-selector="edit-sidebar-order-summary"] {
+  background: $lightGray;
+  margin-bottom: $spacing-base;
+  position: relative;
+}
+
+[data-drupal-selector="edit-sidebar-order-summary-summary-title"] {
+  background: $mediumGray;
+  color: white;
+  padding: 0.5em 1rem;
+  font-size: 0.9em;
+  font-weight: $fontWeight-base;
+  margin-bottom: 0;
+}

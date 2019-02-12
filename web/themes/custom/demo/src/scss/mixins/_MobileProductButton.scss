@@ -1,0 +1,25 @@
+@mixin MobileProductButton($icon: '\f0ca') {
+  display: none;
+  position: relative;
+  font-size: 0.9em;
+  float: left;
+
+  @include media($screen-mediumDown) {
+    width: 100%;
+    display: block;
+  }
+
+  @include media($screen-mediumUp) {
+    display: none;
+  }
+
+  @include PrimaryActionButton(
+    $prependIcon: true,
+    $icon: $icon,
+    $mainColor--hover: $darkGray,
+    $textColor--hover: white
+  );
+
+  font-weight: bold;
+  text-align: center;
+}

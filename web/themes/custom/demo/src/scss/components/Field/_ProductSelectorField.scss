@@ -1,0 +1,13 @@
+.field--name-field-product {
+  .button[type=submit] {
+    @include ActionButton(
+      $mainColor: transparent,
+      $textColor: $blue,
+      $mainColor--hover: transparent,
+      $textColor--hover: $blue,
+      $borderRadius: none,
+      $padding: 0.5em 0
+    );
+    margin: 0;
+  }
+}

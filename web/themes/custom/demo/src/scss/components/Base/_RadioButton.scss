@@ -1,0 +1,9 @@
+.FormItem--type-radio {
+  .FormItem-children {
+    display: inline-block;
+  }
+
+  input, label {
+    vertical-align: middle;
+  }
+}

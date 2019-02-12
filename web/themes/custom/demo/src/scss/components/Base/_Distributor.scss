@@ -1,0 +1,17 @@
+.Distributor {
+  .Distributor-content {
+    @include span-columns(12 of 12);
+
+    @include media($screen-largeUp) {
+      @include span-columns(6 of 12);
+    }
+  }
+
+  .Distributor-form {
+    @include span-columns(12 of 12);
+
+    @include media($screen-largeUp) {
+      @include span-columns(6 of 12);
+    }
+  }
+}

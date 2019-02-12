@@ -1,0 +1,35 @@
+{% extends "themes/spacelift/templates/block/block.html.twig" %}
+
+{% block beforeLabel %}
+  {{ content.field_header_image }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="Block-headerLink">
+    {{ content.field_header_link }}
+  </div>
+{% endblock %}
+
+{% block afterContent %}
+  <div class="Block-footerLink">
+    {{ content.field_header_link }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% if icon or content.field_image %}
+    <div class="Block-floatContainer Block-floatContainer--{{ imageFloat }}">
+      {{ content.field_image }}
+      {% if icon %}
+        <span class="fa-stack">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-{{ icon }} fa-stack-1x"></i>
+        </span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {{ content|without('field_header_link', 'field_image', 'field_header_image', 'field_links') }}
+  <div class="Block-spacer"></div>
+  {{ content.field_links }}
+{% endblock %}

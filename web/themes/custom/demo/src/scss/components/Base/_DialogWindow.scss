@@ -1,0 +1,61 @@
+$lightGray: #eee !default;
+$mediumGray: #ccc !default;
+$darkGray: #555 !default;
+$color-border: $lightGray !default;
+
+$DialogWindow-boxShadow: 0 0 5px darken($color-border, 25%) !default;
+$DialogWindow-borderRadius: 0;
+
+.Site .ui-dialog {
+  border: 3px solid $lightGray;
+  color: $darkGray;
+  padding: 0 0 1rem;
+  box-shadow: $DialogWindow-boxShadow;
+  border-radius: 0;
+  z-index: 1000 !important;
+
+  .ui-dialog-titlebar {
+    background: none;
+    border: none;
+    color: $darkGray;
+    padding: 1rem 1rem 0;
+  }
+
+  .ui-dialog-content {
+    color: $darkGray;
+    padding: 1rem 1rem 0;
+  }
+
+  .ui-dialog-buttonpane {
+    background: none;
+    border: none;
+    color: $darkGray;
+    padding: 1rem 1rem 0;
+
+    .ui-button {
+      @include PrimaryActionButton(
+        $appendIcon: true,
+        $icon: "\f105"
+      );
+
+      border: none;
+      font-family: $fontFamily-button;
+      line-height: 1;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  &.entity-reference-dialog--contact_form {
+    .form-submit {
+      .ui-button-text:before {
+        content: "\f0e0";
+      }
+    }
+  }
+}
+
+.Site .ui-widget-overlay.ui-front {
+  background: $mediumGray;
+  opacity: 0.5;
+}

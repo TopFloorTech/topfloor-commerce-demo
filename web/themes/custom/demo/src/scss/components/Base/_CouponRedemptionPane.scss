@@ -1,0 +1,46 @@
+fieldset[data-drupal-selector="edit-sidebar-coupon-redemption"] {
+  padding: 0;
+  margin: 0 0 $spacing-base 0;
+  background: $lightGray;
+  position: relative;
+
+  legend {
+    width: 100%;
+  }
+
+  .fieldset-legend {
+    background: $mediumGray;
+    color: white;
+    padding: 0.5em 1rem;
+    font-size: 0.9em;
+    font-weight: $fontWeight-base;
+    margin-bottom: 0;
+    display: block;
+  }
+
+  .fieldset-wrapper {
+    padding: 0 $spacing-fixed/2 $spacing-fixed/2;
+  }
+
+  [data-drupal-selector="edit-sidebar-coupon-redemption-coupons-coupons"] {
+    width: auto;
+    margin: 0;
+    font-size: 0.9em;
+
+    th {
+      display: none;
+    }
+
+    tbody {
+      background-color: transparent;
+    }
+
+    td {
+      border-top: none;
+    }
+  }
+
+  [data-drupal-selector="edit-sidebar-coupon-redemption-coupons-title"] {
+    display: none;
+  }
+}

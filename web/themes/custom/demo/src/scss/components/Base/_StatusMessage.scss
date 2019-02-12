@@ -1,0 +1,10 @@
+$blue: blue !default;
+
+.StatusMessage.StatusMessage--status {
+  background-color: $blue;
+  color: white;
+
+  a {
+    color: white;
+  }
+}

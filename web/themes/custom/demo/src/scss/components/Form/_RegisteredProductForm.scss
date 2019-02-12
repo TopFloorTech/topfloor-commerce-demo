@@ -1,0 +1,9 @@
+.registered-product-registered-product-form {
+  @include OuterPadding();
+
+  .field--name-field-product {
+    .form-submit {
+      margin: $spacing-base/2 0;
+    }
+  }
+}

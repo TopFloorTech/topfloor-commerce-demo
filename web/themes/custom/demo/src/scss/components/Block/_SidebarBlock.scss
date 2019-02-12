@@ -1,0 +1,27 @@
+$lightGray: #eee !default;
+
+$SidebarBlock-columns: 12 !default;
+
+.PageSection--sidebar .Block {
+  @include span-columns($SidebarBlock-columns);
+  border-bottom: 1px solid darken($lightGray, 15%);
+  max-width: 660px;
+
+  .Block-title {
+    font-size: 1.2em;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    border-bottom-style: none;
+    padding-bottom: 0;
+  }
+}
+
+.PageSection--sidebarSecond .Block {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}

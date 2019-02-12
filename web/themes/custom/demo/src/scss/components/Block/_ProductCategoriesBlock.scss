@@ -1,0 +1,67 @@
+$lightGray: #eee !default;
+
+$borderWidth-base: 1px !default;
+$borderStyle-base: solid !default;
+
+#block-productssidebarmenu,
+#block-accessoriessidebarmenu {
+  border-bottom: $borderWidth-base $borderStyle-base darken($lightGray, 25%);
+  padding-bottom: $spacing-base / 3;
+  margin-bottom: $spacing-fixed / 2;
+
+  .Block-title {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+
+  .Block-content {
+    .Menu-list .Menu-list {
+      margin-left: 1em;
+    }
+
+    .Menu-link {
+      font-size: 0.9rem;
+    }
+
+    .Menu-link--activeTrail {
+      font-weight: $fontWeight-bold;
+    }
+  }
+
+  .facet-item {
+    margin: 0 0 0.1em 0;
+
+    label {
+      font-weight: normal;
+      display: inline;
+      font-size: 0.9em;
+    }
+
+    input[type=checkbox] {
+      appearance: none;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+
+
+  .facets-checkbox {
+    vertical-align: middle;
+    margin-right: 0.15em;
+  }
+}
+
+#block-filteryourresults {
+  border: none;
+
+  .Block-title {
+    font-size: 1.5em;
+  }
+}
+
+.PageSection--sidebar .Block.Block--facets .Block-title {
+  font-size: 1.1em;
+}

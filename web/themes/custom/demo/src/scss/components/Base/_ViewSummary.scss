@@ -1,0 +1,9 @@
+.ViewSummary {
+  display: block;
+  padding: 0.2em $spacing-fixed/2;
+  margin: 0;
+
+  @include media($screen-xLargeUp) {
+    padding-left: 0;
+  }
+}

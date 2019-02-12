@@ -1,0 +1,20 @@
+$color-background: white !default;
+$lightGray: #eee !default;
+$mediumGray: #555 !default;
+$blue: blue !default;
+
+$FormPageIcon-color: white !default;
+$FormPageIcon-backgroundColor: $blue !default;
+
+.FormPageIcon {
+  color: $FormPageIcon-color;
+  float: left;
+
+  .fa-stack {
+    font-size: 1.3em;
+  }
+
+  .fa-stack-2x {
+    color: $FormPageIcon-backgroundColor;
+  }
+}

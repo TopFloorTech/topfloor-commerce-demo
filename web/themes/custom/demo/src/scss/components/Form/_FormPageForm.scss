@@ -1,0 +1,28 @@
+$lightGray: #eee !default;
+
+// TODO: Refactor everything about this, or just replace it with other components
+.Node--type-form_page .Field.Field--name-field-form {
+  .field-group-fieldset {
+    padding: 0;
+    background: none;
+    border: none;
+
+    > legend {
+      display: block;
+      background-color: $lightGray;
+      font-size: 1.2em;
+      width: 100%;
+      padding: 0.25em 0 0.25em 0.5em;
+    }
+  }
+
+  fieldset.form-composite {
+    background: none;
+  }
+
+  .FormItem--type-checkbox {
+    .FormItem-children {
+      display: inline;
+    }
+  }
+}

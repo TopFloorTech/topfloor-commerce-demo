@@ -1,0 +1,29 @@
+.PageSection--sidebar {
+  margin-bottom: 1rem;
+
+  &.PageSection--sidebarFirst {
+    display: none;
+
+    @include media($screen-largeUp) {
+      display: block;
+    }
+  }
+
+  &.PageSection--sidebarSecond {
+    @include span-columns(12 of 12);
+    padding-right: 0;
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      padding-right: $spacing-fixed/2;
+    }
+
+    @include media($screen-xLargeUp) {
+      @include span-columns(3 of 12);
+    }
+
+    @include media($screen-xLargeUp) {
+      padding-right: 0;
+    }
+  }
+}

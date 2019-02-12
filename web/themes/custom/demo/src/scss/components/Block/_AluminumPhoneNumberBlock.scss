@@ -1,0 +1,7 @@
+.Block.Block--aluminum-phone-number {
+  display: none;
+
+  @include media($screen-largeUp) {
+    display: flex;
+  }
+}

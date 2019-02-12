@@ -1,0 +1,13 @@
+$fontWeight-bold: 600 !default;
+$lightGray: #eee !default;
+
+.Field.Field--name-field-qualifications {
+  border-top: 1px solid $lightGray;
+  margin-top: 0.5em;
+
+  .Field-label {
+    font-size: 1.2em;
+    font-weight: $fontWeight-bold;
+    margin: 1em 0 0.5em;
+  }
+}

@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: asset-url('fonts/montserrat-light-webfont.woff2') format('woff2'),
+         asset-url('fonts/montserrat-light-webfont.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: asset-url('fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         asset-url('fonts/montserrat-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: asset-url('fonts/montserrat-semibold-webfont.woff2') format('woff2'),
+         asset-url('fonts/montserrat-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'goodwayIcons';
+    src: asset-url('fonts/goodwayIcons.eot');
+    src: asset-url('fonts/goodwayIcons.eot?#iefix') format('embedded-opentype'),
+         asset-url('fonts/goodwayIcons.woff') format('woff'),
+         asset-url('fonts/goodwayIcons.ttf') format('truetype'),
+         asset-url('fonts/goodwayIcons.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,16 @@
+{% extends "block.html.twig" %}
+
+{% block content %}
+  <div class="ShareButtons">
+    <div class="AddThis"><div class="addthis_inline_share_toolbox"></div></div>
+    <a class="use-ajax ShareButtons-button"
+       data-dialog-type="modal"
+       data-dialog-options={{ dialog_options }}
+       href="/forward/commerce_product/{{ cpid }}">
+      <i class="fa fa-envelope"></i>
+    </a>
+    <a class="ShareButtons-button" href="javascript:window.print()">
+      <i class="fa fa-print"></i>
+    </a>
+  </div>
+{% endblock %}    

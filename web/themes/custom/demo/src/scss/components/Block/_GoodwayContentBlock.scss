@@ -1,0 +1,5 @@
+.Block--demo-content {
+  //clear: both;
+  clear: left;
+  @include clearfix;
+}

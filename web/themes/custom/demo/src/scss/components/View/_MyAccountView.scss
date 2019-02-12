@@ -1,0 +1,82 @@
+$fontWeight-thin: 300 !default;
+
+.view-my-default-account-information,
+.view-my-recent-order-history,
+.view-my-recently-registered-products {
+  @include clearfix;
+  @include OuterPadding();
+
+  @include media($screen-xLargeUp) {
+    padding-left: $spacing-fixed/2;
+  }
+
+  .sidebar-second & {
+    @include media($screen-largeUp) {
+      padding-right: 0;
+    }
+  }
+
+  .view-content,
+  .view-empty {
+    @include span-columns(12 of 12);
+
+    @include media($screen-largeUp) {
+      @include span-columns(8 of 12);
+    }
+  }
+
+  .view-footer {
+    @include span-columns(12 of 12);
+    margin-top: $spacing-fixed / 2;
+
+    @include media($screen-largeUp) {
+      @include span-columns(4 of 12);
+      margin-top: 0;
+    }
+
+    a {
+      @include PrimaryActionButton($appendIcon: true);
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .Field-label,
+  .label {
+    font-weight: $fontWeight-thin;
+  }
+}
+
+.view-my-recently-registered-products {
+  thead tr:first-child th {
+    padding-top: 0;
+  }
+}
+
+.view-my-recent-order-history {
+  .view-content > div {
+    @include clearfix;
+  }
+}
+
+.view-my-default-account-information {
+  .views-row {
+    .views-field-rendered-entity,
+    .views-field-rendered-entity-1 {
+      @include span-columns(12 of 12);
+
+      @include media($screen-mediumUp) {
+        @include span-columns(6 of 12);
+      }
+    }
+
+    .views-field-rendered-entity {
+      @include media($screen-mediumUp) {
+      }
+    }
+
+    .label:after {
+      content: ":";
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.paragraph.paragraph--type--side-by-side-text {
+  @include span-columns(12 of 12);
+  margin-bottom: $spacing-base;
+
+  .first-group,
+  .second-group {
+    @include span-columns(6 of 12);
+  }
+
+  .second-group {
+    @include omega();
+  }
+
+  .Field--type-text-long {
+    font-size: 0.9em;
+  }
+}

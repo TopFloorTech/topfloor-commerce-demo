@@ -1,0 +1,9 @@
+@mixin FontAwsesomeIcon(
+  $icon: "\f054"
+) {
+  content: $icon;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}

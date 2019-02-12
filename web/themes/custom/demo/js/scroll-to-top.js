@@ -1,0 +1,2 @@
+!function(o){"use strict";Drupal.behaviors.scrollToTop={attach:function(l,c){l===document&&(0==o(".ScrollToTop").length&&o("body").prepend(o('<a href="javascript:" class="ScrollToTop">').append(o('<i class="fa fa-chevron-up">'))),o(window).scroll(function(){o(this).scrollTop()>=80?o(".ScrollToTop").fadeIn(200):o(".ScrollToTop").fadeOut(200)}),o(".ScrollToTop").click(function(){o("body,html").animate({scrollTop:0},500)}))}}}(jQuery);
+//# sourceMappingURL=maps/scroll-to-top.js.map

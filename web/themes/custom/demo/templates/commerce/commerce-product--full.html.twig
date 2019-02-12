@@ -1,0 +1,85 @@
+{% extends "themes/spacelift/templates/commerce/commerce-product.html.twig" %}
+
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% block content %}
+  <div class="ProductHeading">
+    {{- product.field_headline -}}
+    <span class="ProductHeading-bullet">&bull;</span>
+    {{- product.variation_sku -}}
+  </div>
+
+  <div class="ProductContainer">
+    <div class="ProductContentContainer">
+      {% if product.variation_field_image['#items'] is not empty  %}
+        <div class="ProductMediaGallery">
+          <div class="ProductMediaGallery-largeImage RibbonContainer">
+            {{- product.variation_field_image -}}
+            {{ product.field_product_ribbon }}
+          </div>
+          <div class="ProductMediaGallery-thumbnails">
+            {{- product.field_gallery_images -}}
+            {{- product.field_gallery_videos -}}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="ProductContent">
+        {{ product.field_subhead -}}
+        <div class="ReadMoreContainer" data-height="20em">
+          <div class="ReadMoreContainer-content">
+            {{ product|without('field_headline', 'variation_price', 'variation_sku', 'variation_field_image',
+            'field_gallery_images', 'field_gallery_videos', 'field_subhead', 'field_features',
+            'field_specifications', 'field_required_accessories', 'field_suggested_accessories',
+            'field_related_products', 'field_required_for', 'field_recommended_with', 'field_product_ribbon') }}
+          </div>
+          <div class="ReadMoreContainer-bottom">
+            <a href="#" class="ReadMoreContainer-button">
+              <i class="fa fa-plus-circle"></i>
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Product-contentBlocks">
+      {{ product_content }}
+    </div>
+
+    <ul class="AccordionTabs AccordionTabs--product">
+      {% for tab in tabs %}<li class="AccordionTabs-tabContainer">
+        <a href="#" class="AccordionTabs-tabHeader">{{ tab.title }}</a>
+        <div class="AccordionTabs-tabContent">
+          {% for field in tab.fields %}
+            {{ field }}
+          {% endfor %}
+        </div>
+        </li>{%- endfor %}
+    </ul>
+  </div>
+
+  <div class="ProductSidebar">
+    {{ product_sidebar }}
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+$yellow: yellow !default;
+$darkGray: #555 !default;
+$borderRadius-button: 5px !default;
+
+.Block.Block--type-button-block {
+  @include clearfix;
+
+  .Field--name-field-link {
+    .Field-item a {
+      @include PrimaryActionButton($padding: 0.75em 2em, $appendIcon: true);
+      display: block;
+      text-align: center;
+    }
+  }
+}

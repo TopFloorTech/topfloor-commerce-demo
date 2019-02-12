@@ -1,0 +1,2 @@
+!function(e){"use strict";function i(i){e(i).each(function(){var a=e(this);a.on("click",".LanguageSwitcher-toggle",function(){var t=a.find(".LanguageSwitcher-links");t.toggleClass("is-active"),t.hasClass("is-active")&&e(document).on("click.languageSwitcher",function(a){e(a.target).closest(i).length||(e(i).find(".LanguageSwitcher-links.is-active").removeClass("is-active"),e(document).off("click.languageSwitcher"))})})})}Drupal.behaviors.demoLanguageSwitcher={attach:function(a,t){i(e(".LanguageSwitcher",a))}}}(jQuery);
+//# sourceMappingURL=maps/language-switcher.js.map

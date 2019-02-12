@@ -1,0 +1,99 @@
+// Component variables
+$RelatedView-itemMarginBottom: 1.5rem !default;
+$RelatedView-columns: 12 !default;
+$RelatedView-rowColumns: 3 of 12 !default;
+
+.RelatedView {
+  @include clearfix;
+
+  .RelatedView-row {
+    margin-bottom: $RelatedView-itemMarginBottom;
+  }
+}
+
+.RelatedView.RelatedView--articles,
+.RelatedView.RelatedView--products,
+.RelatedView.RelatedView--industries,
+.RelatedView.RelatedView--caseStudies,
+.RelatedView.RelatedView--testimonials,
+.RelatedView.RelatedView--recommendedAccessories,
+.RelatedView.RelatedView--tipsTricksAndNews,
+.RelatedView.RelatedView--featuredProducts,
+.RelatedView.RelatedView--featuredCategories {
+  position: relative;
+  left: -($spacing-fixed / 4);
+  margin-bottom: 1rem;
+  width: calc(100% + 0.5rem);
+
+  .RelatedView-row {
+    padding: 0 $spacing-fixed / 4;
+    margin: 0;
+  }
+
+  .slick-list,
+  .slick-slide,
+  .Field--name-field-image a {
+    outline: none;
+  }
+}
+
+.RelatedView.RelatedView--featuredProducts,
+.RelatedView.RelatedView--featuredCategories {
+  .RelatedView-row {
+    margin-top: $spacing-base/3;
+  }
+}
+
+.RelatedView--products.RelatedView--productPage {
+  margin-bottom: 0;
+}
+
+.RelatedView--products.RelatedView--sidebar {
+  margin-bottom: 0;
+  padding: 0;
+  left: 0;
+  width: 100%;
+
+  .RelatedView-row {
+    padding: 0 0 1em 0;
+    border-bottom: 1px solid darken($lightGray, 10%);
+    margin-top: 1em;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.RelatedView--faq {
+  margin-bottom: 1rem;
+  @include OuterPadding();
+
+  .RelatedView-row {
+    margin-bottom: 0.5em;
+  }
+
+  .view-content {
+    h3 {
+      font-size: 1.2em;
+    }
+  }
+}
+
+.Block--views-block__related-products-block-1,
+.Block--views-block__related-case-studies-block-1,
+.Block--views-block__related-articles-block-1,
+.Block--related-faq-industry-block {
+  &.Block--views {
+    // fix for anchor link to display heading below fixed header
+    // values represent fixed header height and heading margin
+    padding-top: calc(60px + .75em) !important;
+    margin-top: calc(-60px - .75em) !important;
+  }
+}
+
+.js-sliderView {
+  padding-left: 2em;
+  padding-right: 2em;
+}

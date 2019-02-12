@@ -1,0 +1,14 @@
+.Block.Block--cart-related-items-block {
+  .PageSection--sidebar & {
+    max-width: none;
+
+    .Block-title {
+      background: $mediumGray;
+      color: #fff;
+      font-size: 0.85em;
+      padding: $spacing-fixed/4 $spacing-fixed/2;
+      margin-bottom: 0;
+      font-weight: $fontWeight-base;
+    }
+  }
+}

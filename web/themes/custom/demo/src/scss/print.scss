@@ -1,0 +1,139 @@
+$blue: #0051ba !default;
+
+@media print {
+    .AccordionTabs-tabContent {
+        height:auto!important;
+        margin:1em 0;
+        border:0!important;
+        box-shadow:none!important;
+        padding-top:0!important;
+        padding-bottom:0!important;
+    }
+
+    .AccordionTabs-tabContent {
+
+    }
+
+    .ProductSidebar {
+        display:none;
+    }
+
+
+
+    .Block--demo-branding {
+        position:absolute!important;
+        z-index:100000;
+        padding:1em;
+        top:.65em;
+    }
+    .Block--product-variations-mobile {
+        display:none;
+    }
+    .Block.Block--aluminum-phone-number {
+        position:absolute!important;
+        right:.5em;
+        top:0!important;
+        display:block;
+        z-index:100;
+        font-size:27px;
+        font-weight:bold;
+        background:white;
+        *,a {
+            color:$blue!important;
+        }
+
+    }
+
+    .Page {
+        padding-top:40px;
+    }
+
+    .AccordionTabs-tabHeader {
+        color:$blue!important;
+        font-size:1.1em!important;
+        border:0!important;
+        border-bottom:3px solid $blue!important;
+    }
+
+    .PageSection--footer {
+        display:none;
+    }
+
+    .PageSection--contentBottom {
+        display:none;
+    }
+
+    .AddThis {
+        display:none;
+    }
+
+    .PageSection--responsiveHeader {
+        display:none;
+    }
+
+    .PageSection--header,
+    .PageSection--responsiveHeader {
+        height:auto!important;
+        border:0!important;
+        padding:0!important;
+    }
+
+    .PageSection--utility {
+        background-color: white;
+        border:none;
+        min-height:0!important;
+        padding:0!important;
+    }
+
+    .Block--search-form-block {
+        display:none!important;
+    }
+
+    .Block--back-button {
+        display:none!important;
+    }
+
+    .Block--local-tasks-block {
+        display:none!important;
+    }
+
+   .PageSection--breadcrumb {
+        display:none!important;
+   }
+
+   .js-fixedHeader.is-fixed {
+       position:relative!important;
+       border:0!important;
+   }
+
+   .FixedHeader {
+       top:0!important;
+       z-index:1000;
+       background-color: transparent;
+       height:0;
+   }
+
+   .Block--phone-icon {
+       display:none!important;
+   }
+
+
+   .ReadMoreContainer-content {
+       padding:1px;
+       height:auto!important;
+       margin-bottom:0!important;
+   }
+
+   .ProductMediaGallery-largeImage {
+       border:0!important;
+       box-shadow:none!important;
+   }
+
+   .ReadMoreContainer-bottom {
+       display:none!important;
+   }
+
+   .PageSection--utility {
+       top:0!important;
+   }
+}

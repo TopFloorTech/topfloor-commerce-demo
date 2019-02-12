@@ -1,0 +1,52 @@
+@mixin ListingView(
+  $columns: 12 of 12,
+  $outerPadding: true,
+  $titleBackground: $mediumGray,
+  $separator: true,
+  $grid: false
+) {
+  @include span-columns($columns);
+  @include clearfix;
+
+  @if $outerPadding {
+    @include OuterPadding();
+  }
+
+  .ListingView-title {
+    background: $titleBackground;
+    color: white;
+    padding: 0.5em 1rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .ListingView-row {
+    @include span-columns(12 of 12);
+
+    @if $grid {
+      padding: 0;
+      margin-bottom: $gutter;
+    } @else {
+      padding: $gutter 0;
+      margin-bottom: 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    @if $separator {
+      border-bottom: 1px solid $lightGray;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    } @else {
+      border-bottom: none;
+    }
+
+    > * {
+      margin-bottom: 0;
+    }
+  }
+}

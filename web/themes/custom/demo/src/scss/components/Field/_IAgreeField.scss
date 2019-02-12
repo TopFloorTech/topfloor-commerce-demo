@@ -1,0 +1,18 @@
+$confirmation-checkbox-color: #ffffff !default;
+
+.field--name-field-i-agree {
+  .FormItem--field-i-agree-value {
+    display: flex;
+    flex-flow: column-reverse;
+
+    .option {
+      color: $confirmation-checkbox-color;
+    }
+
+    .description {
+      color: $confirmation-checkbox-color;
+      font-size: 1em;
+      margin-left: 0;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.PageSection--sidebarSecond .Form {
+  .form-actions {
+    color: $blue;
+    display: inline-block;
+    position: relative;
+    margin: 0.5em 0 0 0;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      @include ButtonIcon($icon: '\f054', $padding: 0);
+      position: absolute;
+      bottom: 0.5em;
+      right: 0.5em;
+      font-size: 0.8em;
+    }
+  }
+
+  &.contact-message-form .form-actions input[type=submit] {
+    background: transparent;
+    color: $blue;
+    padding: 0.5em 1.5em 0.5em 0;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    margin-left: 0;
+
+    &:hover {
+      border-bottom-color: $blue;
+    }
+  }
+
+  .FormItem--type-managed-file {
+    .form-submit {
+      padding-right: 0;
+    }
+  }
+}
