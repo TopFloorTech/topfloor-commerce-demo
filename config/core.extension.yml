@@ -16,7 +16,6 @@ module:
   chosen_lib: 0
   ckeditor: 0
   color: 0
-  comment: 0
   commerce: 0
   commerce_cart: 0
   commerce_cart_blocks: 0
