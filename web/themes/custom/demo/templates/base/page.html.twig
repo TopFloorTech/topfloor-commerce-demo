@@ -71,7 +71,7 @@
     {% endif %}
 
     <main role="main" class="PageSection PageSection--main{{ background_image_uri ? ' background-image' }}" {{ background|raw }}>
-      {% if not is_front %}<div class="PageSection-container">{% endif %}
+      <div class="PageSection-container">
         {% if page.sidebar_first %}
         <section class="PageSection PageSection--sidebar PageSection--sidebarFirst" role="complementary">
           {{ page.sidebar_first }}
@@ -95,7 +95,7 @@
           </div>
         </section>
         {% endif %}
-      {% if not is_front %}</div>{% endif %}
+      </div>
     </main>
 
     {% if page.content_bottom %}
