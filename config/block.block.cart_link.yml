@@ -1,15 +1,15 @@
-uuid: fcafb34e-bae4-46d2-b5e3-57ae5df58e72
+uuid: eac8ce7b-79b4-4398-9c90-3b7877d9feb2
 langcode: en
 status: true
 dependencies:
   module:
     - commerce_cart_blocks
   theme:
-    - goodway
-id: cartbutton
-theme: goodway
+    - demo
+id: cart_link
+theme: demo
 region: utility
-weight: -6
+weight: 0
 provider: null
 plugin: commerce_cart_blocks_button
 settings:
@@ -27,7 +27,7 @@ settings:
   display_links:
     cart: cart
     checkout: checkout
-  cart_link_text: 'View Cart'
+  cart_link_text: Cart
   checkout_link_text: Checkout
   count_text_singular: '@count item'
   count_text_plural: '@count items'

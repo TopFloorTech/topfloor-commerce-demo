@@ -1,17 +1,17 @@
-uuid: 1b1b748f-4a5a-45e6-9a56-2687cfc5a6fb
+uuid: 9e87c570-0a26-4ada-9a22-fa9ce6b45a23
 langcode: en
 status: true
 dependencies:
   module:
     - search
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
-id: goodway_search
-theme: goodway
+id: demo_search
+theme: demo
 region: header
-weight: -7
+weight: -8
 provider: null
 plugin: search_form_block
 settings:

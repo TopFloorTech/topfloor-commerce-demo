@@ -1,4 +1,4 @@
-uuid: 614549f9-4b08-45f7-a8f3-1c22d1160660
+uuid: 14f3efda-f903-473a-9ac7-ddde1f8a3982
 langcode: en
 status: false
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: DweBpscQZdG0-fHkSpUzdYucrNH45G_KF7Z82V-oyQM
-id: goodway_account_menu
-theme: goodway
+id: demo_account_menu
+theme: demo
 region: sidebar_first
 weight: -5
 provider: null

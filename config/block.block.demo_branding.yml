@@ -1,17 +1,17 @@
-uuid: b72f09c9-f25e-4433-b859-d43ab19c507d
+uuid: 84b1e7af-c33c-404b-81bf-bde7f85ecdd3
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
-id: goodway_branding
-theme: goodway
+id: demo_branding
+theme: demo
 region: header
-weight: -9
+weight: -10
 provider: null
 plugin: system_branding_block
 settings:

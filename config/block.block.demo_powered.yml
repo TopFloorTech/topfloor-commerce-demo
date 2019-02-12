@@ -1,17 +1,17 @@
-uuid: e1adf56b-d4fa-480b-a20d-078280482289
+uuid: 779deaf4-46e7-494e-841b-e9d2343ac4bc
 langcode: en
 status: false
 dependencies:
   module:
     - system
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
-id: goodway_powered
-theme: goodway
+id: demo_powered
+theme: demo
 region: footer_bottom
-weight: -6
+weight: -8
 provider: null
 plugin: system_powered_by_block
 settings:

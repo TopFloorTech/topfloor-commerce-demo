@@ -1,15 +1,15 @@
-uuid: 70f39f73-ef10-4be1-a529-ea2a161e602a
+uuid: 7fe5f08c-db19-46a9-aab8-080ab15b0e1d
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
-id: goodway_messages
-theme: goodway
+id: demo_messages
+theme: demo
 region: content
 weight: -4
 provider: null

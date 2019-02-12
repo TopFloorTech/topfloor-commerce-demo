@@ -1,22 +1,22 @@
-uuid: 7060f109-7a0a-41bd-8fca-d1e4d2dfb4cc
+uuid: 69d9d7e9-039b-4f14-9128-4f02635fab1f
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.utility
+    - system.menu.footer
   module:
     - menu_block
   theme:
     - demo
-id: utilitynavigation
+id: demo_footer
 theme: demo
-region: utility
-weight: -9
+region: footer_bottom
+weight: 0
 provider: null
-plugin: 'menu_block:utility'
+plugin: 'menu_block:footer'
 settings:
-  id: 'menu_block:utility'
-  label: 'Utility navigation'
+  id: 'menu_block:footer'
+  label: Footer
   provider: menu_block
   label_display: '0'
   follow: 0
@@ -24,6 +24,6 @@ settings:
   level: 1
   depth: 1
   expand: 0
-  parent: 'utility:'
-  suggestion: utility
+  parent: 'footer:'
+  suggestion: footer
 visibility: {  }

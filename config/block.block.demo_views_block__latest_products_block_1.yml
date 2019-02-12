@@ -1,4 +1,4 @@
-uuid: 0876bca5-cf9b-42b7-838b-6678496c6ad2
+uuid: 20ea6fa2-88db-45e3-a762-3ad6c9e1fd76
 langcode: en
 status: true
 dependencies:
@@ -8,9 +8,9 @@ dependencies:
     - system
     - views
   theme:
-    - goodway
-id: views_block__latest_products_block_1
-theme: goodway
+    - demo
+id: demo_views_block__latest_products_block_1
+theme: demo
 region: content
 weight: 0
 provider: null

@@ -1,4 +1,4 @@
-uuid: 96daaddc-a1ff-4fb3-a8bd-3d502db98a66
+uuid: f1d823c6-721c-4823-87cc-6c8c5cbba45c
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - menu_block
   theme:
-    - goodway
+    - demo
 id: main_navigation
-theme: goodway
+theme: demo
 region: header
-weight: -8
+weight: -9
 provider: null
 plugin: 'menu_block:main'
 settings:

@@ -1,15 +1,15 @@
-uuid: 20e1ca8d-eeaa-4f28-b491-07100c931210
+uuid: cce7eb7a-93f1-46f8-97ec-dc905eb2c825
 langcode: en
 status: true
 dependencies:
   module:
     - help
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
-id: goodway_help
-theme: goodway
+id: demo_help
+theme: demo
 region: content
 weight: -3
 provider: null

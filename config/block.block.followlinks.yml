@@ -1,22 +1,22 @@
-uuid: ef944717-d0b7-4a04-8a07-d6029cc37f02
+uuid: f3d2ca41-dc7a-4980-b1b5-c7a8dccf5ec0
 langcode: en
 status: true
 dependencies:
   module:
     - aluminum_blocks
   theme:
-    - goodway
+    - demo
 id: followlinks
-theme: goodway
+theme: demo
 region: footer_top
-weight: -8
+weight: 0
 provider: null
 plugin: aluminum_follow
 settings:
   id: aluminum_follow
-  label: 'Follow links'
+  label: 'Connect With Us'
   provider: aluminum_blocks
-  label_display: '0'
+  label_display: visible
   link_target: _blank
   facebook_enabled: 1
   facebook_url_override: 0
@@ -34,15 +34,15 @@ settings:
   youtube_url_override: 0
   youtube_url: ''
   youtube_weight: '40'
-  google_plus_enabled: 0
+  google_plus_enabled: 1
   google_plus_url_override: 0
   google_plus_url: ''
   google_plus_weight: '50'
-  flickr_enabled: 0
+  flickr_enabled: 1
   flickr_url_override: 0
   flickr_url: ''
   flickr_weight: '60'
-  instagram_enabled: 0
+  instagram_enabled: 1
   instagram_url_override: 0
   instagram_url: ''
   instagram_weight: '70'

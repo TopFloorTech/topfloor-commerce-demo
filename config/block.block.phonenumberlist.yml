@@ -1,15 +1,15 @@
-uuid: b2a82bff-2149-40c6-8424-96f49eed146d
+uuid: d430484c-77ab-4c0d-b991-6b709b7e9681
 langcode: en
 status: true
 dependencies:
   module:
     - aluminum_blocks
   theme:
-    - goodway
+    - demo
 id: phonenumberlist
-theme: goodway
+theme: demo
 region: footer_top
-weight: -9
+weight: -10
 provider: null
 plugin: aluminum_phone_number_list
 settings:

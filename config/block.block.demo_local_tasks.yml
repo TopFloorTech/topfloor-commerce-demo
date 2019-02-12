@@ -1,13 +1,13 @@
-uuid: 623b938e-8ec6-48aa-a6c8-37ce27ca0fdd
+uuid: a742472e-c56b-4222-9ed6-78aeeba84518
 langcode: en
 status: true
 dependencies:
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
-id: goodway_local_tasks
-theme: goodway
+id: demo_local_tasks
+theme: demo
 region: content
 weight: -5
 provider: null

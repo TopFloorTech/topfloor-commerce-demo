@@ -1,15 +1,15 @@
-uuid: a259f6c8-de56-4bc2-85b6-08db8990c573
+uuid: 23422a07-b854-425f-bbb4-8bf761593535
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - goodway
+    - demo
 _core:
   default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
-id: goodway_breadcrumbs
-theme: goodway
+id: demo_breadcrumbs
+theme: demo
 region: breadcrumb
 weight: 0
 provider: null
