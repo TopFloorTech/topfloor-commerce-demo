@@ -154,7 +154,7 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
       $lines[] = [
         'SEQ_LINE_ORD' => $index + 1,
         'ID_ITEM' => $this->getProductRemoteId($orderItem),
-        'QTY_OPEN' => $orderItem->getQuantity(),
+        'QTY_OPEN' => $this->getOrderItemQuantity($orderItem),
         'PRICE_SELL_NET_VP_FC' => $this->getOrderItemPrice($orderItem),
       ];
     }
@@ -175,6 +175,10 @@ class WorkWiseCommerceOrderPlugin extends CrudPluginBase {
     }
 
     return $remoteId;
+  }
+
+  private function getOrderItemQuantity(OrderItemInterface $item) {
+    return round((float)$item->getQuantity());
   }
 
   private function getShippingPrice(OrderInterface $order) {
