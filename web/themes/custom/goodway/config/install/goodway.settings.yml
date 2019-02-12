@@ -5,7 +5,7 @@ features:
   favicon: 1
 logo:
   use_default: 0
-  path: themes/goodway/images/logo.png
+  path: themes/custom/goodway/images/logo.png
 favicon:
   use_default: 0
-  path: themes/goodway/favicon.ico
+  path: themes/custom/goodway/favicon.ico
