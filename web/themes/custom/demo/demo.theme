@@ -745,12 +745,18 @@ function demo_preprocess_paragraph(&$variables) {
     $variables['bounding_box_padding'] = $paragraph->get('field_padding')->value;
   }
 
-  if ($paragraphType === 'media') {
+  if ($paragraphType === 'media' && $paragraph->hasField('field_max_width')) {
     $variables['media_max_width'] = $paragraph->get('field_max_width')->value;
+  } else {
+    $variables['media_max_width'] = '0';
   }
 
   if ($paragraphType === 'banner_link') {
-    $variables['media_max_width'] = $paragraph->get('field_max_width')->value;
+    if ($paragraph->hasField('field_max_width')) {
+      $variables['media_max_width'] = $paragraph->get('field_max_width')->value;
+    } else {
+      $variables['media_max_width'] = '0';
+    }
 
     $variables['link'] = '';
     if (!$paragraph->get('field_link')->isEmpty()) {
