@@ -1,22 +1,22 @@
-uuid: 20ea6fa2-88db-45e3-a762-3ad6c9e1fd76
+uuid: 1f5b83d3-2a95-4df7-81d3-404c02575a02
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.latest_products
+    - views.view.featured_products
   module:
     - system
     - views
   theme:
     - demo
-id: demo_views_block__latest_products_block_1
+id: featured_products_homepage_block
 theme: demo
 region: content
 weight: 0
 provider: null
-plugin: 'views_block:latest_products-block_1'
+plugin: 'views_block:featured_products-featured_products_homepage_block'
 settings:
-  id: 'views_block:latest_products-block_1'
+  id: 'views_block:featured_products-featured_products_homepage_block'
   label: ''
   provider: views
   label_display: visible

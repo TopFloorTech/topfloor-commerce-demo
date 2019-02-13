@@ -36,10 +36,9 @@ set product_classes = [
     {{ product.field_product_ribbon }}
   </div>
 
-
   <div class="CommerceProduct-teaserBottom">
     {{ product.field_teaser_title }}
-    {{ product.field_base_sku }}
-    <a class="CommerceProduct-viewLink" href="{{ product_url }}">View Details</a>
+    {{ product.variation_sku }}
+    {{ product.variations }}
   </div>
 </article>

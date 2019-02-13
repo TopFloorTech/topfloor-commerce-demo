@@ -7,6 +7,7 @@ dependencies:
     - field.field.commerce_product.default.body
     - field.field.commerce_product.default.field_content
     - field.field.commerce_product.default.field_headline
+    - field.field.commerce_product.default.field_teaser_title
     - field.field.commerce_product.default.stores
     - field.field.commerce_product.default.variations
   module:
@@ -22,13 +23,13 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     region: content
   field_content:
     type: paragraphs
-    weight: 3
+    weight: 4
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -45,6 +46,14 @@ content:
     third_party_settings: {  }
     region: content
   field_headline:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_teaser_title:
     weight: 2
     settings:
       size: 60
@@ -54,13 +63,13 @@ content:
     region: content
   path:
     type: path
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     region: content
   status:
     type: boolean_checkbox
-    weight: 8
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -81,7 +90,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -90,7 +99,7 @@ content:
     region: content
   variations:
     type: inline_entity_form_complex
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS

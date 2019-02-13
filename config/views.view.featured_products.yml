@@ -1,4 +1,4 @@
-uuid: 74ebbe55-e097-4359-8723-7489375cac7e
+uuid: 4862d76a-e32a-46ae-bbc7-88ad53f98a53
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - core.entity_view_mode.commerce_product.teaser
   module:
     - commerce_product
-id: latest_products
-label: 'Latest Products'
+id: featured_products
+label: 'Featured products'
 module: views
 description: ''
 tag: ''
@@ -51,7 +51,11 @@ display:
           items_per_page: 5
           offset: 0
       style:
-        type: grid
+        type: default
+        options:
+          row_class: 'RelatedView-row js-matchHeight'
+          default_row_class: false
+          uses_fields: false
       row:
         type: 'entity:commerce_product'
         options:
@@ -142,15 +146,16 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      css_class: 'RelatedView RelatedView--featuredProducts js-matchHeightContainer'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
       tags: {  }
-  block_1:
+  featured_products_homepage_block:
     display_plugin: block
-    id: block_1
+    id: featured_products_homepage_block
     display_title: Block
     position: 1
     display_options:

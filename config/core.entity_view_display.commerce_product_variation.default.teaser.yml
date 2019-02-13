@@ -1,49 +1,49 @@
-uuid: 3cfcb0f6-6a93-4947-96e3-f5c26ec557c5
+uuid: 67c1ee50-0bf4-4c5e-acf8-5522892aa48b
 langcode: en
 status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.default
+    - core.entity_view_mode.commerce_product_variation.teaser
     - field.field.commerce_product_variation.default.field_image
     - field.field.commerce_product_variation.default.field_workwise_id
     - field.field.commerce_product_variation.default.weight
   module:
     - commerce_price
-id: commerce_product_variation.default.default
+id: commerce_product_variation.default.teaser
 targetEntityType: commerce_product_variation
 bundle: default
-mode: default
+mode: teaser
 content:
   field_image:
     type: entity_reference_entity_view
-    weight: 2
+    weight: 0
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
-  list_price:
-    label: inline
+  price:
+    label: hidden
     type: commerce_price_default
-    weight: 0
+    weight: 2
     region: content
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
-  price:
-    label: inline
-    type: commerce_price_default
+  sku:
+    type: string
     weight: 1
     region: content
+    label: hidden
     settings:
-      strip_trailing_zeroes: false
-      currency_display: symbol
+      link_to_entity: false
     third_party_settings: {  }
 hidden:
   field_workwise_id: true
+  list_price: true
   product_id: true
-  sku: true
   title: true
   weight: true
