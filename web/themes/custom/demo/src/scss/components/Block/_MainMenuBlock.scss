@@ -4,7 +4,7 @@
   height: 100%;
 
   @include media($screen-largeUp) {
-    @include span-columns(8 of 12);
+    @include span-columns(7 of 12);
     display: flex;
     flex-direction: column;
     justify-content: center;
