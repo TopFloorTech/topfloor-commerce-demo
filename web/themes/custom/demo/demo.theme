@@ -402,6 +402,14 @@ function demo_product_tab_items(&$variables) {
  * Implements hook_form_alter().
  */
 function demo_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'commerce_checkout_flow_multistep_default') {
+    foreach (['shipping_information', 'payment_information'] as $section) {
+      if (!empty($form['review'][$section])) {
+        $form['review'][$section]['#title'] = str_replace(['(', ')'], '', $form['review'][$section]['#title']);
+      }
+    }
+  }
+
   if (strpos($form_id, 'contact_message_') === 0) {
     if (array_key_exists('field_referrer', $form)) {
       $form['#cache']['max-age'] = 0;
